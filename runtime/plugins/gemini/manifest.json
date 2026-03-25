@@ -1,0 +1,11 @@
+{
+  "name": "gemini-adapter",
+  "version": "0.1.0",
+  "description": "Adapter plugin exposing Gemini engine to the chat/code-module runtime.",
+  "entry": "adapter.sh",
+  "type": "adapter",
+  "hooks": {
+    "on_message": true,
+    "on_action_token": true
+  }
+}

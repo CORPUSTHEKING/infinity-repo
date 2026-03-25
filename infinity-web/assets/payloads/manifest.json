@@ -1,0 +1,75 @@
+[
+  {
+    "type": "directory",
+    "name": "DIRECTORIES",
+    "children": [
+      {
+        "type": "file",
+        "name": "daudit",
+        "path": "assets/payloads/DIRECTORIES/daudit",
+        "size": 676,
+        "modified": "2026-03-24T15:42:32.844Z"
+      },
+      {
+        "type": "file",
+        "name": "daudit.json",
+        "path": "assets/payloads/DIRECTORIES/daudit.json",
+        "size": 1357,
+        "modified": "2026-03-24T16:00:26.372Z"
+      }
+    ]
+  },
+  {
+    "type": "directory",
+    "name": "FILEOPS",
+    "children": [
+      {
+        "type": "file",
+        "name": "faudit",
+        "path": "assets/payloads/FILEOPS/faudit",
+        "size": 915,
+        "modified": "2026-03-24T21:52:00.609Z"
+      },
+      {
+        "type": "file",
+        "name": "termux-shell",
+        "path": "assets/payloads/FILEOPS/termux-shell",
+        "size": 813,
+        "modified": "2026-03-24T21:53:19.993Z"
+      }
+    ]
+  },
+  {
+    "type": "directory",
+    "name": "SYSTEM",
+    "children": [
+      {
+        "type": "file",
+        "name": "regfind",
+        "path": "assets/payloads/SYSTEM/regfind",
+        "size": 350,
+        "modified": "2026-03-24T22:50:02.605Z"
+      },
+      {
+        "type": "file",
+        "name": "startuplog",
+        "path": "assets/payloads/SYSTEM/startuplog",
+        "size": 946,
+        "modified": "2026-03-24T22:50:48.641Z"
+      }
+    ]
+  },
+  {
+    "type": "directory",
+    "name": "TEMPLATES",
+    "children": [
+      {
+        "type": "file",
+        "name": "renamd",
+        "path": "assets/payloads/TEMPLATES/renamd",
+        "size": 279,
+        "modified": "2026-03-24T21:59:57.141Z"
+      }
+    ]
+  }
+]

@@ -1,0 +1,15 @@
+How to run the runtime (interactive or socket)
+
+1) Interactive (existing CLI)
+   python3 runtime/cli.py
+
+2) Run IPC UNIX socket server (separate terminal)
+   python3 runtime/ipc/socket_server.py
+
+Then send ndjson envelopes to /tmp/infinity.sock, e.g.:
+  echo '{"imf_version":"1.0.0","type":"query","id":"'"$(uuidgen)"'","origin":"cli","timestamp":'$(date +%s)',"payload":{"query":"find"}}' \
+    | socat - UNIX-CONNECT:/tmp/infinity.sock
+
+3) Run tests (requires pytest)
+   python3 -m pip install --user pytest
+   python3 -m pytest runtime/tests/test_router_validation.py -q

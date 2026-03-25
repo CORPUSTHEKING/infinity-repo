@@ -1,0 +1,57 @@
+.inf-shell {
+  min-height: 100vh;
+  padding-top: 7.2rem;
+  padding-bottom: 8.5rem; /* Extra padding for curved bottom bar */
+}
+
+.inf-main {
+  padding: 0 1rem 1rem;
+}
+
+.inf-page {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--line);
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
+/* Curved Bottom Bar */
+.inf-bottombar.curved {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: var(--panel-strong);
+  border-top: 1px solid var(--line);
+  border-top-left-radius: 34px;
+  border-top-right-radius: 34px;
+  backdrop-filter: blur(20px);
+  padding: 1.2rem 1rem;
+}
+
+.inf-bottombar-inner {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.inf-bottombar.curved a {
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.inf-bottombar.curved a:hover {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.05);
+}

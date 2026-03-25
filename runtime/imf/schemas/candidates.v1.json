@@ -1,0 +1,25 @@
+{
+  "$id":"imf/candidates.v1.json",
+  "type":"object",
+  "required":["candidates"],
+  "properties":{
+    "candidates":{
+      "type":"array",
+      "items":{
+        "type":"object",
+        "required":["key","type","title","short"],
+        "properties":{
+          "key":{"type":"string"},
+          "type":{"type":"string"},
+          "title":{"type":"string"},
+          "short":{"type":"string"},
+          "score":{"type":"number"},
+          "preview_token":{"type":"string"},
+          "meta":{"type":"object"}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

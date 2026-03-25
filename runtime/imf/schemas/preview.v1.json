@@ -1,0 +1,24 @@
+{
+  "$id":"imf/preview.v1.json",
+  "type":"object",
+  "required":["preview_token","items"],
+  "properties":{
+    "preview_token": { "type":"string" },
+    "items": {
+      "type":"array",
+      "items": {
+        "type":"object",
+        "required": ["title","body"],
+        "properties": {
+          "title":{"type":"string"},
+          "body":{"type":"string"},
+          "fields":{"type":"object"},
+          "examples":{"type":"array","items":{"type":"string"}},
+          "meta":{"type":"object"}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

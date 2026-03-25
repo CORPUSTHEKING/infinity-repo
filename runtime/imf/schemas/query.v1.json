@@ -1,0 +1,11 @@
+{
+  "$id":"imf/query.v1.json",
+  "type":"object",
+  "required":["query"],
+  "properties":{
+    "query":{"type":"string"},
+    "mode":{"type":"string"},
+    "filters":{"type":"object"}
+  },
+  "additionalProperties": false
+}

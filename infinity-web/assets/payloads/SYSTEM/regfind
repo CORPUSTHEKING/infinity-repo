@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+# Usage: regfind <regex> [path]
+
+REGEX="$1"
+SEARCH_PATH="${2:-.}"
+
+if [[ -z "$REGEX" ]]; then
+    echo "Usage: regfind <regex> [path]"
+    exit 1
+fi
+
+# -r: Recursive
+# -E: Extended Regex
+# -l: Only show filenames (omit for content)
+# -n: Show line numbers
+# -I: Ignore binary files
+grep -rEnI "$REGEX" "$SEARCH_PATH" 2>/dev/null

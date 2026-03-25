@@ -1,0 +1,35 @@
+.inf-brandbar {
+  position: fixed;
+  top: 0.85rem;
+  left: 1rem;
+  right: 1rem;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.inf-logo-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+}
+
+.inf-symbol {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #0000ff;
+  line-height: 1;
+}
+
+.inf-menu-btn {
+  background: transparent;
+  border: none;
+  color: var(--text);
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  text-transform: lowercase;
+}

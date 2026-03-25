@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# Loop through all files in the current directory
+for file in *; do
+    # Skip if it's a directory
+    [[ -d "$file" ]] && continue
+    
+    echo "Processing: $file"
+    # INSERT COMMAND HERE (e.g., mv "$file" "${file}.bak")
+    mv "$file" "${file}.md"
+done

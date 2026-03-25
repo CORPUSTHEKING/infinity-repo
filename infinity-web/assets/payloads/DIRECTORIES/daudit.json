@@ -1,0 +1,26 @@
+{
+  "tool": "daudit",
+  "version": "0.01",
+  "description": "Grid-style directory audit utility providing recursive directory discovery and size reporting.",
+  "safety": "Read-only. Does not modify files or directories. Safe for execution in any shell environment.",
+  "requirements": {
+    "interpreter": "bash",
+    "dependencies": [
+      "findutils",
+      "coreutils (du)",
+      "ncurses (tput)"
+    ]
+  },
+  "usage": {
+    "instruction": "Specify a target directory. Use '.' to audit the current working directory.",
+    "syntax": "daudit <directory>",
+    "test_command": "daudit ."
+  },
+  "features": [
+    "Infinite recursion (by default)",
+    "User-defined max depth",
+    "MB-based size reporting",
+    "Colorized UI output"
+  ],
+  "source_code": "#!/bin/bash\nif [[ \"$1\" == \"-h\" || -z \"$1\" ]]; then\n    echo -e \"\\e[1;34mUsage:\\e[0m daudit <directory>\"\n    echo -e \"\\e[1;33mExplaining:\\e[0m Grid-style directory audit showing name + size in MB.\"\n    exit 0\nfi\n\nread -p \"Enter max depth (Press Enter for Infinity): \" depth\nDEPTH_CMD=\"\"\n[[ ! -z \"$depth\" ]] && DEPTH_CMD=\"-maxdepth $depth\"\n\necho -e \"\\e[1;32m📁 Auditing: $1\\e[0m\"\n\nfind \"$1\" $DEPTH_CMD -type d | while read dir; do\n    size=$(du -sh \"$dir\")\n    name=$(basename \"$dir\")\n    echo -e \"└── 📂 \\e[1;34m${size}\\e[0m\"\ndone"
+}
