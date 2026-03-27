@@ -15,7 +15,7 @@
  
 Infinity is built to provide power and freedom. If this workspace engine has saved you time or improved your workflow, please consider supporting the project.
  
-**https://github.com/sponsors/CORPUSTHEKING**
+[click here](**https://github.com/sponsors/CORPUSTHEKING**)
  
 Your contributions go directly toward:
  
