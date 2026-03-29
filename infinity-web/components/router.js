@@ -1,5 +1,6 @@
 import { renderCategoriesView, renderSearchResultsView } from './categories.js';
 import { getManifest, searchScripts } from '../assets/js/data.js';
+import { handleDownloadPageRoute } from './router/download.js';
 
 export function initRouter(ui, config) {
   async function handleRoute() {
@@ -32,13 +33,8 @@ export function initRouter(ui, config) {
         break;
 
       case 'download':
-        ui.setPageContent('<div class="inf-page"><p class="inf-loading">Loading script manifest...</p></div>');
-        const manifestData = await getManifest();
-        if (manifestData && manifestData.length > 0) {
-            ui.setPageContent(renderCategoriesView(manifestData));
-        } else {
-            ui.setPageContent('<div class="inf-page"><p>No scripts found. Please run the manifest generator.</p></div>');
-        }
+        // We delegate all the work (fetching, rendering, and binding) to the sub-router
+        await handleDownloadPageRoute(ui, config);
         break;
 
       case 'search':

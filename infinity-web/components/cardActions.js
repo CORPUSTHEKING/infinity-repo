@@ -30,25 +30,28 @@ export function bindCardActions(root, handlers = {}) {
 }
 
 export function handleDownload(itemNode, siteConfig) {
-    if (!itemNode) return;
+    if (!itemNode || !itemNode.path) {
+        console.error('[Infinity] Download failed: Invalid item or missing path.');
+        return;
+    }
 
     const repoUrl = siteConfig?.repoUrl || 'https://github.com/CORPUSTHEKING/infinity';
     const branch = siteConfig?.branch || 'main';
 
-    // The download URL must be relative to index.html
+    // The download URL must be relative to index.html targeting your payload tree
     const downloadUrl = `./assets/payloads/${itemNode.path}`;
 
-    if (itemNode.type === 'file') {
+    if (itemNode.type === 'file' || !itemNode.type) {
         const link = document.createElement('a');
         link.href = downloadUrl;
         link.download = itemNode.name;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
-        console.log(`[Infinity] Triggered download: ${itemNode.path}`);
+        console.log(`[Infinity] Triggered download: ${downloadUrl}`);
     } else if (itemNode.type === 'directory') {
         const githubFolderUrl = `${repoUrl}/tree/${branch}/infinity-web/assets/payloads/${itemNode.path}`;
-        if (confirm(`Directory: "${itemNode.name}"\n\nBrowsers cannot download folders. Redirect to GitHub repo?`)) {
+        if (confirm(`Directory: "${itemNode.name}"\n\nBrowsers cannot natively download folders. Redirect to GitHub repo?`)) {
             window.open(githubFolderUrl, '_blank');
         }
     }
