@@ -38,8 +38,8 @@ export function handleDownload(itemNode, siteConfig) {
     const repoUrl = siteConfig?.repoUrl || 'https://github.com/CORPUSTHEKING/infinity';
     const branch = siteConfig?.branch || 'main';
 
-    // The download URL must be relative to index.html targeting your payload tree
-    const downloadUrl = `./assets/payloads/${itemNode.path}`;
+    // Clean construction: ./assets/payloads/ + FILEOPS/faudit
+const downloadUrl = `./assets/payloads/${itemNode.path}`;
 
     if (itemNode.type === 'file' || !itemNode.type) {
         const link = document.createElement('a');

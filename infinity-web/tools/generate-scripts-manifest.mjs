@@ -26,8 +26,11 @@ function buildTree(dirPath, basePath = '') {
       } else {
         tree.push({
           type: 'file',
+          // CRITICAL: Provide an ID derived from the filename/path for the UI to find
+          id: item.replace(/\.[^/.]+$/, ""),
           name: item,
-          path: `assets/payloads/${relativePath}`,
+          // CRITICAL: Path must be relative to the 'payloads' directory only
+          path: relativePath,
           size: stat.size,
           modified: stat.mtime
         });

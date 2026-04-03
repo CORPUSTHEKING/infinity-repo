@@ -5,17 +5,19 @@
     "children": [
       {
         "type": "file",
+        "id": "daudit",
         "name": "daudit",
-        "path": "assets/payloads/DIRECTORIES/daudit",
+        "path": "DIRECTORIES/daudit",
         "size": 676,
-        "modified": "2026-03-24T15:42:32.844Z"
+        "modified": "2026-03-25T23:27:40.829Z"
       },
       {
         "type": "file",
+        "id": "daudit",
         "name": "daudit.json",
-        "path": "assets/payloads/DIRECTORIES/daudit.json",
+        "path": "DIRECTORIES/daudit.json",
         "size": 1357,
-        "modified": "2026-03-24T16:00:26.372Z"
+        "modified": "2026-03-25T23:27:40.829Z"
       }
     ]
   },
@@ -25,17 +27,19 @@
     "children": [
       {
         "type": "file",
+        "id": "faudit",
         "name": "faudit",
-        "path": "assets/payloads/FILEOPS/faudit",
+        "path": "FILEOPS/faudit",
         "size": 915,
-        "modified": "2026-03-24T21:52:00.609Z"
+        "modified": "2026-03-25T23:27:40.829Z"
       },
       {
         "type": "file",
+        "id": "termux-shell",
         "name": "termux-shell",
-        "path": "assets/payloads/FILEOPS/termux-shell",
+        "path": "FILEOPS/termux-shell",
         "size": 813,
-        "modified": "2026-03-24T21:53:19.993Z"
+        "modified": "2026-03-25T23:27:40.825Z"
       }
     ]
   },
@@ -45,17 +49,19 @@
     "children": [
       {
         "type": "file",
+        "id": "regfind",
         "name": "regfind",
-        "path": "assets/payloads/SYSTEM/regfind",
+        "path": "SYSTEM/regfind",
         "size": 350,
-        "modified": "2026-03-24T22:50:02.605Z"
+        "modified": "2026-03-25T23:27:40.829Z"
       },
       {
         "type": "file",
+        "id": "startuplog",
         "name": "startuplog",
-        "path": "assets/payloads/SYSTEM/startuplog",
+        "path": "SYSTEM/startuplog",
         "size": 946,
-        "modified": "2026-03-24T22:50:48.641Z"
+        "modified": "2026-03-25T23:27:40.829Z"
       }
     ]
   },
@@ -65,11 +71,20 @@
     "children": [
       {
         "type": "file",
+        "id": "renamd",
         "name": "renamd",
-        "path": "assets/payloads/TEMPLATES/renamd",
+        "path": "TEMPLATES/renamd",
         "size": 279,
-        "modified": "2026-03-24T21:59:57.141Z"
+        "modified": "2026-03-25T23:27:40.829Z"
       }
     ]
+  },
+  {
+    "type": "file",
+    "id": "download-mirror",
+    "name": "download-mirror.sh",
+    "path": "download-mirror.sh",
+    "size": 0,
+    "modified": "2026-04-03T01:44:01.397Z"
   }
 ]
