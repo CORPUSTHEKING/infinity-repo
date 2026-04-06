@@ -1,82 +1,40 @@
-/* * Infinity Welcoming Panoramic Background (Pure CSS)
- * Configured for auto-scrolling text in the center.
- */
-
 .inf-hero-panoramic {
     position: relative;
-    width: 100%;
-    height: 240px;
-    
-    /* Welcoming, deep "Infinity" Gradient */
-    background: linear-gradient(135deg, #070b12 0%, #1a1a2e 50%, #070b12 100%);
-    background-size: 400% 400%;
-    
-    /* Subtle glowing essence animation */
-    animation: welcomingGlow 15s ease infinite;
-    
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 100vw;
+    left: 50%;
+    margin-left: -50vw;
+    height: 350px;
     overflow: hidden;
-    border-radius: 12px;
-    border: 1px solid rgba(124, 58, 237, 0.3);
-    box-shadow: 0 0 20px rgba(124, 58, 237, 0.15) inset;
-    margin: 1rem 0;
+    background: #070b12;
 }
 
-/* Add some abstract "welcoming lights" using pseudo-elements */
-.inf-hero-panoramic::before,
+/* Cinematic Image Layer */
+.inf-hero-panoramic::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('../img/panoramic-bg.jpg') repeat-x center center;
+    background-size: auto 100%;
+    animation: panBackground 80s linear infinite;
+    z-index: 1;
+}
+
+/* Void Masking */
 .inf-hero-panoramic::after {
     content: '';
     position: absolute;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, transparent 70%);
-    filter: blur(20px);
-    animation: driftLights 20s infinite alternate;
+    inset: 0;
+    background: linear-gradient(
+        to right, 
+        #070b12 0%, 
+        transparent 15%, 
+        transparent 85%, 
+        #070b12 100%
+    );
+    z-index: 2;
 }
 
-.inf-hero-panoramic::before {
-    top: -150px;
-    left: -100px;
-}
-
-.inf-hero-panoramic::after {
-    bottom: -150px;
-    right: -100px;
-    background: radial-gradient(circle, rgba(124, 58, 237, 0.15) 0%, transparent 70%);
-    animation-delay: -10s;
-}
-
-/* The scroller box inside the panorama */
-.pan-text-scroller {
-    position: relative;
-    z-index: 2; /* Sits above the background lights */
-    background: rgba(7, 11, 18, 0.85);
-    color: var(--accent-3); /* Sky blue welcoming color */
-    padding: 1rem 2rem;
-    font-family: var(--font-mono);
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    white-space: nowrap;
-    border-top: 1px solid rgba(56, 189, 248, 0.5);
-    border-bottom: 1px solid rgba(56, 189, 248, 0.5);
-    width: 100%;
-    text-align: center;
-    box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
-    backdrop-filter: blur(5px);
-}
-
-/* Animations */
-@keyframes welcomingGlow {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-@keyframes driftLights {
-    from { transform: translate(0, 0) scale(1); }
-    to { transform: translate(50px, 30px) scale(1.1); }
+@keyframes panBackground {
+    from { background-position: 0 0; }
+    to { background-position: -2500px 0; }
 }

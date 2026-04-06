@@ -1,9 +1,12 @@
-export function renderHero() {
+import { renderHeroOverlay } from './hero/overlay/text.js';
+
+export function renderHero(config = {}) {
+  // Use config to decide if overlay should show
+  const overlay = config.showOverlay !== false ? renderHeroOverlay(config.content, config.subtext) : '';
+
   return `
     <div class="inf-hero-panoramic">
-      <div class="pan-text-scroller">
-        <marquee scrollamount="5"> Imagine Infinity : You are '|πF|π|+¥', We are '|πF|π|+¥' </marquee>
-      </div>
+      ${overlay}
     </div>
   `;
 }
