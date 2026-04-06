@@ -95,3 +95,60 @@
   background: rgba(255, 255, 255, 0.03);
   padding: 1rem;
 }
+
+/* ==========================================================================
+   INTERACTION STATES & ICONS (Appended via Infinity Automation)
+   ========================================================================== */
+
+.inf-card-actions button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--line);
+  color: #cbd5e1;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.inf-card-actions button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.inf-card-actions button svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.btn-loading {
+  position: relative !important;
+  pointer-events: none;
+  color: transparent !important; 
+}
+
+.btn-loading svg {
+  opacity: 0; 
+}
+
+.btn-loading::after {
+  content: "";
+  position: absolute;
+  width: 1.2rem;
+  height: 1.2rem;
+  top: 50%;
+  left: 50%;
+  margin-top: -0.6rem;
+  margin-left: -0.6rem;
+  border: 2px solid #888;
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}

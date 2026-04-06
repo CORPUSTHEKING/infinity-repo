@@ -21,6 +21,14 @@ export function bindCardActions(root, handlers = {}) {
 
     if (actionButton) {
       const action = actionButton.getAttribute('data-action');
+      
+      // --- ADDED: Visual Feedback Logic ---
+      actionButton.classList.add('btn-loading');
+      setTimeout(() => {
+        actionButton.classList.remove('btn-loading');
+      }, 800); // 800ms gives the user time to see the animation
+      // ------------------------------------
+
       handlers.onAction?.(action, itemId, card);
     }
   };

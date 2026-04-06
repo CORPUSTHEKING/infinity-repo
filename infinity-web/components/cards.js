@@ -1,3 +1,5 @@
+import { Icons } from './icons.js';
+
 export function renderScriptCards(items = []) {
   return `
     <div class="inf-cards-rail" aria-label="Scripts">
@@ -18,12 +20,14 @@ export function renderScriptCards(items = []) {
               <span>${item.language || ''}</span>
               <span>${item.category || ''}</span>
             </div>
+
             <div class="inf-card-actions">
-              <button type="button" data-action="download">Download</button>
-              <button type="button" data-action="share">Share</button>
-              <button type="button" data-action="request">Request</button>
-              <button type="button" data-action="report">Report</button>
+              <button type="button" data-action="download" title="Download">${Icons.download}</button>
+              <button type="button" data-action="share" title="Share">${Icons.share}</button>
+              <button type="button" data-action="request" title="Request">${Icons.request}</button>
+              <button type="button" data-action="report" title="Report">${Icons.report}</button>
             </div>
+
             <pre class="inf-card-deps">${Array.isArray(item.dependencies) ? item.dependencies.join('\n') : (item.dependencies || '')}</pre>
           </footer>
         </article>
