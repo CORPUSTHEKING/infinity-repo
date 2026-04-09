@@ -1,46 +1,30 @@
 {
+  "title": "Termux Shell Environment",
+  "preview": "Force-load login semantics and environment.",
+  "link": "#docs?id=termux-shell",
+
   "type": "tool",
   "group": "FILEOPS",
   "id": "termux-shell",
   "name": "termux-shell",
   "path": "assets/payloads/FILEOPS/termux-shell",
   "kindLink": "#assets/payloads/FILEOPS/termux-shell",
-  "description": "Load a canonical Termux shell environment, source profile files and env.global, then hand control to bash. See #assets/payloads/FILEOPS/termux-shell.",
-  "usage": "termux-shell [bash-args...]",
-  "runtime": {
-    "shell": "bash",
-    "mode": "interactive"
-  },
-  "inputs": {
-    "argv": [
-      "optional arguments forwarded to bash"
-    ]
-  },
+  "description": "Load a canonical Termux shell environment and hand off to bash. See #assets/payloads/FILEOPS/termux-shell.",
+  "usage": "termux-shell [args]",
+
+  "runtime": { "shell": "bash", "mode": "interactive" },
+
   "outputs": [
-    "Exports Termux environment variables",
-    "Sources .profile, .bashrc, and env.global when present",
-    "Execs into a bash session"
+    "Loads environment",
+    "Sources configs",
+    "Execs bash"
   ],
-  "dependencies": [
-    "bash",
-    "source $HOME/.profile",
-    "source $HOME/.bashrc",
-    "source $HOME/.tools/tools/env.global"
-  ],
+
+  "dependencies": ["bash", "env.global"],
+
   "behavior": {
-    "environment_setup": [
-      "Sets PREFIX to /data/data/com.termux/files/usr",
-      "Sets HOME to /data/data/com.termux/files/home",
-      "Prepends PREFIX/bin to PATH",
-      "Sets BASH_ENV to $HOME/.bashrc"
-    ],
-    "config_loading": "Sources .profile and .bashrc when present",
-    "tool_loading": "Fails fast if env.global is missing",
-    "handoff": "exec bash \"$@\"",
-    "safety": "No file writes; environment bootstrap only"
-  },
-  "notes": [
-    "Designed for Termux sessions that need consistent shell initialization",
-    "Preserves interactive shell behavior before handing off to bash"
-  ]
+    "environment_setup": "Sets PREFIX, HOME, PATH",
+    "handoff": "exec bash",
+    "safety": "No file writes"
+  }
 }

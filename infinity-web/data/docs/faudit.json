@@ -1,55 +1,35 @@
 {
+  "title": "File Auditor (faudit)",
+  "preview": "Scan files with icons and color output.",
+  "link": "#docs?id=faudit",
+
   "type": "tool",
   "group": "FILEOPS",
   "id": "faudit",
   "name": "faudit",
   "path": "assets/payloads/FILEOPS/faudit",
   "kindLink": "#assets/payloads/FILEOPS/faudit",
-  "description": "Live-stream a file audit for a directory, optionally limited by max depth, with extension-based icons and color-coded output. See #assets/payloads/FILEOPS/faudit.",
+  "description": "Live-stream file audit with extension-based icons. See #assets/payloads/FILEOPS/faudit.",
   "usage": "faudit <directory>",
-  "runtime": {
-    "shell": "bash",
-    "mode": "interactive"
-  },
+
+  "runtime": { "shell": "bash", "mode": "interactive" },
+
   "inputs": {
-    "argv": [
-      "directory path"
-    ],
-    "prompts": [
-      "Enter max depth (Press Enter for Infinity)"
-    ]
+    "argv": ["directory path"],
+    "prompts": ["Enter max depth"]
   },
+
   "outputs": [
-    "Lists files discovered under the target directory",
-    "Decorates filenames with extension-specific icons",
-    "Prints ANSI-colored live scan output"
+    "Lists files",
+    "Displays icons per extension",
+    "Colored output"
   ],
-  "dependencies": [
-    "bash",
-    "find",
-    "read",
-    "while read -r",
-    "case",
-    "echo -e"
-  ],
+
+  "dependencies": ["bash", "find", "case", "echo -e"],
+
   "behavior": {
-    "help_mode": "Shows usage and a short explanation when no directory or -h is provided",
-    "depth_control": "Applies -maxdepth only when the user supplies a value",
-    "scan_mode": "Finds regular files recursively",
-    "classification": {
-      "py": "🐍",
-      "so": "⚙️",
-      "md": "📝",
-      "sh": "🐚",
-      "js": "📦",
-      "json": "📋",
-      "sql": "🗄️",
-      "default": "📄"
-    },
-    "safety": "Read-only scan; no file modifications"
-  },
-  "notes": [
-    "Useful for quick directory inspections",
-    "Output depends on terminal support for emoji and ANSI colors"
-  ]
+    "classification": "Extension-based icons",
+    "scan_mode": "Recursive file scan",
+    "safety": "Read-only"
+  }
 }

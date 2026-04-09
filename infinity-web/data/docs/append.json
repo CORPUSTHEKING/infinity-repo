@@ -1,4 +1,8 @@
 {
+  "title": "Append Tool",
+  "preview": "Safely append content from one file to another with confirmation.",
+  "link": "#docs?id=append",
+
   "type": "tool",
   "group": "FILEOPS",
   "id": "append",
@@ -7,31 +11,22 @@
   "kindLink": "#assets/payloads/FILEOPS/append",
   "description": "Append the contents of one source file into a destination file after explicit confirmation. See #assets/payloads/FILEOPS/append.",
   "usage": "append <sourcefile> <destfile>",
-  "runtime": {
-    "shell": "bash",
-    "mode": "non-interactive"
-  },
+
+  "runtime": { "shell": "bash", "mode": "non-interactive" },
+
   "inputs": {
-    "argv": [
-      "$1 as default source file",
-      "$2 as default destination file"
-    ],
-    "env": [
-      "SRC",
-      "DEST"
-    ],
+    "argv": ["$1 as default source file", "$2 as default destination file"],
+    "env": ["SRC", "DEST"],
     "confirmation": "yes"
   },
+
   "outputs": [
     "Appends source file contents to destination file",
     "Prints review, info, abort, error, and ok status messages"
   ],
-  "dependencies": [
-    "bash",
-    "cat",
-    "read",
-    "set -euo pipefail"
-  ],
+
+  "dependencies": ["bash", "cat", "read", "set -euo pipefail"],
+
   "behavior": {
     "source_resolution": "Uses $SRC if set, otherwise falls back to $1",
     "destination_resolution": "Uses $DEST if set, otherwise falls back to $2",
@@ -40,6 +35,7 @@
     "write_mode": "append only",
     "safety": "Never overwrites the destination file"
   },
+
   "notes": [
     "Designed for explicit file-to-file append operations",
     "Suitable for controlled merges and manual review workflows"

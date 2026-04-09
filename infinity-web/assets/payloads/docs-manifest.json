@@ -1,5 +1,8 @@
 [
   {
+    "title": "Append Tool",
+    "preview": "Safely append content from one file to another with confirmation.",
+    "link": "#docs?id=append",
     "type": "tool",
     "group": "FILEOPS",
     "id": "append",
@@ -48,6 +51,9 @@
     "slug": "append"
   },
   {
+    "title": "Cat-Append",
+    "preview": "Interactive stdin capture and append to file.",
+    "link": "#docs?id=catappend",
     "type": "tool",
     "group": "FILEOPS",
     "id": "catappend",
@@ -99,13 +105,16 @@
     "slug": "catappend"
   },
   {
+    "title": "Directory Auditor (daudit)",
+    "preview": "Audit directory sizes with optional depth control.",
+    "link": "#docs?id=daudit",
     "type": "tool",
     "group": "DIRECTORIES",
     "id": "daudit",
     "name": "daudit",
     "path": "assets/payloads/DIRECTORIES/daudit",
     "kindLink": "#assets/payloads/DIRECTORIES/daudit",
-    "description": "Grid-style directory audit that reports directory names and sizes in MB, with optional max-depth control. See #assets/payloads/DIRECTORIES/daudit.",
+    "description": "Grid-style directory audit that reports directory sizes with optional max-depth control. See #assets/payloads/DIRECTORIES/daudit.",
     "usage": "daudit <directory>",
     "runtime": {
       "shell": "bash",
@@ -120,10 +129,9 @@
       ]
     },
     "outputs": [
-      "Prints a directory audit header",
-      "Lists discovered directories",
-      "Shows size output from du -sh",
-      "Formats each line with a directory icon"
+      "Lists directories",
+      "Displays size via du -sh",
+      "Formatted output with icons"
     ],
     "dependencies": [
       "bash",
@@ -134,27 +142,27 @@
       "echo -e"
     ],
     "behavior": {
-      "help_mode": "Shows usage and explanation when invoked with -h or no argument",
-      "depth_control": "Uses -maxdepth only when the user enters a value",
-      "scan_mode": "Recursively finds directories under the target path",
-      "size_reporting": "Calls du -sh for each directory",
-      "rendering": "Prints a directory icon and the human-readable size",
-      "safety": "Read-only inspection; no file modifications"
+      "depth_control": "Optional max depth",
+      "scan_mode": "Directory traversal",
+      "safety": "Read-only"
     },
     "notes": [
-      "The script computes the basename but does not currently print it",
-      "The commented gridify pipeline suggests future column formatting"
+      "Name currently not printed in output",
+      "Grid formatting commented out"
     ],
     "slug": "daudit"
   },
   {
+    "title": "File Auditor (faudit)",
+    "preview": "Scan files with icons and color output.",
+    "link": "#docs?id=faudit",
     "type": "tool",
     "group": "FILEOPS",
     "id": "faudit",
     "name": "faudit",
     "path": "assets/payloads/FILEOPS/faudit",
     "kindLink": "#assets/payloads/FILEOPS/faudit",
-    "description": "Live-stream a file audit for a directory, optionally limited by max depth, with extension-based icons and color-coded output. See #assets/payloads/FILEOPS/faudit.",
+    "description": "Live-stream file audit with extension-based icons. See #assets/payloads/FILEOPS/faudit.",
     "usage": "faudit <directory>",
     "runtime": {
       "shell": "bash",
@@ -165,220 +173,136 @@
         "directory path"
       ],
       "prompts": [
-        "Enter max depth (Press Enter for Infinity)"
+        "Enter max depth"
       ]
     },
     "outputs": [
-      "Lists files discovered under the target directory",
-      "Decorates filenames with extension-specific icons",
-      "Prints ANSI-colored live scan output"
+      "Lists files",
+      "Displays icons per extension",
+      "Colored output"
     ],
     "dependencies": [
       "bash",
       "find",
-      "read",
-      "while read -r",
       "case",
       "echo -e"
     ],
     "behavior": {
-      "help_mode": "Shows usage and a short explanation when no directory or -h is provided",
-      "depth_control": "Applies -maxdepth only when the user supplies a value",
-      "scan_mode": "Finds regular files recursively",
-      "classification": {
-        "py": "🐍",
-        "so": "⚙️",
-        "md": "📝",
-        "sh": "🐚",
-        "js": "📦",
-        "json": "📋",
-        "sql": "🗄️",
-        "default": "📄"
-      },
-      "safety": "Read-only scan; no file modifications"
+      "classification": "Extension-based icons",
+      "scan_mode": "Recursive file scan",
+      "safety": "Read-only"
     },
-    "notes": [
-      "Useful for quick directory inspections",
-      "Output depends on terminal support for emoji and ANSI colors"
-    ],
     "slug": "faudit"
   },
   {
+    "title": "Regex Finder",
+    "preview": "Recursive grep search with regex support.",
+    "link": "#docs?id=regfind",
     "type": "tool",
     "group": "SYSTEM",
     "id": "regfind",
     "name": "regfind",
     "path": "assets/payloads/SYSTEM/regfind",
     "kindLink": "#assets/payloads/SYSTEM/regfind",
-    "description": "Recursive regex search across a path using grep with line numbers and binary-file suppression. See #assets/payloads/SYSTEM/regfind.",
+    "description": "Recursive regex search using grep. See #assets/payloads/SYSTEM/regfind.",
     "usage": "regfind <regex> [path]",
     "runtime": {
       "shell": "bash",
       "mode": "non-interactive"
     },
-    "inputs": {
-      "argv": [
-        "regex pattern",
-        "optional search path, default '.'"
-      ]
-    },
-    "outputs": [
-      "Prints matching lines from grep -rEnI",
-      "Searches recursively through the selected path"
-    ],
     "dependencies": [
       "bash",
       "grep"
     ],
     "behavior": {
-      "validation": "Exits with usage text if the regex is missing",
-      "search_mode": "Recursive, extended-regex, line-numbered, case-sensitive grep",
-      "binary_handling": "Ignores binary files",
-      "error_handling": "Suppresses stderr from inaccessible paths with 2>/dev/null",
-      "safety": "Read-only search; does not modify files"
+      "search_mode": "grep -rEnI",
+      "safety": "Read-only"
     },
-    "notes": [
-      "Best for fast codebase or filesystem text searches",
-      "The default path is the current directory"
-    ],
     "slug": "regfind"
   },
   {
+    "title": "Rename to Markdown",
+    "preview": "Batch rename files to .md extension.",
+    "link": "#docs?id=rename-to-md",
     "type": "tool",
     "group": "TEMPLATES",
     "id": "rename-to-md",
     "name": "rename-to-md",
     "path": "assets/payloads/TEMPLATES/rename-to-md",
     "kindLink": "#assets/payloads/TEMPLATES/rename-to-md",
-    "description": "Batch-rename every non-directory file in the current directory by appending the .md extension. See #assets/payloads/TEMPLATES/rename-to-md.",
+    "description": "Batch rename files to .md. See #assets/payloads/TEMPLATES/rename-to-md.",
     "usage": "rename-to-md",
     "runtime": {
       "shell": "bash",
       "mode": "non-interactive"
     },
-    "inputs": {
-      "argv": [],
-      "filesystem": [
-        "current directory contents"
-      ]
-    },
-    "outputs": [
-      "Prints each file being processed",
-      "Renames each file to add a .md suffix"
-    ],
     "dependencies": [
       "bash",
-      "mv",
-      "for",
-      "test -d"
+      "mv"
     ],
     "behavior": {
-      "scan_mode": "Iterates over all entries matched by * in the current directory",
-      "skip_rule": "Skips directories",
-      "rename_rule": "Moves file to the same name plus .md",
-      "overwrite_behavior": "Uses mv and therefore follows the shell/OS rename semantics",
-      "safety": "Modifies filenames in place; no content changes"
+      "scan_mode": "current directory",
+      "safety": "renames files"
     },
-    "notes": [
-      "The script is a template for bulk rename workflows",
-      "Because it uses * directly, it only targets the current directory"
-    ],
     "slug": "rename-to-md"
   },
   {
+    "title": "Shell Audit Logger",
+    "preview": "Capture full shell environment into logs.",
+    "link": "#docs?id=shell-audit",
     "type": "tool",
     "group": "SYSTEM",
     "id": "shell-audit",
     "name": "shell-audit",
     "path": "assets/payloads/SYSTEM/shell-audit",
     "kindLink": "#assets/payloads/SYSTEM/shell-audit",
-    "description": "Capture a shell/environment audit into a timestamped Markdown log, including active shell, user dotfiles, and Termux system shell files. See #assets/payloads/SYSTEM/shell-audit.",
+    "description": "Audit shell environment and log to file. See #assets/payloads/SYSTEM/shell-audit.",
     "usage": "shell-audit",
     "runtime": {
       "shell": "bash",
       "mode": "interactive"
     },
-    "inputs": {
-      "argv": [],
-      "filesystem": [
-        "$HOME",
-        "$HOME/.config",
-        "/data/data/com.termux/files/usr/etc"
-      ]
-    },
-    "outputs": [
-      "Creates a timestamped Markdown log under Obsidian/LOGS/shell",
-      "Prints the current shell and process name",
-      "Lists common user-level shell/login files",
-      "Lists shell-like config files under ~/.config",
-      "Lists Termux system-wide files under /data/data/com.termux/files/usr/etc"
-    ],
     "dependencies": [
       "bash",
-      "mkdir",
-      "date",
       "tee",
-      "ps",
-      "find",
-      "ls"
+      "find"
     ],
     "behavior": {
-      "logging": "Captures stdout and stderr into a timestamped Markdown file",
-      "scope": "Audits user shell setup and Termux shell-related configuration",
-      "execution_model": "Runs an embedded bash script inside bash and tees output",
-      "safety": "Read-only inspection; no file writes except the generated log"
+      "logging": "Writes to timestamped markdown log",
+      "safety": "Read-only except log"
     },
-    "notes": [
-      "Useful for diagnosing shell initialization issues",
-      "The embedded heredoc keeps the audit steps self-contained"
-    ],
     "slug": "shell-audit"
   },
   {
+    "title": "Termux Shell Environment",
+    "preview": "Force-load login semantics and environment.",
+    "link": "#docs?id=termux-shell",
     "type": "tool",
     "group": "FILEOPS",
     "id": "termux-shell",
     "name": "termux-shell",
     "path": "assets/payloads/FILEOPS/termux-shell",
     "kindLink": "#assets/payloads/FILEOPS/termux-shell",
-    "description": "Load a canonical Termux shell environment, source profile files and env.global, then hand control to bash. See #assets/payloads/FILEOPS/termux-shell.",
-    "usage": "termux-shell [bash-args...]",
+    "description": "Load a canonical Termux shell environment and hand off to bash. See #assets/payloads/FILEOPS/termux-shell.",
+    "usage": "termux-shell [args]",
     "runtime": {
       "shell": "bash",
       "mode": "interactive"
     },
-    "inputs": {
-      "argv": [
-        "optional arguments forwarded to bash"
-      ]
-    },
     "outputs": [
-      "Exports Termux environment variables",
-      "Sources .profile, .bashrc, and env.global when present",
-      "Execs into a bash session"
+      "Loads environment",
+      "Sources configs",
+      "Execs bash"
     ],
     "dependencies": [
       "bash",
-      "source $HOME/.profile",
-      "source $HOME/.bashrc",
-      "source $HOME/.tools/tools/env.global"
+      "env.global"
     ],
     "behavior": {
-      "environment_setup": [
-        "Sets PREFIX to /data/data/com.termux/files/usr",
-        "Sets HOME to /data/data/com.termux/files/home",
-        "Prepends PREFIX/bin to PATH",
-        "Sets BASH_ENV to $HOME/.bashrc"
-      ],
-      "config_loading": "Sources .profile and .bashrc when present",
-      "tool_loading": "Fails fast if env.global is missing",
-      "handoff": "exec bash \"$@\"",
-      "safety": "No file writes; environment bootstrap only"
+      "environment_setup": "Sets PREFIX, HOME, PATH",
+      "handoff": "exec bash",
+      "safety": "No file writes"
     },
-    "notes": [
-      "Designed for Termux sessions that need consistent shell initialization",
-      "Preserves interactive shell behavior before handing off to bash"
-    ],
     "slug": "termux-shell"
   },
   {

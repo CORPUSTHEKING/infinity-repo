@@ -1,48 +1,40 @@
 {
+  "title": "Directory Auditor (daudit)",
+  "preview": "Audit directory sizes with optional depth control.",
+  "link": "#docs?id=daudit",
+
   "type": "tool",
   "group": "DIRECTORIES",
   "id": "daudit",
   "name": "daudit",
   "path": "assets/payloads/DIRECTORIES/daudit",
   "kindLink": "#assets/payloads/DIRECTORIES/daudit",
-  "description": "Grid-style directory audit that reports directory names and sizes in MB, with optional max-depth control. See #assets/payloads/DIRECTORIES/daudit.",
+  "description": "Grid-style directory audit that reports directory sizes with optional max-depth control. See #assets/payloads/DIRECTORIES/daudit.",
   "usage": "daudit <directory>",
-  "runtime": {
-    "shell": "bash",
-    "mode": "interactive"
-  },
+
+  "runtime": { "shell": "bash", "mode": "interactive" },
+
   "inputs": {
-    "argv": [
-      "directory path"
-    ],
-    "prompts": [
-      "Enter max depth (Press Enter for Infinity)"
-    ]
+    "argv": ["directory path"],
+    "prompts": ["Enter max depth (Press Enter for Infinity)"]
   },
+
   "outputs": [
-    "Prints a directory audit header",
-    "Lists discovered directories",
-    "Shows size output from du -sh",
-    "Formats each line with a directory icon"
+    "Lists directories",
+    "Displays size via du -sh",
+    "Formatted output with icons"
   ],
-  "dependencies": [
-    "bash",
-    "find",
-    "du",
-    "read",
-    "basename",
-    "echo -e"
-  ],
+
+  "dependencies": ["bash", "find", "du", "read", "basename", "echo -e"],
+
   "behavior": {
-    "help_mode": "Shows usage and explanation when invoked with -h or no argument",
-    "depth_control": "Uses -maxdepth only when the user enters a value",
-    "scan_mode": "Recursively finds directories under the target path",
-    "size_reporting": "Calls du -sh for each directory",
-    "rendering": "Prints a directory icon and the human-readable size",
-    "safety": "Read-only inspection; no file modifications"
+    "depth_control": "Optional max depth",
+    "scan_mode": "Directory traversal",
+    "safety": "Read-only"
   },
+
   "notes": [
-    "The script computes the basename but does not currently print it",
-    "The commented gridify pipeline suggests future column formatting"
+    "Name currently not printed in output",
+    "Grid formatting commented out"
   ]
 }

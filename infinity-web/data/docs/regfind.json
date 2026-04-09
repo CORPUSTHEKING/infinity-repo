@@ -1,39 +1,23 @@
 {
+  "title": "Regex Finder",
+  "preview": "Recursive grep search with regex support.",
+  "link": "#docs?id=regfind",
+
   "type": "tool",
   "group": "SYSTEM",
   "id": "regfind",
   "name": "regfind",
   "path": "assets/payloads/SYSTEM/regfind",
   "kindLink": "#assets/payloads/SYSTEM/regfind",
-  "description": "Recursive regex search across a path using grep with line numbers and binary-file suppression. See #assets/payloads/SYSTEM/regfind.",
+  "description": "Recursive regex search using grep. See #assets/payloads/SYSTEM/regfind.",
   "usage": "regfind <regex> [path]",
-  "runtime": {
-    "shell": "bash",
-    "mode": "non-interactive"
-  },
-  "inputs": {
-    "argv": [
-      "regex pattern",
-      "optional search path, default '.'"
-    ]
-  },
-  "outputs": [
-    "Prints matching lines from grep -rEnI",
-    "Searches recursively through the selected path"
-  ],
-  "dependencies": [
-    "bash",
-    "grep"
-  ],
+
+  "runtime": { "shell": "bash", "mode": "non-interactive" },
+
+  "dependencies": ["bash", "grep"],
+
   "behavior": {
-    "validation": "Exits with usage text if the regex is missing",
-    "search_mode": "Recursive, extended-regex, line-numbered, case-sensitive grep",
-    "binary_handling": "Ignores binary files",
-    "error_handling": "Suppresses stderr from inaccessible paths with 2>/dev/null",
-    "safety": "Read-only search; does not modify files"
-  },
-  "notes": [
-    "Best for fast codebase or filesystem text searches",
-    "The default path is the current directory"
-  ]
+    "search_mode": "grep -rEnI",
+    "safety": "Read-only"
+  }
 }
