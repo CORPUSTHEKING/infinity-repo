@@ -1,32 +1,32 @@
 [
   {
     "title": "Append Tool",
-    "preview": "Safely append content from one file to another with user confirmation.",
-    "link": "assets/docs/append.md",
+    "preview": "Safely append content...",
+    "link": "#docs?id=append",
     "slug": "append"
   },
   {
     "title": "Cat-Append",
-    "preview": "Interactive stdin capture to append text directly into any file.",
-    "link": "assets/docs/catappend.md",
+    "preview": "Interactive stdin capture...",
+    "link": "#docs?id=catappend",
     "slug": "catappend"
   },
   {
     "title": "Directory Auditor (daudit)",
-    "preview": "Audit directory sizes and structures with a clean tree-style view.",
-    "link": "assets/docs/daudit.md",
+    "preview": "Audit directory sizes...",
+    "link": "#docs?id=daudit",
     "slug": "daudit"
   },
   {
     "title": "File Auditor (faudit)",
-    "preview": "Scan files with type-specific icons and color-coded extensions.",
-    "link": "assets/docs/faudit.md",
+    "preview": "Scan files with icons...",
+    "link": "#docs?id=faudit",
     "slug": "faudit"
   },
   {
     "title": "Termux Shell Environment",
-    "preview": "Force-load login and interactive semantics for absolute environment parity.",
-    "link": "assets/docs/termux-shell.md",
+    "preview": "Force-load login semantics...",
+    "link": "#docs?id=termux-shell",
     "slug": "termux-shell"
   },
   {

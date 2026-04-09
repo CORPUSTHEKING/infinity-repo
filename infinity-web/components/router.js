@@ -1,6 +1,7 @@
 import { renderCategoriesView, renderSearchResultsView } from './categories.js';
 import { getManifest, searchScripts } from '../assets/js/data.js';
 import { handleDownloadPageRoute } from './router/download.js';
+import { handleDocsPageRoute } from './router/docs.js';
 
 export function initRouter(ui, config) {
   async function handleRoute() {
@@ -21,6 +22,10 @@ export function initRouter(ui, config) {
     });
 
     switch (hash) {
+      case 'docs':
+        await handleDocsPageRoute(ui, urlParams);
+        break;
+
       case 'assistance':
       case 'home':
         ui.setPageContent(`

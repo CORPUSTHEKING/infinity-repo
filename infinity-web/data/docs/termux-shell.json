@@ -1,5 +1,5 @@
 {
   "title": "Termux Shell Environment",
-  "preview": "Force-load login and interactive semantics for absolute environment parity.",
-  "link": "assets/docs/termux-shell.md"
+  "preview": "Force-load login semantics...",
+  "link": "#docs?id=termux-shell"
 }
