@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+source /data/data/com.termux/files/home/.tools/tools/etc/log/logging.conf
+# ==============================================================================
+# ANSI & TERMINAL DEFINITIONS
+# ==============================================================================
+export COLUMNS=$(tput cols)
+export BLUE="\033[1;34m"
+export GREEN="\033[1;32m"
+export RED="\033[1;31m"
+export BOLD="\033[1m"
+export NC="\033[0m"
+
+# ==============================================================================
+# LOGGING INFRASTRUCTURE REFERENCE (From logging.conf)
+# ==============================================================================
+# export TOOLS_LOG="/data/data/com.termux/files/home/.tools/tools/log"
+ SCRIPT_NAME="${SCRIPT_NAME:-$(basename "${0%.*}")}"
+# CURRENT_DATE=$(date +%Y/%m/%d/%H)
+# _TS=$(date +%H%M%S)
+# BASE_DIR="$TOOLS_LOG/$SCRIPT_NAME"
+# PRIMARY_DIR="$BASE_DIR/log/$CURRENT_DATE"
+# ERR_DIR="$BASE_DIR/errors/$CURRENT_DATE"
+# DEV_DIR="$BASE_DIR/dev/$CURRENT_DATE"
+# LOG_FILE="$PRIMARY_DIR/${_TS}-${SCRIPT_NAME}.log"
+# ERR_FILE="$ERR_DIR/${_TS}-error.md"
+# DEV_FILE="$DEV_DIR/${_TS}-dev.md"
+
+# 1. Identity
+#SCRIPT_NAME="USAGE"
+
+LABEL="INFINITY : ${SCRIPTNAME}"
+
+# 2. UI Start
+echo -e "${BLUE}[SYSTEM]${NC} Initializing $LABEL..."
+echo -ne "${GREEN}Processing:${NC}"${SCRIPTNAME}"" \
+
+# THE USAGE LOOP
+if [[ "$1" == "-h" || -z "$1" ]]; then
+    echo -e "\e[1;34mUsage:\e[0m ${SCRIPT_NAME} <directory>"
+    echo -e "\e[1;33mExplaining:${BLUE}${SCRIPTNAME}'insert description here.'"
+    exit 0
+fi
+
+for f in *.tables.md; do mv -- "$f" "${f%.tables.md}.md"; done
