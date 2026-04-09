@@ -12,7 +12,7 @@ const observer = new MutationObserver(async (mutations) => {
             if (h2 && h2.textContent.includes('Welcome to Infinity') && !document.querySelector('.inf-docs-socket')) {
                 const docs = await fetchDocs();
                 const widgetHtml = renderDocsWidget(docs);
-                page.insertAdjacentHTML('beforeend', widgetHtml);
+                page.insertAdjacentHTML('afterend', widgetHtml);
             }
         }
     }

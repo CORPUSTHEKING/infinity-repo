@@ -12,7 +12,7 @@ export async function fetchDocs() {
 export function renderDocsWidget(docs) {
     if (!docs.length) return '';
     const items = docs.map(d => `
-        <a href="${d.link}" class="inf-doc-link" style="display:block; padding: 10px; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 8px; text-decoration: none; color: inherit;">
+        <a href="${d.link}" class="inf-doc-link" style="display:block; padding: 10px 0; margin-bottom: 8px; text-decoration: none; color: inherit;">
             <strong style="color: var(--primary);">${d.title}</strong>
             <p style="font-size: 0.85em; opacity: 0.8; margin: 4px 0 0 0;">${d.preview}</p>
         </a>
