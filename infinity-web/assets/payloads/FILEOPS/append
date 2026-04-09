@@ -1,0 +1,43 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -euo pipefail
+
+# defaults
+DEFAULT_SRC="$1"
+
+#"${TOOLS_ROOT:-/data/data/com.termux/files/home/.tools/tools}/env/.auth/tg/bot/bot.env"
+
+DEFAULT_DEST="$2"
+
+#"/data/data/com.termux/files/home/projects/cupidkeofficial8/.env"
+
+#echo "[prompt] source file?"
+#echo "  default: $DEFAULT_SRC"
+#read -r -p "SRC (press Enter to accept default): " SRC
+SRC="${SRC:-$DEFAULT_SRC}"
+
+#echo
+#echo "[prompt] destination file?"
+#echo "  default: $DEFAULT_DEST"
+#read -r -p "DEST (press CTRL + C then do append <sourcefile> <destfile>): " DEST
+DEST="${DEST:-$DEFAULT_DEST}"
+
+echo
+echo "[review]"
+echo "  SRC : $SRC"
+echo "  DEST: $DEST"
+echo
+read -r -p "Append SRC -> DEST ? [yes/NO]: " CONFIRM
+
+if [ "$CONFIRM" != "yes" ]; then
+  echo "[abort] user declined"
+  exit 1
+fi
+
+if [ ! -f "$SRC" ]; then
+  echo "[error] source not found: $SRC" >&2
+  exit 1
+fi
+
+echo "[info] appending $SRC -> $DEST"
+cat "$SRC" >> "$DEST"
+echo "[ok] appended successfully"
