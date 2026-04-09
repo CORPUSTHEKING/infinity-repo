@@ -1,0 +1,41 @@
+{
+  "type": "tool",
+  "group": "TEMPLATES",
+  "id": "rename-to-md",
+  "name": "rename-to-md",
+  "path": "assets/payloads/TEMPLATES/rename-to-md",
+  "kindLink": "#assets/payloads/TEMPLATES/rename-to-md",
+  "description": "Batch-rename every non-directory file in the current directory by appending the .md extension. See #assets/payloads/TEMPLATES/rename-to-md.",
+  "usage": "rename-to-md",
+  "runtime": {
+    "shell": "bash",
+    "mode": "non-interactive"
+  },
+  "inputs": {
+    "argv": [],
+    "filesystem": [
+      "current directory contents"
+    ]
+  },
+  "outputs": [
+    "Prints each file being processed",
+    "Renames each file to add a .md suffix"
+  ],
+  "dependencies": [
+    "bash",
+    "mv",
+    "for",
+    "test -d"
+  ],
+  "behavior": {
+    "scan_mode": "Iterates over all entries matched by * in the current directory",
+    "skip_rule": "Skips directories",
+    "rename_rule": "Moves file to the same name plus .md",
+    "overwrite_behavior": "Uses mv and therefore follows the shell/OS rename semantics",
+    "safety": "Modifies filenames in place; no content changes"
+  },
+  "notes": [
+    "The script is a template for bulk rename workflows",
+    "Because it uses * directly, it only targets the current directory"
+  ]
+}

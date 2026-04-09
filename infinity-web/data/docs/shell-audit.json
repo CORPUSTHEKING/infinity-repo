@@ -1,0 +1,48 @@
+{
+  "type": "tool",
+  "group": "SYSTEM",
+  "id": "shell-audit",
+  "name": "shell-audit",
+  "path": "assets/payloads/SYSTEM/shell-audit",
+  "kindLink": "#assets/payloads/SYSTEM/shell-audit",
+  "description": "Capture a shell/environment audit into a timestamped Markdown log, including active shell, user dotfiles, and Termux system shell files. See #assets/payloads/SYSTEM/shell-audit.",
+  "usage": "shell-audit",
+  "runtime": {
+    "shell": "bash",
+    "mode": "interactive"
+  },
+  "inputs": {
+    "argv": [],
+    "filesystem": [
+      "$HOME",
+      "$HOME/.config",
+      "/data/data/com.termux/files/usr/etc"
+    ]
+  },
+  "outputs": [
+    "Creates a timestamped Markdown log under Obsidian/LOGS/shell",
+    "Prints the current shell and process name",
+    "Lists common user-level shell/login files",
+    "Lists shell-like config files under ~/.config",
+    "Lists Termux system-wide files under /data/data/com.termux/files/usr/etc"
+  ],
+  "dependencies": [
+    "bash",
+    "mkdir",
+    "date",
+    "tee",
+    "ps",
+    "find",
+    "ls"
+  ],
+  "behavior": {
+    "logging": "Captures stdout and stderr into a timestamped Markdown file",
+    "scope": "Audits user shell setup and Termux shell-related configuration",
+    "execution_model": "Runs an embedded bash script inside bash and tees output",
+    "safety": "Read-only inspection; no file writes except the generated log"
+  },
+  "notes": [
+    "Useful for diagnosing shell initialization issues",
+    "The embedded heredoc keeps the audit steps self-contained"
+  ]
+}
