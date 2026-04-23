@@ -1,3 +1,4 @@
+import { renderSidebar, bindSidebar } from './sidebar.js';
 import { renderDrawer } from './drawer.js';
 import { renderHero } from './hero.js';
 import { renderQuickRail } from './quickrail.js';
@@ -18,6 +19,7 @@ export function createLayoutShell(config = {}) {
         </button>
       </header>
 
+      ${renderSidebar()}
       ${renderQuickRail(config)}
       ${renderDrawer(config)}
 
@@ -38,6 +40,7 @@ export function createLayoutShell(config = {}) {
           <a href="#assistance">home</a>
           <a href="#upload">upload</a>
           <a href="#download">downloads</a>
+          <a href="#sponsor">❤️ sponsor</a>
         </div>
       </footer>
     </div>
@@ -46,6 +49,8 @@ export function createLayoutShell(config = {}) {
 
 export function mountLayout(root, config = {}) {
   root.innerHTML = createLayoutShell(config);
+
+bindSidebar(root);
 
   const shell = root.querySelector('[data-inf-shell]');
   const brandbar = root.querySelector('[data-inf-brandbar]');

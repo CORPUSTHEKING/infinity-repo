@@ -1,22 +1,70 @@
+/* =========================
+   SHELL (GLOBAL WRAPPER)
+========================= */
+
 .inf-shell {
   min-height: 100vh;
-  padding-top: 7.2rem;
-  padding-bottom: 8.5rem; /* Extra padding for curved bottom bar */
+
+  /* Adaptive horizontal padding */
+  padding-left: clamp(0.75rem, 3vw, 2rem);
+  padding-right: clamp(0.75rem, 3vw, 2rem);
+
+  /* Keep bottom bar space */
+  padding-bottom: 8.5rem;
+
+  /* Prevent accidental side overflow */
+  box-sizing: border-box;
 }
 
+
+/* =========================
+   MAIN CONTENT AREA
+========================= */
+
 .inf-main {
-  padding: 0 1rem 1rem;
+  padding: 0;
+
+  /* center content nicely on wide screens */
+  max-width: 1100px;
+  margin: 0 auto;
 }
+
+
+/* =========================
+   PAGE BLOCKS (FLAT SYSTEM)
+   NO BOXES, NO VERTICAL BORDERS
+========================= */
 
 .inf-page {
   display: grid;
-  gap: 1rem;
-  margin-bottom: 1rem;
-  padding: 1rem;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--line);
-  background: var(--panel);
-  box-shadow: var(--shadow);
+  gap: clamp(0.75rem, 2vw, 1.25rem);
+
+  margin-bottom: clamp(1rem, 3vw, 1.5rem);
+
+  /* NO BOXING */
+  padding: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+
+  /* ONLY HORIZONTAL SEPARATION */
+  border-bottom: 1px solid var(--line);
+
+  /* adaptive vertical rhythm */
+  padding-bottom: clamp(0.75rem, 2vw, 1.25rem);
+}
+
+
+/* =========================
+   OPTIONAL: SECTION SPACING HELPERS
+========================= */
+
+.inf-section {
+  padding-left: clamp(0.25rem, 1vw, 0.75rem);
+  padding-right: clamp(0.25rem, 1vw, 0.75rem);
+
+  border: none; /* ensures no vertical lines anywhere */
 }
 
 /* Curved Bottom Bar */

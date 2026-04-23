@@ -53,3 +53,4 @@ export async function handleDownloadPageRoute(ui, config) {
         ui.setPageContent('<div class="inf-page"><p class="inf-error">Error loading downloads. Check console.</p></div>');
     }
 }
+

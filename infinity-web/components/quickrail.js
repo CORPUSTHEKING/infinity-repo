@@ -2,6 +2,7 @@ const DEFAULT_ACTIONS = [
   { key: 'download', label: 'scripts' },
   { key: 'share', label: 'share' },
   { key: 'request', label: 'request' },
+  { key: 'sponsor', label: 'sponsor' },
   { key: 'disclaimer', label: 'configs' }
 ];
 

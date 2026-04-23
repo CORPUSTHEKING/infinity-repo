@@ -6,6 +6,9 @@ export function renderDownloadPage(items = []) {
       <h2>Downloads</h2>
       <p>Immediate download actions for scripts and sections.</p>
       ${renderScriptCards(items)}
+      <p class="inf-cta">
+  Like this tool? <a href="#sponsor">Support its development</a>
+</p>
     </section>
   `;
 }

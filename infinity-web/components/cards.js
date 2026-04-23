@@ -6,7 +6,7 @@ export function renderScriptCards(items = []) {
       ${items.length ? items.map((item) => `
         <article class="inf-card" data-script-card data-script-id="${item.id || ''}">
           <header class="inf-card-head">
-            <div class="inf-card-author">${item.author || item.owner || 'Unknown author'}</div>
+            <div class="inf-card-author">${item.author || item.owner || 'INFINITY'}</div>
             <h3 class="inf-card-title">${item.name || item.title || 'Untitled script'}</h3>
           </header>
 

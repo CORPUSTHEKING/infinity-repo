@@ -1,3 +1,5 @@
+import { renderAssistancePage } from '../pages/assistance.js';
+import { renderSponsorPage } from '../pages/sponsor.js';
 import { renderCategoriesView, renderSearchResultsView } from './categories.js';
 import { getManifest, searchScripts } from '../assets/js/data.js';
 import { handleDownloadPageRoute } from './router/download.js';
@@ -25,8 +27,11 @@ export function initRouter(ui, config) {
       case 'docs':
         await handleDocsPageRoute(ui, urlParams);
         break;
-
+        
       case 'assistance':
+      ui.setPageContent(renderAssistancePage());
+    break;
+    
       case 'home':
         ui.setPageContent(`
           <div class="inf-page">
@@ -36,6 +41,10 @@ export function initRouter(ui, config) {
           </div>
         `);
         break;
+        
+        case 'sponsor':
+  ui.setPageContent(renderSponsorPage());
+  break;
 
       case 'download':
         // We delegate all the work (fetching, rendering, and binding) to the sub-router
