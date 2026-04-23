@@ -1,0 +1,40 @@
+{
+  "title": "Directory Auditor (daudit)",
+  "preview": "Audit directory sizes with optional depth control.",
+  "link": "#docs?id=daudit",
+
+  "type": "tool",
+  "group": "DIRECTORIES",
+  "id": "daudit",
+  "name": "daudit",
+  "path": "assets/payloads/DIRECTORIES/daudit",
+  "kindLink": "#assets/payloads/DIRECTORIES/daudit",
+  "description": "Grid-style directory audit that reports directory sizes with optional max-depth control. See #assets/payloads/DIRECTORIES/daudit.",
+  "usage": "daudit <directory>",
+
+  "runtime": { "shell": "bash", "mode": "interactive" },
+
+  "inputs": {
+    "argv": ["directory path"],
+    "prompts": ["Enter max depth (Press Enter for Infinity)"]
+  },
+
+  "outputs": [
+    "Lists directories",
+    "Displays size via du -sh",
+    "Formatted output with icons"
+  ],
+
+  "dependencies": ["bash", "find", "du", "read", "basename", "echo -e"],
+
+  "behavior": {
+    "depth_control": "Optional max depth",
+    "scan_mode": "Directory traversal",
+    "safety": "Read-only"
+  },
+
+  "notes": [
+    "Name currently not printed in output",
+    "Grid formatting commented out"
+  ]
+}

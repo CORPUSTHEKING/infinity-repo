@@ -1,0 +1,32 @@
+#!/bin/bash
+source "$TOOLS_ROOT/env.global"
+
+# 1. Determine the filename
+TARGET_FILE="$1"
+
+if [ -z "$TARGET_FILE" ]; then
+    # Filter out common permission-denied areas to avoid "No removable volumes" spam
+    TARGET_FILE=$(find . -maxdepth 1 -not -path '*/.*' 2>/dev/stdout | fzf --prompt="Select file: ")
+fi
+
+if [ -z "$TARGET_FILE" ]; then
+    read -p "Enter filename: " TARGET_FILE
+fi
+
+# Final check
+if [ -z "$TARGET_FILE" ]; then
+    echo "Usage: catappend [filename]"
+    exit 1
+fi
+
+# 2. Capture and Append
+echo "Type your content below. Press Enter then Ctrl+D to save."
+echo "------------------------------------------------------"
+
+# We use cat to capture stdin directly into the target file via append
+cat >> "$TARGET_FILE" << INNER_EOF
+$(cat)
+INNER_EOF
+
+echo "---"
+echo "Done. Appended to $TARGET_FILE."

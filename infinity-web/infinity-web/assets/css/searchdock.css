@@ -1,0 +1,72 @@
+.inf-searchdock {
+  position: fixed;
+  right: 1rem;
+  bottom: 6rem; /* Shifted up to sit cleanly above the curved bottom bar */
+  z-index: 66;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 56px;
+  height: 56px;
+  padding: 0.45rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(15, 23, 42, 0.95);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px);
+  overflow: hidden;
+  transition: width 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), padding 0.25s ease, opacity 0.25s ease;
+}
+
+.inf-shell.rail-hidden .inf-searchdock {
+  opacity: 0.82;
+}
+
+.inf-searchdock.is-open {
+  width: min(92vw, 420px);
+  padding-right: 0.6rem;
+  border-radius: 28px;
+}
+
+.inf-searchfab {
+  width: 46px;
+  height: 46px;
+  min-width: 46px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(124, 58, 237, 0.25);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  flex: 0 0 auto;
+}
+
+.inf-searchpanel {
+  display: none;
+  align-items: center;
+  gap: 0.55rem;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.inf-searchdock.is-open .inf-searchpanel {
+  display: flex;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.inf-searchpanel input {
+  min-width: 0;
+  flex: 1 1 auto;
+  border: 0;
+  outline: 0;
+  border-radius: 999px;
+  padding: 0.82rem 0.95rem;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

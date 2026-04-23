@@ -1,0 +1,30 @@
+#!/bin/bash
+if [[ "$1" == "-h" || -z "$1" ]]; then
+    echo -e "\e[1;34mUsage:\e[0m faudit <directory>"
+    echo -e "\e[1;33mExplaining:\e[0m Live-streaming file audit with type-specific icons."
+    exit 0
+fi
+
+read -p "Enter max depth (Press Enter for Infinity): " depth
+DEPTH_CMD=""
+[[ ! -z "$depth" ]] && DEPTH_CMD="-maxdepth $depth"
+
+echo -e "\e[1;32m🔍 Scanning Files in: $1\e[0m"
+
+find "$1" $DEPTH_CMD -type f | while read -r file; do
+    ext="${file##*.}"
+    icon="📄" # Default
+    color="\e[0m"
+
+    case "$ext" in
+        py)    icon="🐍"; color="\e[33m" ;;
+        so)    icon="⚙️ "; color="\e[31m" ;;
+        md)    icon="📝"; color="\e[34m" ;;
+        sh)    icon="🐚"; color="\e[32m" ;;
+        js)    icon="📦"; color="\e[33m" ;;
+        json)  icon="📋"; color="\e[36m" ;;
+        sql)   icon="🗄️ "; color="\e[35m" ;;
+    esac
+
+    echo -e "${icon} ${color}${file}\e[0m"
+done

@@ -1,0 +1,29 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -euo pipefail
+
+# ---- Absolute invariants ----
+export PREFIX="/data/data/com.termux/files/usr"
+export HOME="/data/data/com.termux/files/home"
+export PATH="$PREFIX/bin:$PATH"
+
+# ---- Force interactive semantics ----
+export BASH_ENV="$HOME/.bashrc"
+
+# ---- Load login + interactive config explicitly ----
+[ -f "$HOME/.profile" ] && source "$HOME/.profile"
+[ -f "$HOME/.bashrc" ] && source "$HOME/.bashrc"
+
+# ---- Canonical tools env ----
+if [ -f "$HOME/.tools/tools/env.global" ]; then
+  source "$HOME/.tools/tools/env.global"
+else
+  echo "[termux-shell] FATAL: env.global missing" >&2
+  exit 1
+fi
+
+# ---- Loud confirmation ----
+echo "[termux-shell] Termux environment fully loaded"
+echo "[termux-shell] Shell PID $$"
+
+# ---- Hand control to Acode ----
+exec bash "$@"

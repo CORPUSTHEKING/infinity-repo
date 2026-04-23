@@ -1,0 +1,131 @@
+/* Horizontal Rail Layout */
+.inf-cards-rail {
+    display: flex;
+    overflow-x: auto;
+    gap: 1rem;
+    padding: 1rem 0;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none; /* Hide scrollbar for clean look */
+}
+.inf-cards-rail::-webkit-scrollbar { display: none; }
+
+.inf-script-card {
+    min-width: 280px;
+    scroll-snap-align: start;
+    flex-shrink: 0;
+}
+
+/* Curved Bottom Search Bar (Expanding FAB) */
+.inf-search-dock {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 56px;
+    height: 56px;
+    background: var(--accent);
+    border-radius: 28px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.inf-search-dock.is-active {
+    width: calc(100% - 4rem);
+    right: 2rem;
+    border-radius: 12px;
+}
+
+/* Panoramic Placeholder */
+.inf-hero-panoramic {
+    width: 100%;
+    height: 240px;
+    background: #111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    border: 1px dashed #333;
+}
+/* Panoramic Animation */
+.inf-hero-panoramic {
+    position: relative;
+    width: 100%;
+    height: 240px;
+    background: url('../img/panoramic-bg.jpg') repeat-x;
+    background-size: cover;
+    animation: panBackground 60s linear infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 12px;
+    margin: 1rem 0;
+}
+
+@keyframes panBackground {
+    from { background-position: 0 0; }
+    to { background-position: 10000px 0; }
+}
+
+.pan-text-scroller {
+    background: rgba(0, 0, 0, 0.6);
+    color: var(--accent);
+    padding: 1rem 2rem;
+    font-family: var(--font-mono);
+    white-space: nowrap;
+    border-top: 1px solid var(--accent);
+    border-bottom: 1px solid var(--accent);
+    width: 100%;
+    text-align: center;
+}
+
+/* Branding & Nav Overrides */
+.inf-brandbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    background: var(--bg-dark);
+    border-bottom: 1px solid var(--line);
+}
+
+.inf-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.inf-symbol {
+    font-size: 2.5rem;
+    color: #0000ff; /* The exact blue requested */
+    line-height: 1;
+}
+
+.inf-brand-word {
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+    font-weight: 800;
+    color: var(--text-main);
+}
+
+.inf-top-nav {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-dim);
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    text-transform: lowercase;
+    transition: color 0.2s;
+}
+
+.nav-link:hover {
+    color: var(--accent);
+}

@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+mkdir -p "$HOME/storage/shared/Obsidian/LOGS/shell" && \
+TS=$(date +%Y%m%d_%H%M%S) && \
+LOG="$HOME/storage/shared/Obsidian/LOGS/shell/shell_log_$TS.md" && \
+bash <<'SCRIPT' 2>&1 | tee "$LOG"
+# show which shell you're running
+echo "Current SHELL: $SHELL"
+ps -p $$ -o comm=
+
+echo
+echo "=== User-level shell / login files (in $HOME) ==="
+find "$HOME" -maxdepth 3 -type f \
+  \( -name ".profile" -o -name ".bash_profile" -o -name ".bash_login" -o -name ".bashrc" \
+     -o -name ".zshrc" -o -name ".zprofile" -o -name ".zlogin" -o -name ".login" \
+     -o -name ".kshrc" -o -name ".ksh_profile" -o -name ".shrc" -o -name "config.fish" \) \
+  -print
+
+echo
+echo "=== Other dotfile-like configs under ~/.config (common shells/apps) ==="
+find "$HOME/.config" -maxdepth 2 -type f \( -iname '*rc' -o -iname 'config.fish' \) -print
+
+echo
+echo "=== Termux / system-wide shell files ==="
+ls -l /data/data/com.termux/files/usr/etc/*
+SCRIPT

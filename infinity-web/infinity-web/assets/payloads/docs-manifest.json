@@ -1,0 +1,314 @@
+[
+  {
+    "title": "Append Tool",
+    "preview": "Safely append content from one file to another with confirmation.",
+    "link": "#docs?id=append",
+    "type": "tool",
+    "group": "FILEOPS",
+    "id": "append",
+    "name": "append",
+    "path": "assets/payloads/FILEOPS/append",
+    "kindLink": "#assets/payloads/FILEOPS/append",
+    "description": "Append the contents of one source file into a destination file after explicit confirmation. See #assets/payloads/FILEOPS/append.",
+    "usage": "append <sourcefile> <destfile>",
+    "runtime": {
+      "shell": "bash",
+      "mode": "non-interactive"
+    },
+    "inputs": {
+      "argv": [
+        "$1 as default source file",
+        "$2 as default destination file"
+      ],
+      "env": [
+        "SRC",
+        "DEST"
+      ],
+      "confirmation": "yes"
+    },
+    "outputs": [
+      "Appends source file contents to destination file",
+      "Prints review, info, abort, error, and ok status messages"
+    ],
+    "dependencies": [
+      "bash",
+      "cat",
+      "read",
+      "set -euo pipefail"
+    ],
+    "behavior": {
+      "source_resolution": "Uses $SRC if set, otherwise falls back to $1",
+      "destination_resolution": "Uses $DEST if set, otherwise falls back to $2",
+      "confirmation_gate": "Requires the user to type yes before writing",
+      "validation": "Fails if the source file does not exist",
+      "write_mode": "append only",
+      "safety": "Never overwrites the destination file"
+    },
+    "notes": [
+      "Designed for explicit file-to-file append operations",
+      "Suitable for controlled merges and manual review workflows"
+    ],
+    "slug": "append"
+  },
+  {
+    "title": "Cat-Append",
+    "preview": "Interactive stdin capture and append to file.",
+    "link": "#docs?id=catappend",
+    "type": "tool",
+    "group": "FILEOPS",
+    "id": "catappend",
+    "name": "catappend",
+    "path": "assets/payloads/FILEOPS/catappend",
+    "kindLink": "#assets/payloads/FILEOPS/catappend",
+    "description": "Interactively append multi-line stdin content to a target file, with file selection fallback and append-only behavior. See #assets/payloads/FILEOPS/catappend.",
+    "usage": "catappend [filename]",
+    "runtime": {
+      "shell": "bash",
+      "mode": "interactive"
+    },
+    "inputs": {
+      "argv": [
+        "optional target filename"
+      ],
+      "stdin": "multi-line content ending with Ctrl+D",
+      "prompts": [
+        "Select file (fzf fallback)",
+        "Enter filename"
+      ]
+    },
+    "outputs": [
+      "Appends captured stdin to the chosen target file",
+      "Prints start, separator, and done messages"
+    ],
+    "dependencies": [
+      "bash",
+      "fzf",
+      "find",
+      "read",
+      "cat",
+      "source $TOOLS_ROOT/env.global"
+    ],
+    "behavior": {
+      "target_resolution": "Uses $1 first, then fzf selection, then manual filename prompt",
+      "capture_mode": "Reads stdin directly and appends it to the target file",
+      "write_mode": "append only",
+      "safety": "Never truncates or overwrites the target file",
+      "fallbacks": [
+        "fzf selection when no filename is supplied",
+        "manual prompt when fzf returns nothing"
+      ]
+    },
+    "notes": [
+      "Requires an interactive terminal for the prompt flow",
+      "Best used when adding content to an existing file"
+    ],
+    "slug": "catappend"
+  },
+  {
+    "title": "Directory Auditor (daudit)",
+    "preview": "Audit directory sizes with optional depth control.",
+    "link": "#docs?id=daudit",
+    "type": "tool",
+    "group": "DIRECTORIES",
+    "id": "daudit",
+    "name": "daudit",
+    "path": "assets/payloads/DIRECTORIES/daudit",
+    "kindLink": "#assets/payloads/DIRECTORIES/daudit",
+    "description": "Grid-style directory audit that reports directory sizes with optional max-depth control. See #assets/payloads/DIRECTORIES/daudit.",
+    "usage": "daudit <directory>",
+    "runtime": {
+      "shell": "bash",
+      "mode": "interactive"
+    },
+    "inputs": {
+      "argv": [
+        "directory path"
+      ],
+      "prompts": [
+        "Enter max depth (Press Enter for Infinity)"
+      ]
+    },
+    "outputs": [
+      "Lists directories",
+      "Displays size via du -sh",
+      "Formatted output with icons"
+    ],
+    "dependencies": [
+      "bash",
+      "find",
+      "du",
+      "read",
+      "basename",
+      "echo -e"
+    ],
+    "behavior": {
+      "depth_control": "Optional max depth",
+      "scan_mode": "Directory traversal",
+      "safety": "Read-only"
+    },
+    "notes": [
+      "Name currently not printed in output",
+      "Grid formatting commented out"
+    ],
+    "slug": "daudit"
+  },
+  {
+    "title": "File Auditor (faudit)",
+    "preview": "Scan files with icons and color output.",
+    "link": "#docs?id=faudit",
+    "type": "tool",
+    "group": "FILEOPS",
+    "id": "faudit",
+    "name": "faudit",
+    "path": "assets/payloads/FILEOPS/faudit",
+    "kindLink": "#assets/payloads/FILEOPS/faudit",
+    "description": "Live-stream file audit with extension-based icons. See #assets/payloads/FILEOPS/faudit.",
+    "usage": "faudit <directory>",
+    "runtime": {
+      "shell": "bash",
+      "mode": "interactive"
+    },
+    "inputs": {
+      "argv": [
+        "directory path"
+      ],
+      "prompts": [
+        "Enter max depth"
+      ]
+    },
+    "outputs": [
+      "Lists files",
+      "Displays icons per extension",
+      "Colored output"
+    ],
+    "dependencies": [
+      "bash",
+      "find",
+      "case",
+      "echo -e"
+    ],
+    "behavior": {
+      "classification": "Extension-based icons",
+      "scan_mode": "Recursive file scan",
+      "safety": "Read-only"
+    },
+    "slug": "faudit"
+  },
+  {
+    "title": "Regex Finder",
+    "preview": "Recursive grep search with regex support.",
+    "link": "#docs?id=regfind",
+    "type": "tool",
+    "group": "SYSTEM",
+    "id": "regfind",
+    "name": "regfind",
+    "path": "assets/payloads/SYSTEM/regfind",
+    "kindLink": "#assets/payloads/SYSTEM/regfind",
+    "description": "Recursive regex search using grep. See #assets/payloads/SYSTEM/regfind.",
+    "usage": "regfind <regex> [path]",
+    "runtime": {
+      "shell": "bash",
+      "mode": "non-interactive"
+    },
+    "dependencies": [
+      "bash",
+      "grep"
+    ],
+    "behavior": {
+      "search_mode": "grep -rEnI",
+      "safety": "Read-only"
+    },
+    "slug": "regfind"
+  },
+  {
+    "title": "Rename to Markdown",
+    "preview": "Batch rename files to .md extension.",
+    "link": "#docs?id=rename-to-md",
+    "type": "tool",
+    "group": "TEMPLATES",
+    "id": "rename-to-md",
+    "name": "rename-to-md",
+    "path": "assets/payloads/TEMPLATES/rename-to-md",
+    "kindLink": "#assets/payloads/TEMPLATES/rename-to-md",
+    "description": "Batch rename files to .md. See #assets/payloads/TEMPLATES/rename-to-md.",
+    "usage": "rename-to-md",
+    "runtime": {
+      "shell": "bash",
+      "mode": "non-interactive"
+    },
+    "dependencies": [
+      "bash",
+      "mv"
+    ],
+    "behavior": {
+      "scan_mode": "current directory",
+      "safety": "renames files"
+    },
+    "slug": "rename-to-md"
+  },
+  {
+    "title": "Shell Audit Logger",
+    "preview": "Capture full shell environment into logs.",
+    "link": "#docs?id=shell-audit",
+    "type": "tool",
+    "group": "SYSTEM",
+    "id": "shell-audit",
+    "name": "shell-audit",
+    "path": "assets/payloads/SYSTEM/shell-audit",
+    "kindLink": "#assets/payloads/SYSTEM/shell-audit",
+    "description": "Audit shell environment and log to file. See #assets/payloads/SYSTEM/shell-audit.",
+    "usage": "shell-audit",
+    "runtime": {
+      "shell": "bash",
+      "mode": "interactive"
+    },
+    "dependencies": [
+      "bash",
+      "tee",
+      "find"
+    ],
+    "behavior": {
+      "logging": "Writes to timestamped markdown log",
+      "safety": "Read-only except log"
+    },
+    "slug": "shell-audit"
+  },
+  {
+    "title": "Termux Shell Environment",
+    "preview": "Force-load login semantics and environment.",
+    "link": "#docs?id=termux-shell",
+    "type": "tool",
+    "group": "FILEOPS",
+    "id": "termux-shell",
+    "name": "termux-shell",
+    "path": "assets/payloads/FILEOPS/termux-shell",
+    "kindLink": "#assets/payloads/FILEOPS/termux-shell",
+    "description": "Load a canonical Termux shell environment and hand off to bash. See #assets/payloads/FILEOPS/termux-shell.",
+    "usage": "termux-shell [args]",
+    "runtime": {
+      "shell": "bash",
+      "mode": "interactive"
+    },
+    "outputs": [
+      "Loads environment",
+      "Sources configs",
+      "Execs bash"
+    ],
+    "dependencies": [
+      "bash",
+      "env.global"
+    ],
+    "behavior": {
+      "environment_setup": "Sets PREFIX, HOME, PATH",
+      "handoff": "exec bash",
+      "safety": "No file writes"
+    },
+    "slug": "termux-shell"
+  },
+  {
+    "title": "Welcome to Infinity",
+    "preview": "Learn how to use terminal helpers effectively.",
+    "link": "#docs?id=welcome",
+    "slug": "welcome"
+  }
+]

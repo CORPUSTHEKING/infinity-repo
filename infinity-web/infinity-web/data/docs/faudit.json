@@ -1,0 +1,35 @@
+{
+  "title": "File Auditor (faudit)",
+  "preview": "Scan files with icons and color output.",
+  "link": "#docs?id=faudit",
+
+  "type": "tool",
+  "group": "FILEOPS",
+  "id": "faudit",
+  "name": "faudit",
+  "path": "assets/payloads/FILEOPS/faudit",
+  "kindLink": "#assets/payloads/FILEOPS/faudit",
+  "description": "Live-stream file audit with extension-based icons. See #assets/payloads/FILEOPS/faudit.",
+  "usage": "faudit <directory>",
+
+  "runtime": { "shell": "bash", "mode": "interactive" },
+
+  "inputs": {
+    "argv": ["directory path"],
+    "prompts": ["Enter max depth"]
+  },
+
+  "outputs": [
+    "Lists files",
+    "Displays icons per extension",
+    "Colored output"
+  ],
+
+  "dependencies": ["bash", "find", "case", "echo -e"],
+
+  "behavior": {
+    "classification": "Extension-based icons",
+    "scan_mode": "Recursive file scan",
+    "safety": "Read-only"
+  }
+}

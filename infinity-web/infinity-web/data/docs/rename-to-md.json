@@ -1,0 +1,23 @@
+{
+  "title": "Rename to Markdown",
+  "preview": "Batch rename files to .md extension.",
+  "link": "#docs?id=rename-to-md",
+
+  "type": "tool",
+  "group": "TEMPLATES",
+  "id": "rename-to-md",
+  "name": "rename-to-md",
+  "path": "assets/payloads/TEMPLATES/rename-to-md",
+  "kindLink": "#assets/payloads/TEMPLATES/rename-to-md",
+  "description": "Batch rename files to .md. See #assets/payloads/TEMPLATES/rename-to-md.",
+  "usage": "rename-to-md",
+
+  "runtime": { "shell": "bash", "mode": "non-interactive" },
+
+  "dependencies": ["bash", "mv"],
+
+  "behavior": {
+    "scan_mode": "current directory",
+    "safety": "renames files"
+  }
+}

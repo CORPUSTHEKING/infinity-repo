@@ -1,0 +1,45 @@
+{
+  "title": "Cat-Append",
+  "preview": "Interactive stdin capture and append to file.",
+  "link": "#docs?id=catappend",
+
+  "type": "tool",
+  "group": "FILEOPS",
+  "id": "catappend",
+  "name": "catappend",
+  "path": "assets/payloads/FILEOPS/catappend",
+  "kindLink": "#assets/payloads/FILEOPS/catappend",
+  "description": "Interactively append multi-line stdin content to a target file, with file selection fallback and append-only behavior. See #assets/payloads/FILEOPS/catappend.",
+  "usage": "catappend [filename]",
+
+  "runtime": { "shell": "bash", "mode": "interactive" },
+
+  "inputs": {
+    "argv": ["optional target filename"],
+    "stdin": "multi-line content ending with Ctrl+D",
+    "prompts": ["Select file (fzf fallback)", "Enter filename"]
+  },
+
+  "outputs": [
+    "Appends captured stdin to the chosen target file",
+    "Prints start, separator, and done messages"
+  ],
+
+  "dependencies": ["bash", "fzf", "find", "read", "cat", "source $TOOLS_ROOT/env.global"],
+
+  "behavior": {
+    "target_resolution": "Uses $1 first, then fzf selection, then manual filename prompt",
+    "capture_mode": "Reads stdin directly and appends it to the target file",
+    "write_mode": "append only",
+    "safety": "Never truncates or overwrites the target file",
+    "fallbacks": [
+      "fzf selection when no filename is supplied",
+      "manual prompt when fzf returns nothing"
+    ]
+  },
+
+  "notes": [
+    "Requires an interactive terminal for the prompt flow",
+    "Best used when adding content to an existing file"
+  ]
+}

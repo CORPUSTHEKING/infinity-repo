@@ -1,0 +1,40 @@
+.inf-hero-panoramic {
+    position: relative;
+    width: 100vw;
+    left: 50%;
+    margin-left: -50vw;
+    height: 350px;
+    overflow: hidden;
+    background: #070b12;
+}
+
+/* Cinematic Image Layer */
+.inf-hero-panoramic::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('../img/panoramic-bg.jpg') repeat-x center center;
+    background-size: auto 100%;
+    animation: panBackground 80s linear infinite;
+    z-index: 1;
+}
+
+/* Void Masking */
+.inf-hero-panoramic::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to right, 
+        #070b12 0%, 
+        transparent 15%, 
+        transparent 85%, 
+        #070b12 100%
+    );
+    z-index: 2;
+}
+
+@keyframes panBackground {
+    from { background-position: 0 0; }
+    to { background-position: -2500px 0; }
+}

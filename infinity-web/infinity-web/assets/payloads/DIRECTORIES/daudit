@@ -1,0 +1,21 @@
+#!/bin/bash
+if [[ "$1" == "-h" || -z "$1" ]]; then
+    echo -e "\e[1;34mUsage:\e[0m daudit <directory>"
+    echo -e "\e[1;33mExplaining:\e[0m Grid-style directory audit showing name + size in MB."
+    exit 0
+fi
+
+read -p "Enter max depth (Press Enter for Infinity): " depth
+DEPTH_CMD=""
+[[ ! -z "$depth" ]] && DEPTH_CMD="-maxdepth $depth"
+
+echo -e "\e[1;32m📁 Auditing: $1\e[0m"
+
+# 1. find dirs 2. get size in MB 3. format with icons 4. gridify
+find "$1" $DEPTH_CMD -type d | while read dir; do
+    size=$(du -sh "$dir") 
+    # | cut -f1)
+    name=$(basename "$dir")
+    echo -e "└── 📂 \e[1;34m${size}\e[0m"
+done 
+#| paste - - - | column -t -s $'\t' -c $(tput cols)

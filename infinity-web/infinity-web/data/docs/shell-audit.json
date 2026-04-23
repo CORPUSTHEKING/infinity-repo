@@ -1,0 +1,23 @@
+{
+  "title": "Shell Audit Logger",
+  "preview": "Capture full shell environment into logs.",
+  "link": "#docs?id=shell-audit",
+
+  "type": "tool",
+  "group": "SYSTEM",
+  "id": "shell-audit",
+  "name": "shell-audit",
+  "path": "assets/payloads/SYSTEM/shell-audit",
+  "kindLink": "#assets/payloads/SYSTEM/shell-audit",
+  "description": "Audit shell environment and log to file. See #assets/payloads/SYSTEM/shell-audit.",
+  "usage": "shell-audit",
+
+  "runtime": { "shell": "bash", "mode": "interactive" },
+
+  "dependencies": ["bash", "tee", "find"],
+
+  "behavior": {
+    "logging": "Writes to timestamped markdown log",
+    "safety": "Read-only except log"
+  }
+}

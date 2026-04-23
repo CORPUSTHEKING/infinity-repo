@@ -1,0 +1,136 @@
+[
+  {
+    "type": "directory",
+    "name": "CONSTANTS_CAUTION",
+    "children": [
+      {
+        "type": "file",
+        "id": "colors",
+        "name": "colors.conf",
+        "path": "CONSTANTS_CAUTION/colors.conf",
+        "size": 41879,
+        "modified": "2026-04-09T15:41:58.000Z"
+      },
+      {
+        "type": "file",
+        "id": "env",
+        "name": "env.global",
+        "path": "CONSTANTS_CAUTION/env.global",
+        "size": 1295,
+        "modified": "2026-04-09T15:40:54.000Z"
+      },
+      {
+        "type": "file",
+        "id": "logging",
+        "name": "logging.conf",
+        "path": "CONSTANTS_CAUTION/logging.conf",
+        "size": 1213,
+        "modified": "2026-04-09T15:40:22.000Z"
+      }
+    ]
+  },
+  {
+    "type": "directory",
+    "name": "DIRECTORIES",
+    "children": [
+      {
+        "type": "file",
+        "id": "daudit",
+        "name": "daudit",
+        "path": "DIRECTORIES/daudit",
+        "size": 676,
+        "modified": "2026-04-09T15:02:56.000Z"
+      }
+    ]
+  },
+  {
+    "type": "directory",
+    "name": "FILEOPS",
+    "children": [
+      {
+        "type": "file",
+        "id": "append",
+        "name": "append",
+        "path": "FILEOPS/append",
+        "size": 975,
+        "modified": "2026-04-09T15:35:50.000Z"
+      },
+      {
+        "type": "file",
+        "id": "catappend",
+        "name": "catappend",
+        "path": "FILEOPS/catappend",
+        "size": 815,
+        "modified": "2026-04-09T15:35:04.000Z"
+      },
+      {
+        "type": "file",
+        "id": "faudit",
+        "name": "faudit",
+        "path": "FILEOPS/faudit",
+        "size": 915,
+        "modified": "2026-04-09T15:02:56.000Z"
+      },
+      {
+        "type": "file",
+        "id": "termux-shell",
+        "name": "termux-shell",
+        "path": "FILEOPS/termux-shell",
+        "size": 813,
+        "modified": "2026-04-09T15:02:56.000Z"
+      }
+    ]
+  },
+  {
+    "type": "directory",
+    "name": "SYSTEM",
+    "children": [
+      {
+        "type": "file",
+        "id": "regfind",
+        "name": "regfind",
+        "path": "SYSTEM/regfind",
+        "size": 350,
+        "modified": "2026-04-09T15:02:56.000Z"
+      },
+      {
+        "type": "file",
+        "id": "startuplog",
+        "name": "startuplog",
+        "path": "SYSTEM/startuplog",
+        "size": 946,
+        "modified": "2026-04-09T15:02:56.000Z"
+      }
+    ]
+  },
+  {
+    "type": "directory",
+    "name": "TEMPLATES",
+    "children": [
+      {
+        "type": "file",
+        "id": "renamd",
+        "name": "renamd",
+        "path": "TEMPLATES/renamd",
+        "size": 279,
+        "modified": "2026-04-09T15:02:56.000Z"
+      }
+    ]
+  },
+  {
+    "type": "file",
+    "id": "docs-manifest",
+    "name": "docs-manifest.json",
+    "path": "docs-manifest.json",
+    "size": 890,
+    "modified": "2026-04-09T15:02:56.000Z"
+  },
+  {
+    "type": "file",
+    "id": "download-mirror",
+    "name": "download-mirror.sh",
+    "path": "download-mirror.sh",
+    "size": 0,
+    "modified": "2026-04-09T15:02:56.000Z"
+  }
+]

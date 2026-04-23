@@ -1,0 +1,23 @@
+{
+  "title": "Regex Finder",
+  "preview": "Recursive grep search with regex support.",
+  "link": "#docs?id=regfind",
+
+  "type": "tool",
+  "group": "SYSTEM",
+  "id": "regfind",
+  "name": "regfind",
+  "path": "assets/payloads/SYSTEM/regfind",
+  "kindLink": "#assets/payloads/SYSTEM/regfind",
+  "description": "Recursive regex search using grep. See #assets/payloads/SYSTEM/regfind.",
+  "usage": "regfind <regex> [path]",
+
+  "runtime": { "shell": "bash", "mode": "non-interactive" },
+
+  "dependencies": ["bash", "grep"],
+
+  "behavior": {
+    "search_mode": "grep -rEnI",
+    "safety": "Read-only"
+  }
+}
