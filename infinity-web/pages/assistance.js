@@ -4,12 +4,22 @@ export function renderAssistancePage() {
       <h2>Infinity</h2>
 <h2 id="greetings-fellow-developer"># <strong>Greetings fellow
 developer</strong></h2>
-<blockquote>
-<p>[!question]+ Dr Infinity 🧐 1. What is the current feel of your CLI
-�? 2. What feature do you feel like adding or amending to that Infinite
-toolset🛠️🧬? 3. Working on a project🗂️🗝️? 4. Last guess, You’re a
-Mastermind, right👑? 5. Wait! Do you have a cli 🤔</p>
-</blockquote>
+<div class="callout callout-question">
+    <div class="callout-title">
+        <div class="callout-icon">❓</div>
+        <div class="callout-title-text">Dr Infinity 🧐</div>
+    </div>
+    <div class="callout-content">
+        <ol>
+            <li>What is the current feel of your CLI?</li>
+            <li>What feature do you feel like adding or amending to that Infinite toolset 🛠️🧬?</li>
+            <li>Working on a project 🗂️🗝️?</li>
+            <li>Last guess, You’re a Mastermind, right 👑?</li>
+            <li>Wait! Do you have a CLI 🤔</li>
+        </ol>
+    </div>
+</div>
+
 <h2 id="diving-right-in"><strong>Diving Right In</strong></h2>
 <blockquote>
 <p>[!quote]- ctk Yes, It Is Your Mandate as The CHIEF COMMANDER at Your
@@ -25,12 +35,16 @@ point, I’m all about the instance you were left alone with the terminal
 and only command you could think of was <code>ls</code> or just pressing
 ‘enter’. Its fascinating how the scavenger currently scrolling built
 themselves to who they currently are 😎.</p>
-<blockquote>
-<p>[!info]- The Spark 💥 We all grew different. It is the passion that
-keeps us all going. A kind of drive unseen but STRONG enough to move
-worlds. It flows through each of us, you feel it flowing within you as
-you scroll. My advice - Do not let it go.</p>
-</blockquote>
+<details class="callout callout-info">
+    <summary>
+        <span class="callout-icon">💥</span>
+        <span class="callout-title-text">The Spark</span>
+    </summary>
+    <div class="callout-content">
+        <p>We all grew different. It is the passion that keeps us all going. A kind of drive unseen but <strong>STRONG</strong> enough to move worlds. It flows through each of us, you feel it flowing within you as you scroll. My advice - Do not let it go.</p>
+    </div>
+</details>
+
 <p>Bottomline : That Spark is exactly what drives infinity</p>
 <hr />
 <p>The fact that you are here defines the strong raging
