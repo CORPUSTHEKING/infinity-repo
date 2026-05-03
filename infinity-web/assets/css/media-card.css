@@ -1,0 +1,101 @@
+/* Basic Reset/Box-sizing for consistency */
+    *, *::before, *::after {
+        box-sizing: border-box;
+    }
+
+    /* Container Wrapper for the flex layout */
+    .container-wrapper {
+        display: flex;
+        align-items: flex-start; /* Align items to the top */
+        gap: 20px; /* Space between the card and side content */
+        max-width: 1200px; /* Example max width for the whole layout */
+        margin: 20px auto; /* Center the wrapper */
+        padding: 10px;
+        border: 1px solid #eee;
+    }
+
+    /* Media Card - 1/3 screen width, clickable, matching sides */
+    .media-card {
+        display: block; /* Make the anchor act as a block container */
+        width: 33.33%; /* Takes 1/3 of the parent width */
+        aspect-ratio: 1 / 1; /* Forces a square aspect ratio (matching sides) */
+        position: relative;
+        overflow: hidden; /* Ensures media doesn't spill out */
+        text-decoration: none; /* Remove underline from link */
+        color: inherit; /* Inherit text color */
+        border: 1px solid #ddd;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .media-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    /* Content wrapper for media inside the card */
+    .media-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex; /* Helps center small media or ensure full coverage */
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Styling for image/video within the card */
+    .media-content img,
+    .media-content video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Ensures media covers the area without distortion */
+        display: block;
+    }
+
+    /* Optional: Overlay for hover effects */
+    .card-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        font-size: 1.2em;
+        font-weight: bold;
+        pointer-events: none; /* Allows clicks to pass through to the anchor */
+    }
+
+    .media-card:hover .card-overlay {
+        opacity: 1;
+    }
+
+    /* Side Content - takes remaining 2/3 width */
+    .side-content {
+        flex-grow: 1; /* Allows it to take up remaining space */
+        width: 66.66%; /* Explicitly set to 2/3, though flex-grow would often suffice */
+        padding: 10px 0; /* Add some padding if needed */
+    }
+
+    /* Responsive adjustments (optional) */
+    @media (max-width: 768px) {
+        .container-wrapper {
+            flex-direction: column; /* Stack vertically on smaller screens */
+            align-items: center; /* Center items when stacked */
+        }
+        .media-card,
+        .side-content {
+            width: 100%; /* Full width on small screens */
+            max-width: 400px; /* Limit card width even at 100% for better readability */
+        }
+        .media-card {
+            margin-bottom: 20px; /* Space between card and content when stacked */
+        }
+    }
