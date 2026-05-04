@@ -13,8 +13,8 @@
         background-color: #1a1a1a; /* Obsidian Dark Background */
         color: #dcddde;
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-        line-height: 1.6;
-        padding: 40px;
+        line-height: 1.9;
+        padding: clamp(16px, 5vw, 40px); ;
         max-width: 800px;
         margin: 0 auto;
     }
@@ -97,11 +97,25 @@
 </style>
 </head>
 <body>
-    <div id="app">
-        <div class="inf-loading-screen" style="display: flex; align-items: center; justify-content: center; height: 100vh; font-family: monospace; color: #7c3aed; background: #070b12;">
-            [ INITIALIZING INFINITY CORE... ]
-        </div>
+    <div class="inf-loading-screen" style="position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: 9999; display: flex; align-items: center; justify-content: center; font-family: monospace; color: #7c3aed; background: #070b12;">
+        [ INITIALIZING INFINITY CORE... ]
     </div>
+
+    <div id="app"></div>
+
+    <script>
+        window.addEventListener('load', () => {
+            const loader = document.querySelector('.inf-loading-screen');
+            if (loader) {
+                loader.innerText = "[ SYSTEM READY - EXECUTING ]";
+                loader.style.transition = 'opacity 0.5s ease, filter 0.5s ease';
+                loader.style.opacity = '0';
+                loader.style.filter = 'blur(10px)';
+                setTimeout(() => loader.remove(), 500);
+            }
+        });
+    </script>
+
     <script type="module" src="assets/js/app.js"></script>
     <script type="module" src="components/docs/injector.js"></script>
 </body>
