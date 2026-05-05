@@ -88,7 +88,7 @@ spot they aim at with passion and laser precision.</p>
 <p>
   Why reinvent the wheel when the engine is already forged? Tap into a rapidly expanding repository of downloadable, plug-and-play scripts. These are battle-tested automation routines and operational shortcuts ready to be injected directly into your CLI environment. Download, execute, and command.
 </p>
-<p><a href="#downloads" class="inf-link">[ Access the Script Vault ]</a></p>
+<p><a href="#download" class="inf-link">[ Access the Script Vault ]</a></p>
 
 <h3 id="the-archives">The Archives: Deep-Dive Documentation</h3>
 <p>

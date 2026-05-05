@@ -1,4 +1,5 @@
 import { renderForm } from '../components/forms.js';
+import { renderGitPortal } from './upload/git.js';
 
 /**
  * Renders the Upload Page HTML.
@@ -33,6 +34,7 @@ export function renderUploadPage(schema = {}) {
               Logged-in users contribute via GitHub Issues. Guests contribute via secure email relay.
             </div>
           </div>
+          ${renderGitPortal()}
         </div>
       </div>
     </section>

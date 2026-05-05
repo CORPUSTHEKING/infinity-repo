@@ -1,12 +1,11 @@
+import { renderUploadPage, bindUploadEvents } from '../pages/upload.js';
+import { renderRequestPage, bindRequestEvents } from '../pages/request.js';
 import { renderAssistancePage } from '../pages/assistance.js';
 import { renderSponsorPage } from '../pages/sponsor.js';
 import { renderCategoriesView, renderSearchResultsView } from './categories.js';
 import { getManifest, searchScripts } from '../assets/js/data.js';
 import { handleDownloadPageRoute } from './router/download.js';
 import { handleDocsPageRoute } from './router/docs.js';
-import { renderUploadPage, bindUploadEvents } from '../pages/upload.js';
-import { renderRequestPage, bindRequestEvents } from '../pages/request.js';
-import { handleSearchRoute } from '../pages/search.js';
 
 export function initRouter(ui, config) {
   async function handleRoute() {
@@ -55,19 +54,47 @@ export function initRouter(ui, config) {
         break;
 
       case 'search':
-        await handleSearchRoute(ui, urlParams.get('q') || '');
+        const query = urlParams.get('q') || '';
+        if (!query) {
+            ui.setPageContent('<div class="inf-page"><p>Please enter a search term.</p></div>');
+            break;
+        }
+        ui.setPageContent(`<div class="inf-page"><p class="inf-loading">Searching for "${query}"...</p></div>`);
+        const results = await searchScripts(query);
+        ui.setPageContent(renderSearchResultsView(results, query));
         break;
 
       case 'upload':
-        ui.setPageContent(renderUploadPage());
-        bindUploadEvents(config);
-        break;
-
       case 'request':
-        ui.setPageContent(renderRequestPage());
-        bindRequestEvents();
-        break;
+        const isUpload = hash === 'upload';
+        const titleText = isUpload ? 'Upload a Script' : 'Request a Script';
+        const labelText = isUpload ? 'Script Content or Link' : 'Describe the tool you need';
+        const ghLabel = isUpload ? 'submission' : 'enhancement';
 
+        ui.setPageContent(`
+          <div class="inf-page">
+            <h2>${titleText.toUpperCase()}</h2>
+            <p class="inf-category-desc">
+              Infinity is a decentralized static platform. Submissions are securely routed through GitHub Issues.
+            </p>
+            <form class="inf-form" onsubmit="
+              event.preventDefault();
+              const title = encodeURIComponent((document.getElementById('inf-f-title').value || '').trim());
+              const body = encodeURIComponent((document.getElementById('inf-f-body').value || '').trim());
+              const url = 'https://github.com/CORPUSTHEKING/infinity/issues/new?title=' + title + '&body=' + body + '&labels=${ghLabel}';
+              window.open(url, '_blank');
+            ">
+              <div class="inf-form-group">
+                <input type="text" id="inf-f-title" placeholder="${isUpload ? 'e.g., Network Scanner Script' : 'e.g., Need a script to automate backups'}" required />
+              </div>
+              <div class="inf-form-group">
+                <textarea id="inf-f-body" placeholder="${labelText}" rows="6" required></textarea>
+              </div>
+              <button type="submit" class="inf-btn-primary">Submit via GitHub</button>
+            </form>
+          </div>
+        `);
+        break;
 
       default:
         ui.setPageContent(`
@@ -79,7 +106,7 @@ export function initRouter(ui, config) {
         break;
     }
 
-   // window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   window.addEventListener('hashchange', handleRoute);

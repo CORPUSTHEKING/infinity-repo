@@ -1,5 +1,19 @@
 import { mountLayout } from '../../components/layout.js';
 import { initRouter } from '../../components/router.js';
+const saveScroll = () => {
+  const currentPath = window.location.hash || '#assistance';
+  sessionStorage.setItem(`scroll_${currentPath}`, window.scrollY);
+};
+
+const restoreScroll = () => {
+  const currentPath = window.location.hash || '#assistance';
+  const saved = sessionStorage.getItem(`scroll_${currentPath}`);
+  if (saved) {
+    window.scrollTo(0, parseInt(saved));
+  } else {
+    window.scrollTo(0, 0); // Default to top if no history
+  }
+};
 
 async function bootstrap() {
   const root = document.getElementById('app');
@@ -17,6 +31,11 @@ async function bootstrap() {
 
   // Centralized Event Delegation
   document.addEventListener('click', (e) => {
+    // 1. Capture scroll position for any navigation-related click
+    if (e.target.closest('a') || e.target.closest('[data-action]')) {
+      saveScroll();
+    }
+
     // Menu Toggle
     if (e.target.closest('[data-inf-menu-toggle]')) {
       const drawer = document.querySelector('[data-inf-drawer]');
@@ -88,6 +107,13 @@ async function bootstrap() {
   }
 
   initRouter(ui, config);
+  // 2. Handle restoration when the view changes
+  window.addEventListener('hashchange', () => {
+    setTimeout(restoreScroll, 50); 
+  });
+
+  // Initial restoration on first load
+  restoreScroll();
 }
 
 document.addEventListener('DOMContentLoaded', bootstrap);
