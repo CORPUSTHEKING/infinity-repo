@@ -1,0 +1,5 @@
+{
+  "name": "resolveArgs",
+  "args": ["arg", "env"],
+  "body": "if (typeof arg === 'string') { if (arg === '$ENV') return env; if (arg.startsWith('$')) { const [varName, ...rest] = arg.slice(1).split('/'); const mappedPath = env.paths[varName] || env[varName]; if (mappedPath) return [mappedPath, ...rest].join('/'); return arg; } } if (Array.isArray(arg)) return arg.map(a => env.funcs.resolveArgs(a, env)); if (arg !== null && typeof arg === 'object') { const resolved = {}; for (let k in arg) resolved[k] = env.funcs.resolveArgs(arg[k], env); return resolved; } return arg;"
+}

@@ -1,0 +1,15 @@
+[
+  { 
+    "uiname": "card-style-one", 
+    "name": "Script A", 
+    "docurl": "./info", 
+    "role": "Full Stack Developer / Laravel Specialist",
+    "location": "Remote / Faisalabad, Pakistan",
+    "slug": "muhammad-waseem",
+    "initials": "MW",
+    "stack_html": "<span class=\"pill\">Laravel</span><span class=\"pill\">React.js</span><span class=\"pill\">Tailwind</span>",
+    "strengths_html": "<span class=\"pill\">UI/UX</span><span class=\"pill\">APIs</span><span class=\"pill\">Security</span>"
+  }
+]
+
+

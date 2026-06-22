@@ -2,8 +2,7 @@ export function renderAssistancePage() {
   return `
     <section class="inf-page">
       <h2>Infinity</h2>
-<h2 id="greetings-fellow-developer"> <strong>Greetings fellow
-developer</strong></h2>
+<h2 id="greetings-fellow-developer"> <strong>Greetings!</strong></h2>
 <div class="callout callout-question">
     <div class="callout-title">
         <div class="callout-icon">❓</div>

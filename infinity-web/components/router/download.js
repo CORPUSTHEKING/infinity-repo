@@ -46,7 +46,7 @@ export async function handleDownloadPageRoute(ui, config) {
                 }
             });
         } else {
-            ui.setPageContent('<div class="inf-page"><p>No scripts found. Please run the manifest generator.</p></div>');
+            ui.setPageContent('<div class="inf-page"><p>No scripts found. We are working to resolve this and deeply apologize for any inconveniences.</p></div>');
         }
     } catch (error) {
         console.error("[Infinity] Failed to load download page data:", error);

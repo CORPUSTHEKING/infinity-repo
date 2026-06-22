@@ -1,0 +1,5 @@
+{
+  "name": "profileHydrator",
+  "args": ["data", "targetId", "env"],
+  "body": "const profile = data.applicant_profile; if (!profile) return; const info = profile.personal_information; const skills = profile.technical_skills_competencies; const stackHtml = `<div class='details-stack'><button class='accordion-header' data-target-drawer='tech-skills'>[+] Technical Competencies</button><div class='drawer' data-drawer-name='tech-skills'><div class='pill-box'>${skills.programming_languages.map(s => `<span class='pill'>${s}</span>`).join('')}</div><p class='detail-text'>${skills.system_design_experience}</p></div><button class='accordion-header' data-target-drawer='experience'>[+] Experience & Portfolio</button><div class='drawer' data-drawer-name='experience'>${profile.experience_portfolio.personal_projects_open_source_contributions.map(p => `<div class='project-item'><strong>${p.project_name}</strong><p>${p.description}</p></div>`).join('')}</div></div>`; document.getElementById(targetId).insertAdjacentHTML('beforeend', stackHtml); env.funcs.listener(targetId);"
+}

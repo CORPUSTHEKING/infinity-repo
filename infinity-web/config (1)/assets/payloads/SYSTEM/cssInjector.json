@@ -1,0 +1,5 @@
+{
+  "name": "cssInjector",
+  "args": ["cssPath"],
+  "body": "return fetch(cssPath).then(r => { if(!r.ok) throw new Error('CSS fetch failed'); return r.text(); }).then(css => { const style = document.createElement('style'); style.textContent = css; document.head.appendChild(style); console.log('CSS dynamically injected.'); }).catch(e => console.error('CSS Inject Error:', e));"
+}

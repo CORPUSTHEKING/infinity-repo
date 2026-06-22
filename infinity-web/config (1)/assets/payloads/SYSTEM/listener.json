@@ -1,0 +1,5 @@
+{
+  "name": "listener",
+  "args": ["id"],
+  "body": "const root = document.getElementById(id); if(!root) return; const open = (t) => root.querySelector(`[data-drawer-name='${t.dataset.targetDrawer}']`)?.classList.add('open'); const close = (t) => root.querySelector(`[data-drawer-name='${t.dataset.targetDrawer}']`)?.classList.remove('open'); root.querySelectorAll('[data-target-drawer]').forEach(btn => { btn.onclick = (e) => { e.preventDefault(); if(btn.classList.contains('close-btn')) close(btn); else open(btn); }}); console.log('Ghost interactions bound to:', id);"
+}

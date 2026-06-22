@@ -1,0 +1,26 @@
+{
+  "env": {
+    "TARGET_NODE": "app-root"
+  },
+  "bootstrap": {
+    "system_tools": [
+      "cssInjector.json",
+      "iterator.json",
+      "listener.json"
+    ],
+    "template_tools": [
+      "constructor.json",
+      "profileHydrator.json"
+    ],
+    "sequence": [
+      {
+        "action": "cssInjector",
+        "args": ["$INFINITY-ASSETS_CSS_DEVELOPER/style.css"]
+      },
+      {
+        "action": "iterator",
+        "args": ["$INFINITY-DATA_SCRIPTS_DEVELOPER", "$ENV"]
+      }
+    ]
+  }
+}

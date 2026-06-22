@@ -1,0 +1,107 @@
+{
+  "meta": { "action": "constructor" },
+  "props": {
+    "title": "Muhammad Waseem",
+    "sub": "Faisalabad, Pakistan",
+    "email": "waseem@example.com",
+    "bg": "https://via.placeholder.com/1024",
+    "color": "linear-gradient(90deg, #11998e, #38ef7d)"
+  },
+  "applicant_profile": {
+    "instructions": "Please fill out this JSON file with your relevant information.",
+    "personal_information": {
+      "full_name": "Muhammad Waseem",
+      "email": "[Your Email Address]",
+      "phone_number": "[Your Phone Number]",
+      "linkedin_profile_url": "[Your LinkedIn URL]",
+      "github_profile_url": "[Your GitHub URL]",
+      "portfolio_url": "[Your Portfolio URL]",
+      "desired_role": "Full Stack Developer / Laravel Specialist",
+      "desired_salary_range_usd": "[Your Expected Range]",
+      "preferred_location": "Remote / Faisalabad, Pakistan",
+      "earliest_start_date": "2026-05-15",
+      "work_authorization_status": "Open to Remote / Sponsorship",
+      "references_available_upon_request": true
+    },
+    "technical_skills_competencies": {
+      "programming_languages": [
+        "PHP",
+        "JavaScript",
+        "HTML5",
+        "CSS3"
+      ],
+      "frameworks_libraries": [
+        "Laravel",
+        "React.js",
+        "Tailwind CSS",
+        "Bootstrap"
+      ],
+      "data_structures_algorithms_proficiency": "Intermediate - Proficient in handling complex database logic and optimizing backend performance.",
+      "system_design_experience": "Experience in designing full-stack architectures, specifically focusing on backend/frontend separation, RESTful API integration, and secure payment gateways.",
+      "databases_experience": [
+        "MySQL"
+      ],
+      "cloud_platforms_experience": [],
+      "containerization_experience": [],
+      "ci_cd_experience": [
+        "GitHub Actions",
+        "Netlify/Vercel Deployment"
+      ],
+      "testing_methodologies_experience": [
+        "Unit Testing",
+        "Manual UI/UX Testing"
+      ],
+      "other_tools_technologies": [
+        "REST APIs",
+        "Envato Creative Assets",
+        "Markaz Model Logistics"
+      ],
+      "code_quality_practices": "Focused on writing clean, maintainable code using Laravel best practices and ensuring responsive, pixel-perfect frontend design.",
+      "security_best_practices_knowledge": "Knowledge of Laravel security features, protected routing, and secure API data handling.",
+      "other_technical_details": "Special interest in high-end UI/UX design and building 'ultra-premium' user interfaces."
+    },
+    "experience_portfolio": {
+      "total_years_experience": 2,
+      "relevant_work_experience": [
+        {
+          "company_name": "[Your Current/Last Company]",
+          "title": "Full Stack Developer",
+          "start_date": "2024-01-01",
+          "end_date": "Present",
+          "responsibilities_achievements": "Leading development of scalable web applications using Laravel. Improved system performance and user engagement through responsive UI/UX updates.",
+          "technologies_used": [
+            "Laravel",
+            "PHP",
+            "Tailwind CSS",
+            "JavaScript"
+          ],
+          "industry": "Software Development"
+        }
+      ],
+      "personal_projects_open_source_contributions": [
+        {
+          "project_name": "Cricket Tournament Registration System",
+          "url": "[Link if available]",
+          "description": "A full registration system with payment integration and dynamic counters.",
+          "your_role_impact": "Lead Developer; built the backend logic and integrated the payment gateway."
+        },
+        {
+          "project_name": "JPL Master Command Center",
+          "url": "[Link if available]",
+          "description": "A complex web application requiring precise file structure and backend architecture.",
+          "your_role_impact": "Architected the frontend and backend integration to resolve pathing and scaling issues."
+        }
+      ],
+      "leadership_mentorship_experience": "Experienced in assisting peers with technical documentation and resume optimization."
+    },
+    "problem_solving_analytical_skills": {
+      "problem_solving_approach_example": "Resolved complex Laravel routing and pathing issues in the JPL Command Center project to ensure seamless data flow.",
+      "critical_thinking_example": "Evaluated and implemented Just-in-Time learning to rapidly integrate React.js into existing PHP workflows for better performance.",
+      "adaptability_example": "Quickly transitioned from local development to live deployment on platforms like Netlify while managing backend API connectivity."
+    },
+    "soft_skills_interpersonal_qualities": {
+      "communication_style": "Collaborative and direct. Skilled at translating technical requirements into actionable development plans.",
+      "teamwork_collaboration_example": "Worked closely with clients to deliver 'ultra-premium' UI/UX designs that met specific marketing and branding goals."
+    }
+  }
+}

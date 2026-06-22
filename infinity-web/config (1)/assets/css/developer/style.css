@@ -1,0 +1,12 @@
+body { background: #0f172a; color: white; font-family: system-ui, sans-serif; padding: 2rem; display: flex; justify-content: center; }
+.node { background: #1e293b; width: 350px; border-radius: 12px; overflow: hidden; margin-bottom: 2rem; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.5); position: relative; }
+.hero { height: 120px; }
+.inner { padding: 1.5rem; text-align: center; }
+.inner h1 { margin: 0 0 0.5rem; font-size: 1.5rem; }
+.inner p { color: #94a3b8; font-size: 0.9rem; margin-bottom: 1.5rem; }
+.action-btn { background: #334155; color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; width: 100%; transition: 0.2s; }
+.action-btn:hover { background: #475569; }
+.drawer { display: none; position: absolute; bottom: 6px; left: 0; width: 100%; background: #0f172a; padding: 1.5rem; box-sizing: border-box; border-top: 1px solid #334155; }
+.drawer.open { display: block; }
+.drawer-info { color: #cbd5e1; margin-bottom: 1rem; font-size: 0.9rem; word-break: break-all; }
+.accent { height: 6px; width: 100%; position: absolute; bottom: 0; left: 0; }

@@ -1,0 +1,5 @@
+{
+  "name": "constructor",
+  "args": ["data", "targetId", "env"],
+  "body": "const p = data.props; const html = `<div class='node'><div class='hero' style='background:url(${p.bg}) center/cover'></div><div class='inner'><h1>${p.title}</h1><p>${p.sub}</p><button data-target-drawer='contactDrawer' class='action-btn'>Contact</button></div><div class='drawer' data-drawer-name='contactDrawer'><p class='drawer-info'>Email: ${p.email}</p><button class='close-btn action-btn' data-target-drawer='contactDrawer'>Close</button></div><div class='accent' style='background:${p.color}'></div></div>`; document.getElementById(targetId).insertAdjacentHTML('beforeend', html); env.funcs.listener(targetId); if (data.applicant_profile && env.funcs.profileHydrator) {env.funcs.profileHydrator(data, targetId, env);}"
+}

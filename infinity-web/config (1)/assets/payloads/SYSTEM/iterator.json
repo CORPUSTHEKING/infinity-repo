@@ -1,0 +1,5 @@
+{
+  "name": "iterator",
+  "args": ["path", "env"],
+  "body": "return fetch(`${path}/list.json`).then(r => { if(!r.ok) throw new Error('List index not found'); return r.json(); }).then(list => { list.forEach(async (file) => { try { const data = await fetch(`${path}/${file}`).then(res => { if(!res.ok) throw new Error(`Missing data payload ${file}`); return res.json(); }); const renderer = data.meta.action; if(env.funcs[renderer]) { env.funcs[renderer](data, env.TARGET_NODE, env); } else { console.warn('Missing renderer:', renderer); } } catch(err) { console.error('Iterator child error:', err); } }); }).catch(e => console.error('Iterator core fetch error:', e));"
+}

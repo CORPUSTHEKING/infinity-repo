@@ -1,0 +1,10 @@
+{
+  "meta": { "action": "constructor" },
+  "props": {
+    "title": "MIKE WEBAH",
+    "sub": "Mombasa, Kenya",
+    "email": "corpustheking@gmail.com",
+    "bg": "https://2.gravatar.com/userimage/188737642/4d4b565d8803856d4862cb349eea5546?size=1024",
+    "color": "linear-gradient(90deg, #0f2c85, #8e3070)"
+  }
+}

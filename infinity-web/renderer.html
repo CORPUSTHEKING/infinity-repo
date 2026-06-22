@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <main id="render-area"></main>
+
+  <script>
+    // 1. Get the dynamiccomponent from the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const dynamiccomponent = urlParams.get('component');
+
+    async function loadDynamicPage() {
+      if (!dynamiccomponent) return;
+
+      const renderArea = document.getElementById('render-area');
+
+      try {
+        // 2. Fetch the index.json of the dynamic component
+        // This file contains the list of items to render
+        const response = await fetch(`./config/components/${dynamiccomponent}/index.json`);
+        const items = await response.json();
+
+        for (const item of items) {
+          // 3. Destructure the item to get the uiname
+          // uiname points to the folder containing the UI and Funcs
+          const { uiname } = item;
+          if (!uiname) continue;
+
+          // 4. Fetch the specific UI and Functional files for this item
+          const [htmlRes, jsRes] = await Promise.all([
+            fetch(`./config/ui/${uiname}/index.html`),
+            fetch(`./config/funcs/${uiname}/index.html`)
+          ]);
+
+          let htmlTemplate = await htmlRes.text();
+          const jsLogic = await jsRes.text();
+
+          // 5. Inject item values into the HTML template
+          // Matches {{key}} in your UI files to the JSON item values
+          Object.entries(item).forEach(([key, value]) => {
+            const regex = new RegExp(`{{${key}}}`, 'g');
+            htmlTemplate = htmlTemplate.replace(regex, value);
+          });
+
+          // 6. Inject the HTML into the document
+          renderArea.insertAdjacentHTML('beforeend', htmlTemplate);
+
+          // 7. Inject the Functional logic as a new script
+          const script = document.createElement('script');
+          script.textContent = jsLogic;
+          document.body.appendChild(script);
+        }
+      } catch (err) {
+        console.error("Failed to render component:", err);
+      }
+    }
+
+    // Run the loader
+    loadDynamicPage();
+  </script>
+</body>
+</html>

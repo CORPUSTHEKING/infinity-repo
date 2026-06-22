@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
+<!DOCTYPE html><html lang="en">
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>INFINITY</title>
-  <meta name="description" content="INFINITY's Main Landing Page" />
+  <title>Hire Developers</title>
+  <meta name="description" content="Developer listing page with premium cards that open each developer profile." />
   <style>
     :root {
       --bg: #06101c;
@@ -257,45 +256,41 @@ section { padding: 18px 0; }
   .topbar .inner { flex-direction: column; align-items: flex-start; }
   h1 { font-size: 2.25rem; }
 }
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/panoramic.css"></style>
+  </style>
 </head>
 <body>
   <header class="topbar">
     <div class="wrap inner">
       <div class="brand">
-        <div class="mark">∞</div>
+        <div class="mark">H</div>
         <div>
-          <div>INFINITY</div>
-          <div class="mini">Swift Development</div>
+          <div>Hire Developers</div>
+          <div class="mini">Browse profiles and Get to Pick Your Engineer</div>
         </div>
       </div>
-      <div class="mini">Organizing The Chaos</div>
+      <div class="mini">Full Stack</div>
     </div>
   </header>  <main class="wrap">
     <section class="hero">
       <div class="hero-grid">
         <article class="panel hero-main">
-          <div class="eyebrow"><span class="dot"></span>The Arsenal Is Under Improvement Build</div>
-          <h1>Infinite Tools</h1>
+          <div class="eyebrow"><span class="dot"></span> Choose a developer to load their profile</div>
+          <h1>Developers</h1>
           <p class="subtitle">
-            Welcome to your centralized command center. We've bridged the gap between raw potential and immediate execution, gathering the scattered fragments of the development world into a single, cohesive matrix. Less searching. Swift building.
+            Get in touch to hire our most Proficient designers.
           </p>
           <div class="actions">
-            <a class="btn btn-primary" href="./indexo.html">Dev's Note</a>
-            <a class="btn btn-secondary" href="./index/developer-listing.html">Hire Developers</a>
+            <a class="btn btn-primary" href="#developers">Chose Your Developer</a>
+            <a class="btn btn-secondary" href="../index.html">Back to Infinity</a>
           </div>
         </article><aside class="search-card">
-      <label for="search">Search Scripts</label>
+      <label for="search">Search developers</label>
       <input id="search" type="search" placeholder="Type a name, stack, or location..." />
       <div class="stat-stack">
         <div class="stat-card">
           <strong id="countValue">0</strong>
-          <span>scripts found</span>
+          <span>developers available</span>
         </div>
         <div class="stat-card">
           <strong>1 click</strong>
@@ -306,42 +301,114 @@ section { padding: 18px 0; }
   </div>
 </section>
 
-<section id="scripts">
+<section id="developers">
   <div class="section-head">
     <div>
-      <h2>Executable Architecture:</h2>
-      <p>Remember To Be Cautious . Before Running Any Script Locally, Please Check Its Documentation.</p>
+      <h2>Available developers</h2>
+      <p>Embracing Skill & Talent.</p>
     </div>
   </div>
   <div id="developerGrid" class="grid"></div>
-  <div id="emptyState" class="empty" style="display:none; margin-top:16px;">No Script Templates match your search.</div>
+  <div id="emptyState" class="empty" style="display:none; margin-top:16px;">No developers match your search.</div>
 </section>
 
 <section>
   <div class="footer-cta">
-    <h2>The Script Vault</h2>
-    <p> Why reinvent the wheel when the engine is already forged? Tap into a rapidly expanding repository of downloadable, plug-and-play scripts.</p>
+    <h2>Learn</h2>
+    <p>Coming Soon!! 
+      Guides on Working Around most Common Hurdles of the CLI on Mobile  </p>
   </div>
 </section>
-    <div id="quickrail-target"></div>
-    <div class="inf-loading-screen" style="position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: 9999; display: flex; align-items: center; justify-content: center; font-family: monospace; color: #7c3aed; background: #070b12;">
-        [ INITIALIZING INFINITY CORE... ]
-    </div>
-    <div id="app"></div>
-    <div class="actions">
-            <a class="btn btn-primary" href="./indexo.html?download">See Vault</a>
-            <a class="btn btn-secondary" href="./index/developer-listing.html">Hire Developers</a>
-          </div>    
-    <script>
-        window.addEventListener('load', () => {
-            const loader = document.querySelector('.inf-loading-screen');
-            if (loader) {
-                loader.innerText = "[ SYSTEM READY - EXECUTING ]";
-                loader.style.transition = 'opacity 0.5s ease, filter 0.5s ease';
-                loader.style.opacity = '0';
-                loader.style.filter = 'blur(10px)';
-                setTimeout(() => loader.remove(), 500);
-            }
-        });
-    </script>
-</main>
+
+  </main>  <script>
+    // Edit this roster to match your actual developer folder names.
+    const developers = [
+      {
+        name: 'Muhammad Waseem',
+        slug: 'muhammad-waseem',
+        role: 'Full Stack Developer / Laravel Specialist',
+        location: 'Remote / Faisalabad, Pakistan',
+        stack: ['Laravel', 'React.js', 'Tailwind'],
+        strengths: ['UI/UX', 'APIs', 'Security']
+      },
+      {
+        name: 'Ahsan Ali',
+        slug: 'ahsan-ali',
+        role: 'Frontend Engineer',
+        location: 'Remote',
+        stack: ['React', 'CSS', 'Design Systems'],
+        strengths: ['Design', 'Performance', 'Accessibility']
+      },
+      {
+        name: 'Fatima Khan',
+        slug: 'fatima-khan',
+        role: 'Laravel Backend Developer',
+        location: 'Remote / Pakistan',
+        stack: ['Laravel', 'PHP', 'MySQL'],
+        strengths: ['APIs', 'Databases', 'Auth']
+      }
+    ];
+
+    const grid = document.getElementById('developerGrid');
+    const emptyState = document.getElementById('emptyState');
+    const search = document.getElementById('search');
+    const countValue = document.getElementById('countValue');
+
+    const escapeHtml = (value) => String(value ?? '')
+      .replaceAll('&', '&amp;')
+      .replaceAll('<', '&lt;')
+      .replaceAll('>', '&gt;')
+      .replaceAll('"', '&quot;')
+      .replaceAll("'", '&#39;');
+
+    const initials = (name) => name
+      .split(/\s+/)
+      .filter(Boolean)
+      .slice(0, 2)
+      .map(part => part[0].toUpperCase())
+      .join('');
+
+    const renderCards = (items) => {
+      countValue.textContent = items.length;
+      grid.innerHTML = items.map(dev => {
+        const profileUrl = `./index.html?name=${encodeURIComponent(dev.slug)}`;
+        return `
+          <article class="card">
+            <div class="card-top">
+              <div>
+                <p class="name">${escapeHtml(dev.name)}</p>
+                <p class="role">${escapeHtml(dev.role)}</p>
+              </div>
+              <div class="avatar">${escapeHtml(initials(dev.name))}</div>
+            </div>
+            <p class="mini">${escapeHtml(dev.location)}</p>
+            <div class="pill-row">
+              ${(dev.stack || []).map(item => `<span class="pill">${escapeHtml(item)}</span>`).join('')}
+            </div>
+            <div class="pill-row">
+              ${(dev.strengths || []).map(item => `<span class="pill">${escapeHtml(item)}</span>`).join('')}
+            </div>
+            <div class="actions">
+              <a class="btn btn-primary" href="${profileUrl}">View Profile</a>
+              <a class="btn btn-secondary" href="../config/developer/${encodeURIComponent(dev.slug)}/index.json" target="_blank" rel="noopener">Open JSON</a>
+            </div>
+          </article>
+        `;
+      }).join('');
+
+      emptyState.style.display = items.length ? 'none' : 'block';
+    };
+
+    const applyFilter = () => {
+      const q = search.value.trim().toLowerCase();
+      const filtered = developers.filter(dev => {
+        const hay = [dev.name, dev.slug, dev.role, dev.location, ...(dev.stack || []), ...(dev.strengths || [])].join(' ').toLowerCase();
+        return hay.includes(q);
+      });
+      renderCards(filtered);
+    };
+
+    search.addEventListener('input', applyFilter);
+    renderCards(developers);
+  </script></body>
+</html>

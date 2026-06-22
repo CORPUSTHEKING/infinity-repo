@@ -3,7 +3,7 @@ let cachedManifest = null;
 export async function getManifest() {
   if (cachedManifest) return cachedManifest;
   try {
-    const res = await fetch('./assets/payloads/manifest.json');
+    const res = await fetch('./../../assets/payloads/manifest.json');
     if (!res.ok) throw new Error('Manifest not found');
     cachedManifest = await res.json();
     return cachedManifest;
