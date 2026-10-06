@@ -1,33 +1,45 @@
-let cachedManifest = null;
+import { loadConfig, getCachedConfig } from './config.js';
 
-export async function getManifest() {
-  if (cachedManifest) return cachedManifest;
-  try {
-    const res = await fetch('./../../assets/payloads/manifest.json');
-    if (!res.ok) throw new Error('Manifest not found');
-    cachedManifest = await res.json();
-    return cachedManifest;
-  } catch (err) {
-    console.error('Failed to load script manifest:', err);
-    return []; // Return empty tree on failure
-  }
+function getManifestTree(config) {
+  const manifest = config?.data?.payloadManifest ?? config?.payloadManifest ?? [];
+  return Array.isArray(manifest) ? manifest : [];
 }
 
-export async function searchScripts(query) {
+export async function getManifest() {
+  const config = getCachedConfig() || await loadConfig();
+  return getManifestTree(config);
+}
+
+export async function searchScripts(query = '') {
   const manifest = await getManifest();
+  const q = String(query ?? '').trim().toLowerCase();
+  if (!q) return [];
+
   const results = [];
-  const q = query.toLowerCase();
 
   function traverse(nodes) {
+    if (!Array.isArray(nodes)) return;
+
     for (const node of nodes) {
-      if (node.type === 'file' && node.name.toLowerCase().includes(q)) {
+      if (!node || typeof node !== 'object') continue;
+
+      if (
+        node.type === 'file' &&
+        typeof node.name === 'string' &&
+        node.name.toLowerCase().includes(q)
+      ) {
         results.push(node);
-      } else if (node.type === 'directory' && node.children) {
-        traverse(node.children);
+        continue;
       }
+
+      if (node.type === 'directory') traverse(node.children);
     }
   }
 
   traverse(manifest);
   return results;
+}
+
+export function clearDataCache() {
+  // Configuration/data caching is centrally owned by config.js.
 }
