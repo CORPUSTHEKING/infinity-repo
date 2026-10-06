@@ -1,17 +1,19 @@
-.inf-hero-panoramic {
-  --hero-height: clamp(240px, 30vw, 420px);
-  --back-opacity: 0.95;
-  --mid-opacity: 0.28;
-  --front-opacity: 0.45;
+.inf-hero {
+  width: 100%;
+  margin: 0 0 var(--section-gap);
+}
 
+.inf-hero-panoramic {
+  --hero-height: clamp(260px, 32vw, 430px);
   position: relative;
-  width: 100vw;
-  left: 50%;
-  margin-left: -50vw;
+  width: 100%;
   height: var(--hero-height);
   overflow: hidden;
-  background: #070b12;
   isolation: isolate;
+  border: 1px solid var(--line);
+  border-radius: 30px;
+  background: #070b12;
+  box-shadow: var(--shadow);
   contain: layout paint;
 }
 
@@ -24,19 +26,18 @@
   pointer-events: none;
   backface-visibility: hidden;
   transform: translateZ(0);
-  will-change: background-position;
 }
 
 .inf-hero-layer-back {
   background-image: url('../img/panoramic-bg.jpg');
-  opacity: var(--back-opacity);
+  opacity: 0.95;
   filter: saturate(1.02) contrast(1.03);
   z-index: 1;
 }
 
 .inf-hero-layer-mid {
   background-image: url('../img/panoramic-bg.jpg');
-  opacity: var(--mid-opacity);
+  opacity: 0.28;
   filter: blur(0.8px) saturate(1.08);
   mix-blend-mode: screen;
   z-index: 2;
@@ -44,7 +45,7 @@
 
 .inf-hero-layer-front {
   background-image: url('../img/panoramic-bg.jpg');
-  opacity: var(--front-opacity);
+  opacity: 0.45;
   filter: brightness(1.06) saturate(1.08);
   z-index: 3;
 }
@@ -52,15 +53,11 @@
 .inf-hero-vignette {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to right,
-    rgba(7, 11, 18, 1) 0%,
-    rgba(7, 11, 18, 0.28) 15%,
-    rgba(7, 11, 18, 0.28) 85%,
-    rgba(7, 11, 18, 1) 100%
-  );
-  pointer-events: none;
   z-index: 4;
+  background:
+    linear-gradient(to right, rgba(7, 11, 18, 1) 0%, rgba(7, 11, 18, 0.28) 15%, rgba(7, 11, 18, 0.28) 85%, rgba(7, 11, 18, 1) 100%),
+    linear-gradient(180deg, rgba(5,11,20,0.2), rgba(5,11,20,0.58));
+  pointer-events: none;
 }
 
 .inf-hero-panoramic .pan-text-floating {
@@ -69,28 +66,58 @@
   right: 0;
   bottom: 10%;
   z-index: 5;
+  max-width: 72ch;
+  margin: 0 auto;
+  padding: 0 20px;
+  color: var(--accent2);
   text-align: center;
-  padding: 0 1rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  text-shadow: 0 0 12px rgba(0,0,0,0.85);
+  pointer-events: none;
 }
 
-@media (max-width: 768px) {
+.inf-hero-panoramic .pan-text-floating small {
+  display: block;
+  margin-top: 8px;
+  color: var(--soft);
+  opacity: 0.78;
+}
+
+.inf-hero-main {
+  position: relative;
+  overflow: hidden;
+  padding: 34px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background:
+    radial-gradient(circle at 15% 15%, rgba(201, 162, 39, 0.17), transparent 24%),
+    radial-gradient(circle at 82% 12%, rgba(143, 211, 255, 0.16), transparent 18%),
+    linear-gradient(135deg, rgba(255,255,255,0.04), transparent 35%),
+    linear-gradient(180deg, rgba(18, 32, 55, 0.84), rgba(7, 16, 29, 0.92));
+  box-shadow: var(--shadow);
+}
+
+.inf-hero-main::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.04), transparent 38%);
+  pointer-events: none;
+}
+
+@media (max-width: 640px) {
   .inf-hero-panoramic {
-    --hero-height: 260px;
+    --hero-height: 280px;
+    border-radius: 24px;
   }
 
-  .inf-hero-layer {
-    inset: -4% -12%;
-    background-size: auto 108%;
-  }
-
-  .inf-hero-panoramic .pan-text-floating {
-    bottom: 8%;
+  .inf-hero-main {
+    padding: 20px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .inf-hero-layer {
-    will-change: auto;
     transform: none;
   }
 }

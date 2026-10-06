@@ -1,35 +1,88 @@
 .inf-brandbar {
   position: fixed;
-  top: 0.85rem;
-  left: 1rem;
-  right: 1rem;
-  z-index: 60;
+  top: 12px;
+  left: 50%;
+  width: min(calc(100% - 32px), var(--max));
+  min-height: var(--header-height);
+  transform: translateX(-50%);
+  z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 16px;
+  padding: 10px 12px;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 22px;
+  background: rgba(4, 10, 19, 0.76);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  box-shadow: 0 18px 44px rgba(0,0,0,0.26);
 }
 
 .inf-logo-wrapper {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  background: transparent;
+  gap: 12px;
+  min-width: 0;
+  padding: 0;
 }
 
 .inf-symbol {
-  font-size: 2.8rem;
-  font-weight: 800;
-  color: #0000ff;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(201, 162, 39, 0.95), rgba(143, 211, 255, 0.9));
+  color: #07111f;
+  font-size: 1.75rem;
+  font-weight: 900;
   line-height: 1;
 }
 
-.inf-menu-btn {
-  background: transparent;
-  border: none;
+.inf-brand-name {
+  min-width: 0;
   color: var(--text);
-  font-size: 1.1rem;
-  font-weight: 600;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
+  font-size: 0.98rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.inf-menu-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 15px;
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.04);
+  color: var(--text);
+  font-size: 0.9rem;
+  font-weight: 700;
   text-transform: lowercase;
+  transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.inf-menu-btn:hover {
+  transform: translateY(-1px);
+  border-color: rgba(201,162,39,0.35);
+  background: rgba(201,162,39,0.08);
+}
+
+@media (max-width: 640px) {
+  .inf-brandbar {
+    top: 8px;
+    width: min(calc(100% - 20px), var(--max));
+    min-height: 60px;
+    border-radius: 20px;
+  }
+
+  .inf-brand-name {
+    display: none;
+  }
 }

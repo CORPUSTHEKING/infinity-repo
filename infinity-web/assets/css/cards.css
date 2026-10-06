@@ -1,41 +1,37 @@
 .inf-cards-rail {
   display: flex;
-  gap: 1rem;
+  gap: 16px;
   overflow-x: auto;
   overflow-y: hidden;
-  padding: 0.25rem 0.25rem 0.9rem;
+  padding: 2px 2px 10px;
   scroll-snap-type: x mandatory;
-  scroll-padding-inline: 1rem;
+  scroll-padding-inline: 16px;
   -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
 }
 
 .inf-cards-rail::-webkit-scrollbar {
-  height: 10px;
+  height: 8px;
 }
 
 .inf-cards-rail::-webkit-scrollbar-thumb {
-  background: rgba(148, 163, 184, 0.22);
+  background: rgba(255,255,255,0.14);
   border-radius: 999px;
 }
 
 .inf-card {
-  flex: 0 0 min(82vw, 340px);
+  flex: 0 0 min(82vw, 360px);
   scroll-snap-align: start;
-  border-radius: 22px;
-  border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.03);
-  padding: 1rem;
-  transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
 .inf-card.is-expanded {
-  transform: scale(1.01);
-  border-color: rgba(56, 189, 248, 0.4);
+  transform: translateY(-2px);
+  border-color: rgba(201, 162, 39, 0.42);
 }
 
 .inf-card-head {
   display: grid;
-  gap: 0.25rem;
+  gap: 4px;
 }
 
 .inf-card-author {
@@ -45,15 +41,15 @@
 
 .inf-card-title {
   margin: 0;
-  font-size: 1.1rem;
+  font-size: 1.08rem;
 }
 
 .inf-card-body {
   text-align: left;
   border-radius: 18px;
-  padding: 0.9rem;
+  padding: 14px;
   background: rgba(255, 255, 255, 0.03);
-  border: 1px solid transparent;
+  border: 1px solid rgba(255,255,255,0.06);
 }
 
 .inf-card-body p {
@@ -63,13 +59,13 @@
 
 .inf-card-foot {
   display: grid;
-  gap: 0.75rem;
+  gap: 12px;
 }
 
 .inf-card-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
+  gap: 6px 10px;
   color: var(--muted);
   font-size: 0.85rem;
 }
@@ -77,28 +73,8 @@
 .inf-card-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 8px;
 }
-
-.inf-card-deps {
-  margin: 0;
-  white-space: pre-wrap;
-  color: #cbd5e1;
-  font-size: 0.85rem;
-}
-
-.inf-download-item,
-.inf-result,
-.inf-tile {
-  border-radius: 22px;
-  border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.03);
-  padding: 1rem;
-}
-
-/* ==========================================================================
-   INTERACTION STATES & ICONS (Appended via Infinity Automation)
-   ========================================================================== */
 
 .inf-card-actions button {
   display: inline-flex;
@@ -107,17 +83,18 @@
   width: 40px;
   height: 40px;
   padding: 0;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--line);
-  color: #cbd5e1;
-  cursor: pointer;
-  transition: all 0.2s ease;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.04);
+  color: var(--soft);
+  transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
 }
 
 .inf-card-actions button:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: #ffffff;
+  transform: translateY(-1px);
+  background: rgba(201,162,39,0.08);
+  border-color: rgba(201,162,39,0.32);
+  color: #fff;
 }
 
 .inf-card-actions button svg {
@@ -126,16 +103,31 @@
   fill: currentColor;
 }
 
-@keyframes spin { to { transform: rotate(360deg); } }
+.inf-card-deps {
+  margin: 0;
+  white-space: pre-wrap;
+  color: var(--soft);
+  font-size: 0.85rem;
+}
+
+.inf-download-item,
+.inf-result,
+.inf-tile {
+  padding: 18px;
+}
+
+@keyframes inf-spin {
+  to { transform: rotate(360deg); }
+}
 
 .btn-loading {
   position: relative !important;
   pointer-events: none;
-  color: transparent !important; 
+  color: transparent !important;
 }
 
 .btn-loading svg {
-  opacity: 0; 
+  opacity: 0;
 }
 
 .btn-loading::after {
@@ -145,10 +137,9 @@
   height: 1.2rem;
   top: 50%;
   left: 50%;
-  margin-top: -0.6rem;
-  margin-left: -0.6rem;
-  border: 2px solid #888;
-  border-top-color: #ffffff;
+  margin: -0.6rem 0 0 -0.6rem;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: var(--accent2);
   border-radius: 50%;
-  animation: spin 0.6s linear infinite;
+  animation: inf-spin 0.65s linear infinite;
 }

@@ -1,16 +1,34 @@
 :root {
   color-scheme: dark;
-  --bg: #070b12;
-  --bg-2: #0d1420;
-  --panel: rgba(15, 23, 42, 0.74);
-  --panel-strong: rgba(18, 26, 39, 0.94);
-  --line: rgba(148, 163, 184, 0.18);
-  --text: #e5e7eb;
-  --muted: #94a3b8;
-  --accent: #7c3aed;
-  --accent-2: #22c55e;
-  --accent-3: #38bdf8;
-  --shadow: 0 22px 70px rgba(0, 0, 0, 0.38);
+
+  --bg: #06101c;
+  --bg2: #0b1728;
+  --card: rgba(11, 22, 39, 0.78);
+  --line: rgba(255, 255, 255, 0.09);
+  --text: #eef4ff;
+  --muted: #a9b7d0;
+  --soft: #d6dff0;
+  --accent: #c9a227;
+  --accent2: #8fd3ff;
+  --good: #65d6a7;
+  --shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
   --radius: 24px;
-  --radius-lg: 34px;
+  --max: 1180px;
+
+  --header-height: 72px;
+  --dock-height: 72px;
+  --content-gap: clamp(18px, 3vw, 32px);
+  --section-gap: clamp(28px, 5vw, 52px);
+  --page-bottom-space: 7.75rem;
+  --sidebar-width: min(86vw, 340px);
+  --sidebar-bg: rgba(5, 12, 21, 0.97);
+  --sidebar-border: rgba(255, 255, 255, 0.08);
+  --sidebar-overlay: rgba(0, 0, 0, 0.52);
+
+  /* Compatibility aliases for existing Infinity components/pages. */
+  --bg-2: var(--bg2);
+  --panel: var(--card);
+  --panel-strong: rgba(18, 32, 55, 0.94);
+  --accent-2: var(--accent2);
+  --accent-3: var(--accent2);
 }

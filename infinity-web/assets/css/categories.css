@@ -1,29 +1,30 @@
 .inf-summary {
-  margin: 0 1rem 1rem;
-  padding: 1rem;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--line);
-  background: rgba(15, 23, 42, 0.68);
-  box-shadow: var(--shadow);
+  width: 100%;
+  margin: 0 0 var(--section-gap);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
 .inf-summary-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 0.8rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
 }
 
 .inf-summary-card {
-  padding: 0.95rem 1rem;
-  border-radius: 20px;
+  padding: 18px;
   border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.03);
+  border-radius: 20px;
+  background: linear-gradient(180deg, rgba(18, 32, 55, 0.84), rgba(7, 16, 29, 0.9));
+  box-shadow: var(--shadow);
 }
 
 .inf-summary-card strong {
   display: block;
-  font-size: 1.4rem;
-  margin-bottom: 0.2rem;
+  margin-bottom: 4px;
+  font-size: 1.6rem;
 }
 
 .inf-summary-card span {
@@ -33,41 +34,44 @@
 
 .inf-categories {
   display: grid;
-  gap: 1rem;
+  gap: 18px;
 }
 
 .inf-category {
   display: grid;
-  gap: 0.5rem;
-  padding: 0;
-  background: transparent;
-  border: none;
+  gap: 10px;
+  width: 100%;
 }
 
 .inf-category-head {
   display: flex;
   align-items: baseline;
-  gap: 1rem;
   flex-wrap: wrap;
-  padding: 0 0.5rem;
+  gap: 10px 14px;
 }
 
 .inf-category-head h2 {
   margin: 0;
-  font-size: 1.1rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
+  font-size: 1.25rem;
 }
 
 .inf-category-head span {
   color: var(--muted);
-  font-size: 0.85rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
 .inf-category-desc {
-  margin: 0 0 0.5rem 0.5rem;
+  margin: 0;
   color: var(--muted);
-  font-size: 0.9rem;
-  line-height: 1.4;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 720px) {
+  .inf-summary-grid {
+    grid-template-columns: 1fr;
+  }
 }

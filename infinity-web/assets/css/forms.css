@@ -1,58 +1,58 @@
 .inf-form {
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
-  margin-top: 1rem;
+  gap: 18px;
+  width: 100%;
+  margin: 0;
+}
+
+.inf-form-group {
+  display: grid;
+  gap: 8px;
+}
+
+.inf-form-group label {
+  color: var(--muted);
+  font-size: 0.88rem;
+  font-weight: 700;
 }
 
 .inf-form-group input,
-.inf-form-group textarea {
+.inf-form-group textarea,
+.inf-form-group select {
   width: 100%;
-  padding: 1rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--line);
+  padding: 14px 16px;
+  border: 1px solid rgba(255,255,255,0.09);
   border-radius: 16px;
+  background: rgba(255,255,255,0.04);
   color: var(--text);
-  font-family: inherit;
-  font-size: 1rem;
-  transition: border-color 0.2s ease, background 0.2s ease;
+  outline: none;
+  font: inherit;
+  transition: border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
+}
+
+.inf-form-group input::placeholder,
+.inf-form-group textarea::placeholder {
+  color: #8091ad;
 }
 
 .inf-form-group input:focus,
-.inf-form-group textarea:focus {
-  outline: none;
-  border-color: var(--accent);
-  background: rgba(255, 255, 255, 0.08);
+.inf-form-group textarea:focus,
+.inf-form-group select:focus {
+  border-color: rgba(201,162,39,0.5);
+  background: rgba(255,255,255,0.06);
+  box-shadow: 0 0 0 3px rgba(201,162,39,0.08);
 }
 
 .inf-btn-primary {
-  background: var(--accent);
-  color: #fff;
-  border: none;
-  padding: 1rem 2rem;
-  border-radius: 999px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: opacity 0.2s ease, transform 0.1s ease;
   align-self: flex-start;
 }
 
-.inf-btn-primary:hover {
-  opacity: 0.9;
-}
-
-.inf-btn-primary:active {
-  transform: scale(0.98);
-}
-
 .inf-loading {
-  color: var(--muted);
-  font-style: italic;
-  animation: pulse 1.5s infinite;
+  animation: inf-pulse 1.5s infinite;
 }
 
-@keyframes pulse {
-  0%, 100% { opacity: 0.6; }
+@keyframes inf-pulse {
+  0%, 100% { opacity: 0.65; }
   50% { opacity: 1; }
 }

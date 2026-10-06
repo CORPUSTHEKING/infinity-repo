@@ -1,183 +1,272 @@
-/* =========================
-   SHELL (GLOBAL WRAPPER)
-========================= */
-
 .inf-shell {
+  width: min(calc(100% - 32px), var(--max));
   min-height: 100vh;
-
-  /* Adaptive horizontal padding */
-  padding-left: clamp(0.75rem, 3vw, 2rem);
-  padding-right: clamp(0.75rem, 3vw, 2rem);
-
-  /* Keep bottom bar space */
-  padding-bottom: 8.5rem;
-
-  /* Prevent accidental side overflow */
-  box-sizing: border-box;
+  margin: 0 auto;
+  padding-top: calc(var(--header-height) + 18px);
+  padding-bottom: var(--page-bottom-space);
 }
 
-
-/* =========================
-   MAIN CONTENT AREA
-========================= */
-
 .inf-main {
-  padding: 0;
-
-  /* center content nicely on wide screens */
-  max-width: 1100px;
+  width: 100%;
+  max-width: var(--max);
   margin: 0 auto;
 }
 
-
-/* =========================
-   PAGE BLOCKS (FLAT SYSTEM)
-   NO BOXES, NO VERTICAL BORDERS
-========================= */
-
 .inf-page {
   display: grid;
-  gap: clamp(0.75rem, 2vw, 1.25rem);
-
-  margin-bottom: clamp(1rem, 3vw, 1.5rem);
-
-  /* NO BOXING */
-  padding: 0;
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  border-radius: 0;
-
-  /* ONLY HORIZONTAL SEPARATION */
-  border-bottom: 1px solid var(--line);
-
-  /* adaptive vertical rhythm */
-  padding-bottom: clamp(0.75rem, 2vw, 1.25rem);
+  gap: var(--content-gap);
+  width: 100%;
+  margin: 0 0 var(--section-gap);
 }
-
-
-/* =========================
-   OPTIONAL: SECTION SPACING HELPERS
-========================= */
 
 .inf-section {
-  padding-left: clamp(0.25rem, 1vw, 0.75rem);
-  padding-right: clamp(0.25rem, 1vw, 0.75rem);
-
-  border: none; /* ensures no vertical lines anywhere */
+  width: 100%;
+  margin: 0;
+  padding: 18px 0;
 }
 
-/* Curved Bottom Bar */
-u0_a191@localhost:~/INFINITY/infinity-web$ cat assets/css/layout.css
-/* =========================
-   SHELL (GLOBAL WRAPPER)
-========================= */
-
-.inf-shell {
-  min-height: 100vh;
-
-  /* Adaptive horizontal padding */
-  padding-left: clamp(0.75rem, 3vw, 2rem);
-  padding-right: clamp(0.75rem, 3vw, 2rem);
-
-  /* Keep bottom bar space */
-  padding-bottom: 8.5rem;
-
-  /* Prevent accidental side overflow */
-  box-sizing: border-box;
+.inf-panel,
+.inf-card-shell,
+.inf-search-card,
+.inf-stat-card,
+.inf-tile,
+.inf-result,
+.inf-download-item {
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(18, 32, 55, 0.84), rgba(7, 16, 29, 0.9));
+  box-shadow: var(--shadow);
+  border-radius: var(--radius);
+  overflow: hidden;
 }
 
-
-/* =========================
-   MAIN CONTENT AREA
-========================= */
-
-.inf-main {
-  padding: 0;
-
-  /* center content nicely on wide screens */
-  max-width: 1100px;
-  margin: 0 auto;
+.inf-panel {
+  padding: 28px;
 }
 
+.inf-section-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+}
 
-/* =========================
-   PAGE BLOCKS (FLAT SYSTEM)
-   NO BOXES, NO VERTICAL BORDERS
-========================= */
+.inf-section-head h2 {
+  margin: 0;
+}
 
-.inf-page {
+.inf-section-head p {
+  max-width: 70ch;
+  margin: 0;
+  color: var(--muted);
+}
+
+.inf-grid {
   display: grid;
-  gap: clamp(0.75rem, 2vw, 1.25rem);
-
-  margin-bottom: clamp(1rem, 3vw, 1.5rem);
-
-  /* NO BOXING */
-  padding: 0;
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  border-radius: 0;
-
-  /* ONLY HORIZONTAL SEPARATION */
-  border-bottom: 1px solid var(--line);
-
-  /* adaptive vertical rhythm */
-  padding-bottom: clamp(0.75rem, 2vw, 1.25rem);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
 }
 
-
-/* =========================
-   OPTIONAL: SECTION SPACING HELPERS
-========================= */
-
-.inf-section {
-  padding-left: clamp(0.25rem, 1vw, 0.75rem);
-  padding-right: clamp(0.25rem, 1vw, 0.75rem);
-
-  border: none; /* ensures no vertical lines anywhere */
+.inf-card {
+  padding: 20px;
+  background: linear-gradient(180deg, rgba(18, 32, 55, 0.84), rgba(7, 16, 29, 0.9));
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
 }
 
-/* Curved Bottom Bar */
-/* =========================
-   ULTIMATE FLOATING DOCK BAR
-   (Searchbar + iOS dock hybrid)
-========================= */
+.inf-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(201, 162, 39, 0.35);
+  background: linear-gradient(180deg, rgba(19, 36, 61, 0.94), rgba(7, 16, 29, 0.94));
+}
+
+.inf-card-top {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.inf-name,
+.inf-card-title {
+  margin: 0;
+  font-size: 1.08rem;
+  font-weight: 800;
+}
+
+.inf-role {
+  margin: 4px 0 0;
+  color: var(--soft);
+  font-size: 0.95rem;
+}
+
+.inf-avatar {
+  width: 56px;
+  height: 56px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(201, 162, 39, 0.95), rgba(143, 211, 255, 0.9));
+  color: #07111f;
+  font-weight: 900;
+}
+
+.inf-pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.inf-pill {
+  padding: 6px 10px;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.05);
+  color: var(--soft);
+  font-size: 0.82rem;
+}
+
+.inf-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.inf-btn,
+.inf-btn-primary,
+.inf-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 11px 14px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.92rem;
+  border: 1px solid transparent;
+  transition: transform 180ms ease, opacity 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+
+.inf-btn-primary {
+  background: linear-gradient(135deg, #d2b45c, #b78c16);
+  color: #08111c;
+}
+
+.inf-btn-secondary,
+.inf-btn {
+  background: rgba(255,255,255,0.04);
+  color: var(--text);
+  border-color: rgba(255,255,255,0.08);
+}
+
+.inf-btn:hover,
+.inf-btn-primary:hover,
+.inf-btn-secondary:hover {
+  transform: translateY(-1px);
+}
+
+.inf-empty,
+.inf-loading,
+.inf-error {
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(255,255,255,0.04);
+  color: var(--soft);
+}
+
+.inf-footer-cta {
+  margin: 24px 0 56px;
+  padding: 28px;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 28px;
+  background:
+    linear-gradient(135deg, rgba(201, 162, 39, 0.16), rgba(143, 211, 255, 0.1)),
+    linear-gradient(180deg, rgba(15, 30, 52, 0.96), rgba(7, 15, 26, 0.96));
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.inf-footer-cta h2 {
+  margin: 0 0 10px;
+}
+
+.inf-footer-cta p {
+  max-width: 70ch;
+  margin: 0 auto 18px;
+  color: var(--soft);
+}
+
+@media (max-width: 980px) {
+  .inf-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .inf-section-head {
+    align-items: start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 640px) {
+  .inf-shell {
+    width: min(calc(100% - 20px), var(--max));
+    padding-top: calc(var(--header-height) + 12px);
+  }
+
+  .inf-panel,
+  .inf-card,
+  .inf-footer-cta {
+    padding: 18px;
+  }
+}
+
+/* ============================================================
+   INFINITY PREMIUM FLOATING BOTTOM BAR
+   Preserves the existing .inf-bottombar.curved contract.
+   ============================================================ */
 
 .inf-bottombar.curved {
   position: fixed;
-  bottom: 1rem;
   left: 50%;
+  bottom: 1rem;
   transform: translateX(-50%);
 
-  width: min(92%, 680px);
+  width: min(92vw, 680px);
 
   z-index: 999;
 
-  /* GLASS CORE */
-  background: rgba(20, 20, 20, 0.68);
-  backdrop-filter: blur(26px) saturate(180%);
-  -webkit-backdrop-filter: blur(26px) saturate(180%);
+  display: block;
 
-  /* FULL SEARCHBAR SHAPE */
-  border-radius: 999px;
-
-  /* SUBTLE DEFINITION */
-  border: 1px solid rgba(255, 255, 255, 0.08);
-
-  /* DEPTH STACK */
-  box-shadow:
-    0 14px 40px rgba(0, 0, 0, 0.40),
-    0 2px 10px rgba(0, 0, 0, 0.25);
-
-  /* SPACING */
   padding: 0.55rem 0.7rem;
 
-  /* MOTION BASELINE */
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(11, 22, 39, 0.88),
+      rgba(6, 16, 29, 0.86)
+    );
+
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.42),
+    0 8px 24px rgba(0, 0, 0, 0.22);
+
+  backdrop-filter: blur(24px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%);
+
   transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease,
-    background 0.25s ease;
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    background 220ms ease,
+    border-color 220ms ease;
 }
 
 .inf-bottombar-inner {
@@ -185,48 +274,75 @@ u0_a191@localhost:~/INFINITY/infinity-web$ cat assets/css/layout.css
   align-items: center;
   justify-content: space-between;
 
-  gap: 0.25rem;
-
+  width: 100%;
   max-width: 100%;
+
+  gap: 0.25rem;
 }
 
 .inf-bottombar.curved a {
-  flex: 1;
+  flex: 1 1 0;
+
+  min-width: 0;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
   text-align: center;
 
-  font-size: 0.9rem;
-  font-weight: 600;
+  padding: 0.62rem 0.75rem;
 
-  color: rgba(255, 255, 255, 0.65);
-
-  padding: 0.55rem 0.75rem;
-
+  border: 1px solid transparent;
   border-radius: 999px;
 
+  color: rgba(238, 244, 255, 0.68);
+
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.2;
+
+  white-space: nowrap;
+
   transition:
-    background 0.2s ease,
-    color 0.2s ease,
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
+    background 180ms ease,
+    color 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease,
+    box-shadow 180ms ease;
 }
 
-/* hover = lift + glow */
 .inf-bottombar.curved a:hover {
-  background: rgba(255, 255, 255, 0.08);
-  color: rgba(255, 255, 255, 0.95);
+  color: var(--text);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(201, 162, 39, 0.12),
+      rgba(143, 211, 255, 0.08)
+    );
+
+  border-color: rgba(201, 162, 39, 0.18);
+
   transform: translateY(-1px);
 }
 
-/* active route */
 .inf-bottombar.curved a.active {
-  background: rgba(255, 255, 255, 0.12);
-  color: #fff;
+  color: #07111f;
 
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  background:
+    linear-gradient(
+      135deg,
+      #d2b45c,
+      #b78c16
+    );
+
+  border-color: rgba(255, 255, 255, 0.16);
+
+  box-shadow:
+    0 6px 18px rgba(201, 162, 39, 0.18);
 }
 
-/* press feedback */
 .inf-bottombar.curved a:active {
   transform: scale(0.96);
 }
@@ -235,14 +351,35 @@ u0_a191@localhost:~/INFINITY/infinity-web$ cat assets/css/layout.css
   transform: translateX(-50%) translateY(-5px);
 
   box-shadow:
-    0 22px 60px rgba(0, 0, 0, 0.55),
-    0 6px 18px rgba(0, 0, 0, 0.30);
+    0 28px 70px rgba(0, 0, 0, 0.52),
+    0 10px 28px rgba(0, 0, 0, 0.28);
 }
 
-@media (max-width: 480px) {
+/* Keep page content above the fixed dock. */
+.inf-shell {
+  padding-bottom: 8rem;
+}
+
+@media (max-width: 640px) {
   .inf-bottombar.curved {
-    width: calc(100% - 1rem);
+    width: calc(100vw - 1rem);
     bottom: 0.75rem;
     padding: 0.5rem;
+  }
+
+  .inf-bottombar.curved a {
+    padding: 0.6rem 0.45rem;
+    font-size: 0.82rem;
+  }
+
+  .inf-shell {
+    padding-bottom: 7rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .inf-bottombar.curved,
+  .inf-bottombar.curved a {
+    transition: none;
   }
 }

@@ -25,6 +25,15 @@ const ROUTES = Object.freeze({
     }
   },
 
+  home: {
+    async load() {
+      return import('../pages/assistance.js');
+    },
+    render(module, ui) {
+      ui.setPageContent(module.renderAssistancePage());
+    }
+  },
+  
   assistance: {
     async load() {
       return import('../pages/assistance.js');
