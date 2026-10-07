@@ -1,54 +1,23 @@
-@import url("./vendor/github-markdown.css");
-
-/*
- * Infinity documentation rendering layer.
- *
- * github-markdown.css owns the Markdown visual language.
- * This file owns the Infinity documentation shell and
- * containment only.
- */
-
-.inf-doc-viewer,
-.inf-doc-viewer *,
-.inf-doc-status,
-.inf-doc-status * {
-    box-sizing: border-box;
-}
-
-/*
- * Documentation page shell.
- */
+/* Infinity integration layer for github-markdown-css. */
 
 .inf-doc-viewer {
-    display: block;
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-    margin: 0;
-    padding: clamp(0.75rem, 2vw, 1.5rem);
+    width: min(100%, var(--max, 1180px));
+    margin-inline: auto;
+    padding: clamp(1rem, 2vw, 2rem);
 }
 
-/*
- * Documentation header.
- */
-
-.inf-doc-viewer .inf-doc-header {
+.inf-doc-header {
     display: flex;
-    width: 100%;
-    max-width: 1100px;
-    min-width: 0;
-    margin: 0 auto 1rem;
-
     align-items: center;
     justify-content: space-between;
-
     gap: 1rem;
+
+    width: min(100%, 980px);
+    margin: 0 auto 1rem;
 }
 
 .inf-doc-back {
     display: inline-flex;
-    flex: 0 0 auto;
-
     align-items: center;
     gap: 0.45rem;
 
@@ -68,38 +37,44 @@
 }
 
 .inf-doc-title {
-    min-width: 0;
-    max-width: 100%;
     margin: 0;
 
     color: var(--text, #eef4ff);
 
     font-size: clamp(1rem, 2vw, 1.3rem);
     font-weight: 800;
-
-    overflow-wrap: anywhere;
 }
 
-/*
- * Markdown surface.
- *
- * GitHub Markdown CSS owns the typography and Markdown
- * element styling inside this container.
- */
+.inf-doc-status {
+    width: min(100%, 980px);
 
-.inf-doc-viewer > .markdown-body {
-    display: block;
+    margin: 0 auto;
+    padding: 2rem;
 
-    width: 100%;
-    max-width: 1100px;
-    min-width: 0;
+    border: 1px solid
+        var(--line, rgba(255, 255, 255, 0.09));
+
+    border-radius:
+        var(--radius, 24px);
+
+    background:
+        var(--card, rgba(11, 22, 39, 0.78));
+
+    color: var(--text, #eef4ff);
+}
+
+.inf-doc-viewer .markdown-body {
+    box-sizing: border-box;
+
+    min-width: 200px;
+    max-width: 980px;
 
     margin: 0 auto;
 
-    padding: clamp(1rem, 3vw, 2.5rem);
+    padding:
+        clamp(1.25rem, 4vw, 2.8rem);
 
-    border:
-        1px solid
+    border: 1px solid
         var(--line, rgba(255, 255, 255, 0.09));
 
     border-radius:
@@ -110,222 +85,62 @@
 
     color: inherit;
 
-    overflow: hidden;
-    overflow-wrap: anywhere;
-
     box-shadow:
-        0 24px 60px
-        rgba(0, 0, 0, 0.20);
+        0 24px 60px rgba(0, 0, 0, 0.2);
 }
-
-/*
- * Direct Markdown children must remain contained.
- */
-
-.inf-doc-viewer .markdown-body > * {
-    max-width: 100%;
-    min-width: 0;
-}
-
-/*
- * Long text and links must not create page-wide overflow.
- */
-
-.inf-doc-viewer .markdown-body a {
-    overflow-wrap: anywhere;
-    word-break: break-word;
-}
-
-/*
- * Inline code may wrap when necessary.
- */
-
-.inf-doc-viewer .markdown-body code {
-    overflow-wrap: anywhere;
-    word-break: break-word;
-}
-
-/*
- * Fenced code blocks keep their own horizontal scrolling
- * region rather than expanding the documentation page.
- *
- * GitHub Markdown retains ownership of code typography.
- */
 
 .inf-doc-viewer .markdown-body pre {
-    display: block;
-
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-
-    margin-inline: 0;
-
     overflow-x: auto;
-    overflow-y: hidden;
-
-    white-space: pre;
-
-    -webkit-overflow-scrolling: touch;
 }
 
-.inf-doc-viewer .markdown-body pre code {
-    display: block;
-
-    width: max-content;
-    min-width: 100%;
-    max-width: none;
-
-    overflow-wrap: normal;
-    word-break: normal;
-    white-space: pre;
+.inf-doc-viewer .markdown-body code,
+.inf-doc-viewer .markdown-body pre {
+    font-family:
+        "Space Mono",
+        ui-monospace,
+        SFMono-Regular,
+        Menlo,
+        Monaco,
+        Consolas,
+        "Liberation Mono",
+        monospace;
 }
-
-/*
- * Wide tables receive their own horizontal scrolling region.
- */
 
 .inf-doc-viewer .markdown-body table {
     display: block;
 
-    width: max-content;
-    max-width: 100%;
-    min-width: 0;
+    width: 100%;
 
     overflow-x: auto;
-    overflow-y: hidden;
-
-    -webkit-overflow-scrolling: touch;
 }
 
-/*
- * Table cells may wrap long content without changing the
- * GitHub Markdown table structure.
- */
-
-.inf-doc-viewer .markdown-body table th,
-.inf-doc-viewer .markdown-body table td {
-    overflow-wrap: anywhere;
-}
-
-/*
- * Media cannot exceed the Markdown surface.
- */
-
-.inf-doc-viewer .markdown-body img,
-.inf-doc-viewer .markdown-body video,
-.inf-doc-viewer .markdown-body svg,
-.inf-doc-viewer .markdown-body canvas {
-    display: block;
-
+.inf-doc-viewer .markdown-body img {
     max-width: 100%;
     height: auto;
 }
 
-.inf-doc-viewer .markdown-body img {
-    object-fit: contain;
-}
-
-/*
- * GitHub-style alert blocks.
- *
- * These are structural containment rules only; GitHub
- * Markdown CSS remains responsible for their appearance.
- */
-
-.inf-doc-viewer .markdown-body .markdown-alert {
-    max-width: 100%;
+.inf-doc-viewer .markdown-body a {
     overflow-wrap: anywhere;
 }
 
-.inf-doc-viewer .markdown-body .markdown-alert-title {
-    display: flex;
-
-    align-items: center;
-
-    min-width: 0;
-    max-width: 100%;
+.inf-doc-viewer
+.markdown-body
+input[type="checkbox"] {
+    margin-right: 0.4rem;
 }
-
-/*
- * HTML generated from Markdown must remain inside the
- * documentation surface.
- */
-
-.inf-doc-viewer .markdown-body section,
-.inf-doc-viewer .markdown-body div {
-    max-width: 100%;
-    min-width: 0;
-}
-
-/*
- * Infinity shell containment.
- */
-
-.inf-main,
-.inf-page,
-.inf-doc-viewer,
-.inf-doc-viewer .markdown-body {
-    min-width: 0;
-    max-width: 100%;
-}
-
-/*
- * Documentation status/error surface.
- */
-
-.inf-doc-status {
-    width: min(100%, 1100px);
-    min-width: 0;
-
-    margin: 0 auto;
-    padding: 2rem;
-
-    border:
-        1px solid
-        var(--line, rgba(255, 255, 255, 0.09));
-
-    border-radius:
-        var(--radius, 24px);
-
-    background:
-        var(--card, rgba(11, 22, 39, 0.78));
-
-    color:
-        var(--text, #eef4ff);
-}
-
-/*
- * Mobile documentation layout.
- */
 
 @media (max-width: 767px) {
     .inf-doc-viewer {
-        padding: 0.5rem;
+        padding: 0.75rem;
     }
 
-    .inf-doc-viewer .inf-doc-header {
-        flex-wrap: wrap;
-        align-items: flex-start;
-
-        margin-bottom: 0.75rem;
-    }
-
-    .inf-doc-title {
+    .inf-doc-header,
+    .inf-doc-viewer .markdown-body {
         width: 100%;
-        order: 2;
     }
 
-    .inf-doc-viewer > .markdown-body {
+    .inf-doc-viewer .markdown-body {
         padding: 1rem;
         border-radius: 18px;
-    }
-
-    .inf-doc-viewer .markdown-body pre {
-        margin-inline: 0;
-    }
-
-    .inf-doc-viewer .markdown-body table {
-        font-size: 0.9em;
     }
 }
