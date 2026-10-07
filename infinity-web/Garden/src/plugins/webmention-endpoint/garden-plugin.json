@@ -1,0 +1,28 @@
+{
+  "id": "webmention-endpoint",
+  "name": "Webmention Endpoint",
+  "version": "1.1.0",
+  "description": "Receive webmentions on your Digital Garden without editing its template.",
+  "author": "Ian Henderson",
+  "slots": {
+    "common.head": "templates/endpoint.njk"
+  },
+  "settings": [
+    {
+      "key": "domain",
+      "name": "Webmention.io account domain",
+      "description": "Domain you log in to webmention.io with. Can differ from this garden's domain.",
+      "type": "text",
+      "default": "",
+      "env": "WEBMENTION_ENDPOINT_DOMAIN"
+    },
+    {
+      "key": "relMe",
+      "name": "Sign-in profile URL (optional)",
+      "description": "Only needed if this garden is the domain you sign in to webmention.io with. Your GitHub, GitLab or Codeberg profile URL; that profile must link back to this garden. Leave empty if you sign in with another site.",
+      "type": "text",
+      "default": "",
+      "env": "WEBMENTION_ENDPOINT_REL_ME"
+    }
+  ]
+}
