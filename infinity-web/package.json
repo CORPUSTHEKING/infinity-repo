@@ -1,0 +1,11 @@
+{
+  "name": "infinity-terminal-helpers",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "node tools/build.mjs",
+    "build:manifest": "node tools/generate-manifest.mjs",
+    "manifest": "node tools/generate-manifest.mjs"
+  }
+}

@@ -1,4 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
-cd "$(dirname "$0")/.."
-node tools/generate-scripts-manifest.mjs
+
+ROOT_DIR="$(
+  cd -- "$(dirname -- "$0")/.." &&
+  pwd
+)"
+
+cd "$ROOT_DIR"
+
+exec node tools/build.mjs

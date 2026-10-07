@@ -2,6 +2,8 @@
   {
     "type": "directory",
     "name": "CONSTANTS_CAUTION",
+    "path": "CONSTANTS_CAUTION",
+    "category": "CONSTANTS_CAUTION",
     "children": [
       {
         "type": "file",
@@ -9,7 +11,16 @@
         "name": "colors.conf",
         "path": "CONSTANTS_CAUTION/colors.conf",
         "size": 41879,
-        "modified": "2026-04-09T15:41:58.000Z"
+        "modified": "2026-10-06T13:03:05.485Z",
+        "sha256": "9c339839d8ac3f61032a691dbc51b06f67a11cd0f513d0ea5cebdfe627dc00a4",
+        "category": "CONSTANTS_CAUTION",
+        "categoryPath": "CONSTANTS_CAUTION",
+        "description": "> Summary: A sourceable Bash color-constant catalogue defining named colors as hexadecimal values, RGB triplets, ANSI foreground/background escape strings, approximate ANSI 256-color indexes, alpha values, and declared…",
+        "summary": "> Summary: A sourceable Bash color-constant catalogue defining named colors as hexadecimal values, RGB triplets, ANSI foreground/background escape strings, approximate ANSI 256-color indexes, alpha values, and declared…",
+        "pageUrl": "#docs?id=colors",
+        "docPath": "assets/docs/colors.md",
+        "hasDocumentation": true,
+        "documentationTitle": "Script Documentation"
       },
       {
         "type": "file",
@@ -17,7 +28,16 @@
         "name": "env.global",
         "path": "CONSTANTS_CAUTION/env.global",
         "size": 1295,
-        "modified": "2026-04-09T15:40:54.000Z"
+        "modified": "2026-10-06T13:03:05.497Z",
+        "sha256": "924c62dbcd64e97d09acb1820169fa9cd040cacb9443733acfa615ec831498ba",
+        "category": "CONSTANTS_CAUTION",
+        "categoryPath": "CONSTANTS_CAUTION",
+        "description": "Global Termux Environment — CONSTANTS_CAUTION/env.global",
+        "summary": "Global Termux Environment — CONSTANTS_CAUTION/env.global",
+        "pageUrl": "#docs?id=env",
+        "docPath": "assets/docs/env.md",
+        "hasDocumentation": true,
+        "documentationTitle": "Script Documentation"
       },
       {
         "type": "file",
@@ -25,13 +45,24 @@
         "name": "logging.conf",
         "path": "CONSTANTS_CAUTION/logging.conf",
         "size": 1213,
-        "modified": "2026-04-09T15:40:22.000Z"
+        "modified": "2026-10-06T13:03:05.501Z",
+        "sha256": "f79166c1dbae34123be2388a9601450e874d3fe6f0685850a2b365f08025a760",
+        "category": "CONSTANTS_CAUTION",
+        "categoryPath": "CONSTANTS_CAUTION",
+        "description": "Global Logging Configuration — CONSTANTS_CAUTION/logging.conf",
+        "summary": "Global Logging Configuration — CONSTANTS_CAUTION/logging.conf",
+        "pageUrl": "#docs?id=logging",
+        "docPath": "assets/docs/logging.md",
+        "hasDocumentation": true,
+        "documentationTitle": "Script Documentation"
       }
     ]
   },
   {
     "type": "directory",
     "name": "DIRECTORIES",
+    "path": "DIRECTORIES",
+    "category": "DIRECTORIES",
     "children": [
       {
         "type": "file",
@@ -39,13 +70,24 @@
         "name": "daudit",
         "path": "DIRECTORIES/daudit",
         "size": 676,
-        "modified": "2026-04-09T15:02:56.000Z"
+        "modified": "2026-10-06T13:03:05.509Z",
+        "sha256": "6e044741d70702e6542a79285bf54d6e194f5d767479a36b8bc37dc208fc0085",
+        "category": "DIRECTORIES",
+        "categoryPath": "DIRECTORIES",
+        "description": "Line / fragment Reason Description",
+        "summary": "Line / fragment Reason Description",
+        "pageUrl": "#docs?id=daudit",
+        "docPath": "assets/docs/daudit.md",
+        "hasDocumentation": true,
+        "documentationTitle": "Directory Auditor (daudit)"
       }
     ]
   },
   {
     "type": "directory",
     "name": "FILEOPS",
+    "path": "FILEOPS",
+    "category": "FILEOPS",
     "children": [
       {
         "type": "file",
@@ -53,7 +95,16 @@
         "name": "append",
         "path": "FILEOPS/append",
         "size": 975,
-        "modified": "2026-04-09T15:35:50.000Z"
+        "modified": "2026-10-06T13:03:05.513Z",
+        "sha256": "ee67a6c6a56129a8ba608203a5bb1f1d6ddb7b62d5108b808e084ccde3a8f599",
+        "category": "FILEOPS",
+        "categoryPath": "FILEOPS",
+        "description": "A strict append-confirmation Bash script. It takes a source file and destination file from arguments or environment, shows a review prompt, requires typed confirmation, verifies the source exists, then appends the…",
+        "summary": "A strict append-confirmation Bash script. It takes a source file and destination file from arguments or environment, shows a review prompt, requires typed confirmation, verifies the source exists, then appends the…",
+        "pageUrl": "#docs?id=append",
+        "docPath": "assets/docs/append.md",
+        "hasDocumentation": true,
+        "documentationTitle": "Append Tool"
       },
       {
         "type": "file",
@@ -61,7 +112,16 @@
         "name": "catappend",
         "path": "FILEOPS/catappend",
         "size": 815,
-        "modified": "2026-04-09T15:35:04.000Z"
+        "modified": "2026-10-06T13:03:05.517Z",
+        "sha256": "f3bd92f0e405cf64513581d6e8152e1ff2a192860440124d57b4a29bb921a9d3",
+        "category": "FILEOPS",
+        "categoryPath": "FILEOPS",
+        "description": "A shell script that appends text to a chosen file. It gets the target from the first argument, falls back to a file picker or manual input, then appends everything typed from standard input into that file.",
+        "summary": "A shell script that appends text to a chosen file. It gets the target from the first argument, falls back to a file picker or manual input, then appends everything typed from standard input into that file.",
+        "pageUrl": "#docs?id=catappend",
+        "docPath": "assets/docs/catappend.md",
+        "hasDocumentation": true,
+        "documentationTitle": "Cat-Append"
       },
       {
         "type": "file",
@@ -69,7 +129,16 @@
         "name": "faudit",
         "path": "FILEOPS/faudit",
         "size": 915,
-        "modified": "2026-04-09T15:02:56.000Z"
+        "modified": "2026-10-06T13:03:05.529Z",
+        "sha256": "4dfb301edca43c2e7e62bb37887adb662deecf9b2dc8076ad2dc35029a02cc05",
+        "category": "FILEOPS",
+        "categoryPath": "FILEOPS",
+        "description": "Line / fragment Reason Description",
+        "summary": "Line / fragment Reason Description",
+        "pageUrl": "#docs?id=faudit",
+        "docPath": "assets/docs/faudit.md",
+        "hasDocumentation": true,
+        "documentationTitle": "File Auditor (faudit)"
       },
       {
         "type": "file",
@@ -77,13 +146,49 @@
         "name": "termux-shell",
         "path": "FILEOPS/termux-shell",
         "size": 813,
-        "modified": "2026-04-09T15:02:56.000Z"
+        "modified": "2026-10-06T13:03:05.541Z",
+        "sha256": "01df72a9a3401326194a14584e70542d24046a7c63c6931c455f510b63ec73fc",
+        "category": "FILEOPS",
+        "categoryPath": "FILEOPS",
+        "description": "Line / fragment Reason Description",
+        "summary": "Line / fragment Reason Description",
+        "pageUrl": "#docs?id=termux-shell",
+        "docPath": "assets/docs/termux-shell.md",
+        "hasDocumentation": true,
+        "documentationTitle": "Termux Shell Environment"
+      }
+    ]
+  },
+  {
+    "type": "directory",
+    "name": "PYTHON",
+    "path": "PYTHON",
+    "category": "PYTHON",
+    "children": [
+      {
+        "type": "file",
+        "id": "tables.hardcoded",
+        "name": "tables.hardcoded.py",
+        "path": "PYTHON/tables.hardcoded.py",
+        "size": 5298,
+        "modified": "2026-10-06T13:03:05.381Z",
+        "sha256": "1dd8ee573801d12c826ba57189408a406b12005c3080487af7bcd580df5e08db",
+        "category": "PYTHON",
+        "categoryPath": "PYTHON",
+        "description": "Hardcoded Markdown Table Converter — tables.hardcoded.py",
+        "summary": "Hardcoded Markdown Table Converter — tables.hardcoded.py",
+        "pageUrl": "#docs?id=tables.hardcoded",
+        "docPath": "assets/docs/tables.hardcoded.md",
+        "hasDocumentation": true,
+        "documentationTitle": "Script Documentation"
       }
     ]
   },
   {
     "type": "directory",
     "name": "SYSTEM",
+    "path": "SYSTEM",
+    "category": "SYSTEM",
     "children": [
       {
         "type": "file",
@@ -91,7 +196,16 @@
         "name": "regfind",
         "path": "SYSTEM/regfind",
         "size": 350,
-        "modified": "2026-04-09T15:02:56.000Z"
+        "modified": "2026-10-06T13:03:05.545Z",
+        "sha256": "0f727b1e9148219e8bb4f713e0da2b5971afc29bfaba091a647de405cd43b7cf",
+        "category": "SYSTEM",
+        "categoryPath": "SYSTEM",
+        "description": "Recursive Regex Finder — SYSTEM/regfind",
+        "summary": "Recursive Regex Finder — SYSTEM/regfind",
+        "pageUrl": "#docs?id=regfind",
+        "docPath": "assets/docs/regfind.md",
+        "hasDocumentation": true,
+        "documentationTitle": "Regex Finder"
       },
       {
         "type": "file",
@@ -99,13 +213,24 @@
         "name": "startuplog",
         "path": "SYSTEM/startuplog",
         "size": 946,
-        "modified": "2026-04-09T15:02:56.000Z"
+        "modified": "2026-10-06T13:03:05.553Z",
+        "sha256": "8cb3d832bf910c9e1b7ec020bf2adef164f0269cf709d4dd382a0b2335dedc71",
+        "category": "SYSTEM",
+        "categoryPath": "SYSTEM",
+        "description": "Shell Startup Audit Logger — SYSTEM/startuplog",
+        "summary": "Shell Startup Audit Logger — SYSTEM/startuplog",
+        "pageUrl": "#docs?id=startuplog",
+        "docPath": "assets/docs/startuplog.md",
+        "hasDocumentation": true,
+        "documentationTitle": "Script Documentation"
       }
     ]
   },
   {
     "type": "directory",
     "name": "TEMPLATES",
+    "path": "TEMPLATES",
+    "category": "TEMPLATES",
     "children": [
       {
         "type": "file",
@@ -113,17 +238,18 @@
         "name": "renamd",
         "path": "TEMPLATES/renamd",
         "size": 279,
-        "modified": "2026-04-09T15:02:56.000Z"
+        "modified": "2026-10-06T13:03:05.561Z",
+        "sha256": "be30dbbd4c964f5edd65d502d510218943cb7a0373db4eacd6643084de9ac9ab",
+        "category": "TEMPLATES",
+        "categoryPath": "TEMPLATES",
+        "description": "Batch Rename to Markdown — TEMPLATES/renamd",
+        "summary": "Batch Rename to Markdown — TEMPLATES/renamd",
+        "pageUrl": "#docs?id=renamd",
+        "docPath": "assets/docs/renamd.md",
+        "hasDocumentation": true,
+        "documentationTitle": "Script Documentation"
       }
     ]
-  },
-  {
-    "type": "file",
-    "id": "docs-manifest",
-    "name": "docs-manifest.json",
-    "path": "docs-manifest.json",
-    "size": 890,
-    "modified": "2026-04-09T15:02:56.000Z"
   },
   {
     "type": "file",
@@ -131,6 +257,15 @@
     "name": "download-mirror.sh",
     "path": "download-mirror.sh",
     "size": 0,
-    "modified": "2026-04-09T15:02:56.000Z"
+    "modified": "2026-10-06T13:03:05.589Z",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "category": "download-mirror.sh",
+    "categoryPath": "download-mirror.sh",
+    "description": "Download Mirror Script — download-mirror.sh",
+    "summary": "Download Mirror Script — download-mirror.sh",
+    "pageUrl": "#docs?id=download-mirror",
+    "docPath": "assets/docs/download-mirror.md",
+    "hasDocumentation": true,
+    "documentationTitle": "Script Documentation"
   }
 ]
