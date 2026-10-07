@@ -42,7 +42,7 @@ p {
 }
 
 strong {
-  color: #fff;
+  color: yellow;
   font-weight: 800;
 }
 
@@ -73,3 +73,49 @@ small,
   background: var(--good);
   box-shadow: 0 0 0 6px rgba(101, 214, 167, 0.13);
 }
+
+.cm-strong, strong {
+    color: yellow !important;
+}
+
+.cm-em, em {
+    color: cyan !important;
+}
+
+/* --- Heading 1 --- */
+/* .cm-header-1, h1 { color: #006400 !important; } */
+
+/* --- Heading 2 --- */
+/* .cm-header-2, h2 { color: #228B22 !important; } */
+
+/* --- Heading 3 --- */
+/* .cm-header-3, h3 { color: #2E8B57 !important; } */
+
+/* --- Heading 4 --- */
+/* .cm-header-4, h4 { color: #3CB371 !important; } */
+
+/* --- Heading 5 --- */
+/* --- .cm-header-5, h5 { color: #66CDAA !important; } --- */
+
+/* --- Heading 6 --- */
+/* .cm-header-6, h6 { color: #90EE90 !important; } */
+
+/* --- Distinct Heading Colors --- */
+
+/* H1: Deep Navy/Royal Blue */
+.cm-header-1, h1 { color: #00008B !important; }
+
+/* H2: Vibrant Red */
+.cm-header-2, h2 { color: limegreen !important; }
+
+/* H3: Bright Orange */
+.cm-header-3, h3 { color: #FF8C00 !important; }
+
+/* H4: Purple/Violet */
+.cm-header-4, h4 { color: #8A2BE2 !important; }
+
+/* H5: Teal/Cyan */
+.cm-header-5, h5 { color: #008080 !important; }
+
+/* H6: Dark Gray */
+.cm-header-6, h6 { color: #4F4F4F !important; }
