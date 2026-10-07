@@ -1,0 +1,146 @@
+/* Infinity integration layer for github-markdown-css. */
+
+.inf-doc-viewer {
+    width: min(100%, var(--max, 1180px));
+    margin-inline: auto;
+    padding: clamp(1rem, 2vw, 2rem);
+}
+
+.inf-doc-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+
+    width: min(100%, 980px);
+    margin: 0 auto 1rem;
+}
+
+.inf-doc-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+
+    color: var(--primary, #8fd3ff);
+
+    text-decoration: none;
+
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.inf-doc-back:hover,
+.inf-doc-back:focus-visible {
+    text-decoration: underline;
+}
+
+.inf-doc-title {
+    margin: 0;
+
+    color: var(--text, #eef4ff);
+
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    font-weight: 800;
+}
+
+.inf-doc-status {
+    width: min(100%, 980px);
+
+    margin: 0 auto;
+    padding: 2rem;
+
+    border: 1px solid
+        var(--line, rgba(255, 255, 255, 0.09));
+
+    border-radius:
+        var(--radius, 24px);
+
+    background:
+        var(--card, rgba(11, 22, 39, 0.78));
+
+    color: var(--text, #eef4ff);
+}
+
+.inf-doc-viewer .markdown-body {
+    box-sizing: border-box;
+
+    min-width: 200px;
+    max-width: 980px;
+
+    margin: 0 auto;
+
+    padding:
+        clamp(1.25rem, 4vw, 2.8rem);
+
+    border: 1px solid
+        var(--line, rgba(255, 255, 255, 0.09));
+
+    border-radius:
+        var(--radius, 24px);
+
+    background:
+        var(--card, rgba(11, 22, 39, 0.9));
+
+    color: inherit;
+
+    box-shadow:
+        0 24px 60px rgba(0, 0, 0, 0.2);
+}
+
+.inf-doc-viewer .markdown-body pre {
+    overflow-x: auto;
+}
+
+.inf-doc-viewer .markdown-body code,
+.inf-doc-viewer .markdown-body pre {
+    font-family:
+        "Space Mono",
+        ui-monospace,
+        SFMono-Regular,
+        Menlo,
+        Monaco,
+        Consolas,
+        "Liberation Mono",
+        monospace;
+}
+
+.inf-doc-viewer .markdown-body table {
+    display: block;
+
+    width: 100%;
+
+    overflow-x: auto;
+}
+
+.inf-doc-viewer .markdown-body img {
+    max-width: 100%;
+    height: auto;
+}
+
+.inf-doc-viewer .markdown-body a {
+    overflow-wrap: anywhere;
+}
+
+.inf-doc-viewer
+.markdown-body
+input[type="checkbox"] {
+    margin-right: 0.4rem;
+}
+
+@media (max-width: 767px) {
+    .inf-doc-viewer {
+        padding: 0.75rem;
+    }
+
+    .inf-doc-header,
+    .inf-doc-viewer .markdown-body {
+        width: 100%;
+    }
+
+    .inf-doc-viewer .markdown-body {
+        padding: 1rem;
+        border-radius: 18px;
+    }
+}

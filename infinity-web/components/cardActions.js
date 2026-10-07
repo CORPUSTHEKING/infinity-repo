@@ -9,429 +9,474 @@
  */
 
 function normalizeHashTarget(value) {
-  const raw =
-    String(value ?? '').trim();
+    const raw =
+        String(value ?? '').trim();
 
-  if (!raw) {
-    return null;
-  }
+    if (!raw) {
+        return null;
+    }
 
-  if (raw.startsWith('#')) {
-    return raw;
-  }
+    if (raw.startsWith('#')) {
+        return raw;
+    }
 
-  if (
-    /^(?:javascript|data|vbscript):/i.test(
-      raw
-    )
-  ) {
-    return null;
-  }
+    if (
+        /^(?:javascript|data|vbscript):/i.test(
+            raw
+        )
+    ) {
+        return null;
+    }
 
-  return `#${raw.replace(/^#+/, '')}`;
+    return `#${raw.replace(/^#+/, '')}`;
 }
 
 function safeRelativePath(value) {
-  const raw =
-    String(value ?? '')
-      .replace(/\\/g, '/')
-      .trim();
+    const raw =
+        String(value ?? '')
+            .replace(/\\/g, '/')
+            .trim();
 
-  if (
-    !raw ||
-    raw.startsWith('/') ||
-    raw.includes('\0')
-  ) {
-    return null;
-  }
+    if (
+        !raw ||
+        raw.startsWith('/') ||
+        raw.includes('\0')
+    ) {
+        return null;
+    }
 
-  const parts =
-    raw.split('/').filter(Boolean);
+    const parts =
+        raw
+            .split('/')
+            .filter(Boolean);
 
-  if (
-    parts.some(
-      (part) =>
-        part === '.' ||
-        part === '..' ||
-        part.includes(':')
-    )
-  ) {
-    return null;
-  }
+    if (
+        parts.some(
+            (part) =>
+                part === '.' ||
+                part === '..' ||
+                part.includes(':')
+        )
+    ) {
+        return null;
+    }
 
-  return parts.join('/');
+    return parts.join('/');
 }
 
 function encodePathSegments(value) {
-  const safePath =
-    safeRelativePath(value);
+    const safePath =
+        safeRelativePath(value);
 
-  if (!safePath) {
-    return null;
-  }
+    if (!safePath) {
+        return null;
+    }
 
-  return safePath
-    .split('/')
-    .map((segment) =>
-      encodeURIComponent(segment)
-    )
-    .join('/');
+    return safePath
+        .split('/')
+        .map((segment) =>
+            encodeURIComponent(segment)
+        )
+        .join('/');
 }
 
 function triggerVisualFeedback(
-  button,
-  state
-) {
-  const previousTimer =
-    state.loadingTimers.get(
-      button
-    );
-
-  if (previousTimer) {
-    clearTimeout(
-      previousTimer
-    );
-  }
-
-  button.classList.add(
-    'btn-loading'
-  );
-
-  const timer =
-    window.setTimeout(() => {
-      button.classList.remove(
-        'btn-loading'
-      );
-
-      state.loadingTimers.delete(
-        button
-      );
-    }, 800);
-
-  state.loadingTimers.set(
     button,
-    timer
-  );
+    state
+) {
+    const previousTimer =
+        state.loadingTimers.get(
+            button
+        );
+
+    if (previousTimer) {
+        clearTimeout(
+            previousTimer
+        );
+    }
+
+    button.classList.add(
+        'btn-loading'
+    );
+
+    const timer =
+        window.setTimeout(() => {
+            button.classList.remove(
+                'btn-loading'
+            );
+
+            state.loadingTimers.delete(
+                button
+            );
+        }, 800);
+
+    state.loadingTimers.set(
+        button,
+        timer
+    );
 }
 
 function navigateToHash(
-  target
+    target
 ) {
-  const hash =
-    normalizeHashTarget(target);
+    const hash =
+        normalizeHashTarget(target);
 
-  if (
-    !hash ||
-    typeof window === 'undefined' ||
-    !window.location
-  ) {
-    return false;
-  }
+    if (
+        !hash ||
+        typeof window === 'undefined' ||
+        !window.location
+    ) {
+        return false;
+    }
 
-  window.location.hash =
-    hash.slice(1);
+    window.location.hash =
+        hash.slice(1);
 
-  return true;
+    return true;
+}
+
+function defaultDocumentationHash(
+    itemId
+) {
+    const rawId =
+        String(itemId ?? '').trim();
+
+    if (!rawId) {
+        return null;
+    }
+
+    if (
+        /^(?:javascript|data|vbscript):/i.test(
+            rawId
+        )
+    ) {
+        return null;
+    }
+
+    return `#docs?id=${encodeURIComponent(
+        rawId
+    )}`;
 }
 
 export function bindCardActions(
-  root,
-  handlers = {}
+    root,
+    handlers = {}
 ) {
-  if (
-    !root ||
-    typeof root.addEventListener !==
-      'function'
-  ) {
-    return () => {};
-  }
-
-  const state = {
-    loadingTimers: new Map()
-  };
-
-  const onClick = (event) => {
-    const target =
-      event.target;
-
-    if (!(target instanceof Element)) {
-      return;
-    }
-
-    const expandButton =
-      target.closest(
-        '[data-script-expand]'
-      );
-
-    const actionButton =
-      target.closest(
-        '[data-action]'
-      );
-
-    const card =
-      target.closest(
-        '[data-script-card]'
-      );
-
     if (
-      !card ||
-      !root.contains(card)
+        !root ||
+        typeof root.addEventListener !==
+            'function'
     ) {
-      return;
+        return () => {};
     }
 
-    const itemId =
-      card.getAttribute(
-        'data-script-id'
-      ) || '';
+    const state = {
+        loadingTimers: new Map()
+    };
 
-    if (expandButton) {
-      if (
-        expandButton.hasAttribute(
-          'disabled'
-        )
-      ) {
-        return;
-      }
-
-      const docUrl =
-        expandButton.getAttribute(
-          'data-doc-url'
-        );
-
-      if (
-        typeof handlers.onExpand ===
-          'function'
-      ) {
-        const result =
-          handlers.onExpand(
-            itemId,
-            card,
-            docUrl
-          );
+    const onClick = (event) => {
+        const target =
+            event.target;
 
         if (
-          result === true ||
-          result === false
+            typeof Element === 'undefined' ||
+            !(target instanceof Element)
         ) {
-          return;
+            return;
         }
-      }
 
-      if (docUrl) {
-        navigateToHash(
-          docUrl
+        const expandButton =
+            target.closest(
+                '[data-script-expand]'
+            );
+
+        const actionButton =
+            target.closest(
+                '[data-action]'
+            );
+
+        const card =
+            target.closest(
+                '[data-script-card]'
+            );
+
+        if (
+            !card ||
+            !root.contains(card)
+        ) {
+            return;
+        }
+
+        const itemId =
+            card.getAttribute(
+                'data-script-id'
+            ) || '';
+
+        if (expandButton) {
+            if (
+                expandButton.hasAttribute(
+                    'disabled'
+                )
+            ) {
+                return;
+            }
+
+            const docUrl =
+                expandButton.getAttribute(
+                    'data-doc-url'
+                );
+
+            if (
+                typeof handlers.onExpand ===
+                    'function'
+            ) {
+                const result =
+                    handlers.onExpand(
+                        itemId,
+                        card,
+                        docUrl
+                    );
+
+                /*
+                 * Preserve the existing contract:
+                 * an explicit boolean result tells this
+                 * component that the handler has decided
+                 * what should happen.
+                 */
+                if (
+                    result === true ||
+                    result === false
+                ) {
+                    return;
+                }
+            }
+
+            /*
+             * Preserve data-doc-url support.
+             * When it is not present, use the canonical
+             * generated documentation route.
+             */
+            const target =
+                docUrl ||
+                defaultDocumentationHash(
+                    itemId
+                );
+
+            if (target) {
+                navigateToHash(
+                    target
+                );
+            }
+
+            return;
+        }
+
+        if (!actionButton) {
+            return;
+        }
+
+        const action =
+            actionButton.getAttribute(
+                'data-action'
+            ) || '';
+
+        triggerVisualFeedback(
+            actionButton,
+            state
         );
-      }
 
-      return;
-    }
+        if (
+            typeof handlers.onAction ===
+                'function'
+        ) {
+            handlers.onAction(
+                action,
+                itemId,
+                card
+            );
+        }
+    };
 
-    if (!actionButton) {
-      return;
-    }
-
-    const action =
-      actionButton.getAttribute(
-        'data-action'
-      ) || '';
-
-    triggerVisualFeedback(
-      actionButton,
-      state
+    root.addEventListener(
+        'click',
+        onClick
     );
 
-    if (
-      typeof handlers.onAction ===
-        'function'
-    ) {
-      handlers.onAction(
-        action,
-        itemId,
-        card
-      );
-    }
-  };
+    return () => {
+        root.removeEventListener(
+            'click',
+            onClick
+        );
 
-  root.addEventListener(
-    'click',
-    onClick
-  );
+        for (
+            const timer of
+                state.loadingTimers.values()
+        ) {
+            clearTimeout(timer);
+        }
 
-  return () => {
-    root.removeEventListener(
-      'click',
-      onClick
-    );
-
-    for (
-      const timer of
-        state.loadingTimers.values()
-    ) {
-      clearTimeout(timer);
-    }
-
-    state.loadingTimers.clear();
-  };
+        state.loadingTimers.clear();
+    };
 }
 
 export function handleDownload(
-  itemNode,
-  siteConfig = {}
+    itemNode,
+    siteConfig = {}
 ) {
-  if (
-    !itemNode ||
-    itemNode.type ===
-      'directory'
-  ) {
-    console.error(
-      '[Infinity] Download failed: a regular file item is required.'
-    );
+    if (
+        !itemNode ||
+        itemNode.type ===
+            'directory'
+    ) {
+        console.error(
+            '[Infinity] Download failed: a regular file item is required.'
+        );
 
-    return false;
-  }
+        return false;
+    }
 
-  const encodedPath =
-    encodePathSegments(
-      itemNode.path
-    );
+    const encodedPath =
+        encodePathSegments(
+            itemNode.path
+        );
 
-  if (!encodedPath) {
-    console.error(
-      '[Infinity] Download failed: invalid payload path.'
-    );
+    if (!encodedPath) {
+        console.error(
+            '[Infinity] Download failed: invalid payload path.'
+        );
 
-    return false;
-  }
+        return false;
+    }
 
-  let payloadBase =
-    String(
-      siteConfig?.payloadBase ||
-      siteConfig?.paths?.payloads ||
-      'assets/payloads'
-    ).trim();
+    let payloadBase =
+        String(
+            siteConfig?.payloadBase ||
+            siteConfig?.paths?.payloads ||
+            'assets/payloads'
+        ).trim();
 
-  if (
-    !payloadBase ||
-    payloadBase.startsWith('//') ||
-    /^[a-z][a-z0-9+.-]*:/i.test(
-      payloadBase
-    )
-  ) {
+    if (
+        !payloadBase ||
+        payloadBase.startsWith('//') ||
+        /^[a-z][a-z0-9+.-]*:/i.test(
+            payloadBase
+        )
+    ) {
+        payloadBase =
+            'assets/payloads';
+    }
+
     payloadBase =
-      'assets/payloads';
-  }
+        payloadBase.replace(
+            /^\/+|\/+$/g,
+            ''
+        );
 
-  payloadBase =
-    payloadBase.replace(
-      /^\/+|\/+$/g,
-      ''
+    const downloadUrl =
+        new URL(
+            `${payloadBase}/${encodedPath}`,
+            document.baseURI
+        ).href;
+
+    const link =
+        document.createElement(
+            'a'
+        );
+
+    link.href =
+        downloadUrl;
+
+    link.download =
+        String(
+            itemNode.name ||
+            itemNode.id ||
+            'download'
+        );
+
+    link.rel =
+        'noopener';
+
+    link.style.display =
+        'none';
+
+    document.body.appendChild(
+        link
     );
 
-  const downloadUrl =
-    new URL(
-      `${payloadBase}/${encodedPath}`,
-      document.baseURI
-    ).href;
+    try {
+        link.click();
 
-  const link =
-    document.createElement(
-      'a'
-    );
+        console.log(
+            `[Infinity] Triggered download: ${downloadUrl}`
+        );
 
-  link.href =
-    downloadUrl;
-
-  link.download =
-    String(
-      itemNode.name ||
-      itemNode.id ||
-      'download'
-    );
-
-  link.rel =
-    'noopener';
-
-  link.style.display =
-    'none';
-
-  document.body.appendChild(
-    link
-  );
-
-  try {
-    link.click();
-
-    console.log(
-      `[Infinity] Triggered download: ${downloadUrl}`
-    );
-
-    return true;
-  } finally {
-    link.remove();
-  }
+        return true;
+    } finally {
+        link.remove();
+    }
 }
 
 export function handleDirectoryDownload(
-  itemNode,
-  siteConfig = {}
+    itemNode,
+    siteConfig = {}
 ) {
-  if (
-    !itemNode ||
-    itemNode.type !==
-      'directory'
-  ) {
-    return false;
-  }
+    if (
+        !itemNode ||
+        itemNode.type !==
+            'directory'
+    ) {
+        return false;
+    }
 
-  const encodedPath =
-    encodePathSegments(
-      itemNode.path
+    const encodedPath =
+        encodePathSegments(
+            itemNode.path
+        );
+
+    if (!encodedPath) {
+        console.error(
+            '[Infinity] Directory download failed: invalid payload path.'
+        );
+
+        return false;
+    }
+
+    const repoUrl =
+        String(
+            siteConfig?.repoUrl ||
+            'https://github.com/CORPUSTHEKING/infinity'
+        ).replace(
+            /\/+$/,
+            ''
+        );
+
+    const branch =
+        encodeURIComponent(
+            String(
+                siteConfig?.branch ||
+                'main'
+            )
+        );
+
+    const githubUrl =
+        `${repoUrl}/tree/${branch}/infinity-web/assets/payloads/${encodedPath}`;
+
+    const confirmed =
+        window.confirm(
+            `Directory: "${itemNode.name || 'Unnamed'}"\n\n` +
+            'Browsers cannot natively download folders. Open the directory on GitHub?'
+        );
+
+    if (!confirmed) {
+        return false;
+    }
+
+    window.open(
+        githubUrl,
+        '_blank',
+        'noopener,noreferrer'
     );
 
-  if (!encodedPath) {
-    console.error(
-      '[Infinity] Directory download failed: invalid payload path.'
-    );
-
-    return false;
-  }
-
-  const repoUrl =
-    String(
-      siteConfig?.repoUrl ||
-      'https://github.com/CORPUSTHEKING/infinity'
-    ).replace(
-      /\/+$/,
-      ''
-    );
-
-  const branch =
-    encodeURIComponent(
-      String(
-        siteConfig?.branch ||
-        'main'
-      )
-    );
-
-  const githubUrl =
-    `${repoUrl}/tree/${branch}/infinity-web/assets/payloads/${encodedPath}`;
-
-  const confirmed =
-    window.confirm(
-      `Directory: "${itemNode.name || 'Unnamed'}"\n\n` +
-      'Browsers cannot natively download folders. Open the directory on GitHub?'
-    );
-
-  if (!confirmed) {
-    return false;
-  }
-
-  window.open(
-    githubUrl,
-    '_blank',
-    'noopener,noreferrer'
-  );
-
-  return true;
+    return true;
 }
