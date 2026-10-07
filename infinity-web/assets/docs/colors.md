@@ -16,7 +16,7 @@ CLR_AZURE_BG
 CLR_AZURE_256
 CLR_AZURE_ALPHA
 CLR_AZURE_CONTRAST
-
+```
 instead of embedding color literals and terminal escape sequences throughout individual scripts.
 
 The file is configuration data expressed as shell variable assignments rather than an executable workflow.
@@ -82,11 +82,11 @@ Spaces and punctuation in human-readable names are represented through underscor
 
 The primary color value is represented as a six-digit hexadecimal triplet:
 
-#RRGGBB
+`#RRGGBB`
 
 Example:
 
-#007FFF
+`#007FFF`
 
 The file does not encode alpha into the hexadecimal value.
 
@@ -110,7 +110,7 @@ The _FG representation follows the ANSI SGR true-color convention:
 
 Example:
 
-\e[38;2;0;127;255m
+`\e[38;2;0;127;255m`
 
 5.4 ANSI true-color background
 
