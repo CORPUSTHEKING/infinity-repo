@@ -12,6 +12,21 @@
         "infinity-web/Garden/src/plugins/analytics/garden-plugin.json",
         "infinity-web/Garden/src/plugins/analytics/templates/snippet.njk"
       ]
+    },
+    "webmention-endpoint": {
+      "repo": "bodster7/garden-plugin-webmention-endpoint",
+      "installedVersion": "1.1.0",
+      "installedRef": "v1.1.0",
+      "installedAt": "2026-10-07T19:12:12.465Z",
+      "enabled": true,
+      "files": [
+        "infinity-web/Garden/src/plugins/webmention-endpoint/LICENSE",
+        "infinity-web/Garden/src/plugins/webmention-endpoint/README.md",
+        "infinity-web/Garden/src/plugins/webmention-endpoint/SPEC.md",
+        "infinity-web/Garden/src/plugins/webmention-endpoint/garden-plugin.json",
+        "infinity-web/Garden/src/plugins/webmention-endpoint/screenshot.png",
+        "infinity-web/Garden/src/plugins/webmention-endpoint/templates/endpoint.njk"
+      ]
     }
   }
 }
