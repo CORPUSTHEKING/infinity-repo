@@ -1,9 +1,12 @@
+@import url("./vendor/github-markdown.css");
+
 /*
  * Infinity documentation rendering layer.
  *
- * This file is intentionally scoped to the documentation
- * viewer so the Markdown renderer cannot alter the rest
- * of the application.
+ * github-markdown.css provides the Markdown/GitHub visual
+ * language. The rules below integrate it into the Infinity
+ * shell without allowing Markdown content to escape the
+ * application width.
  */
 
 .inf-doc-viewer,
@@ -15,49 +18,33 @@
 
 .inf-doc-viewer {
     display: block;
-
     width: 100%;
     max-width: 100%;
-
     min-width: 0;
-
     margin: 0;
-    padding:
-        clamp(0.75rem, 2vw, 1.5rem);
+    padding: clamp(0.75rem, 2vw, 1.5rem);
 }
 
 .inf-doc-viewer .inf-doc-header {
     display: flex;
-
     width: 100%;
     max-width: 1100px;
     min-width: 0;
-
     margin: 0 auto 1rem;
-
     align-items: center;
     justify-content: space-between;
-
     gap: 1rem;
 }
 
 .inf-doc-back {
     display: inline-flex;
-
     flex: 0 0 auto;
-
     align-items: center;
-
     gap: 0.45rem;
-
-    color:
-        var(--primary, #8fd3ff);
-
+    color: var(--primary, #8fd3ff);
     text-decoration: none;
-
     font-size: 0.8rem;
     font-weight: 700;
-
     letter-spacing: 0.06em;
     text-transform: uppercase;
 }
@@ -70,157 +57,108 @@
 .inf-doc-title {
     min-width: 0;
     max-width: 100%;
-
     margin: 0;
-
-    color:
-        var(--text, #eef4ff);
-
-    font-size:
-        clamp(1rem, 2vw, 1.3rem);
-
+    color: var(--text, #eef4ff);
+    font-size: clamp(1rem, 2vw, 1.3rem);
     font-weight: 800;
-
     overflow-wrap: anywhere;
 }
 
-.inf-doc-status {
-    width: 100%;
-    max-width: 1100px;
-    min-width: 0;
-
-    margin-inline: auto;
-
-    padding: 2rem;
-
-    border:
-        1px solid
-        var(--line, rgba(255,255,255,0.09));
-
-    border-radius:
-        var(--radius, 24px);
-
-    background:
-        var(--card, rgba(11,22,39,0.78));
-
-    color:
-        var(--text, #eef4ff);
-
-    overflow-wrap: anywhere;
-}
+/*
+ * GitHub Markdown CSS expects .markdown-body.
+ *
+ * Keep the GitHub renderer's typography/layout, but make
+ * the document itself a contained Infinity surface.
+ */
 
 .inf-doc-viewer > .markdown-body {
     display: block;
-
     width: 100%;
     max-width: 1100px;
     min-width: 0;
-
     margin: 0 auto;
-
-    padding:
-        clamp(1rem, 3vw, 2.5rem);
+    padding: clamp(1rem, 3vw, 2.5rem);
 
     border:
         1px solid
-        var(--line, rgba(255,255,255,0.09));
+        var(--line, rgba(255, 255, 255, 0.09));
 
     border-radius:
         var(--radius, 24px);
 
     background:
-        var(--card, rgba(11,22,39,0.9));
+        var(--card, rgba(11, 22, 39, 0.9));
 
     color: inherit;
 
     overflow: hidden;
-
     overflow-wrap: anywhere;
-
     word-break: normal;
 
     box-shadow:
         0 24px 60px
-        rgba(0,0,0,0.20);
+        rgba(0, 0, 0, 0.20);
 }
 
 /*
- * GitHub Markdown's own defaults are useful,
- * but these containment rules are essential
- * inside a responsive SPA shell.
+ * Every direct Markdown child must be shrinkable.
  */
 
-.inf-doc-viewer
-.markdown-body {
-    min-width: 0;
-}
-
-.inf-doc-viewer
-.markdown-body
-> * {
+.inf-doc-viewer .markdown-body > * {
     max-width: 100%;
     min-width: 0;
 }
 
-.inf-doc-viewer
-.markdown-body
+/*
+ * Text and links must never create page-wide overflow.
+ */
+
+.inf-doc-viewer .markdown-body
 h1,
-.inf-doc-viewer
-.markdown-body
+.inf-doc-viewer .markdown-body
 h2,
-.inf-doc-viewer
-.markdown-body
+.inf-doc-viewer .markdown-body
 h3,
-.inf-doc-viewer
-.markdown-body
+.inf-doc-viewer .markdown-body
 h4,
-.inf-doc-viewer
-.markdown-body
+.inf-doc-viewer .markdown-body
 h5,
-.inf-doc-viewer
-.markdown-body
+.inf-doc-viewer .markdown-body
 h6,
-.inf-doc-viewer
-.markdown-body
+.inf-doc-viewer .markdown-body
 p,
-.inf-doc-viewer
-.markdown-body
+.inf-doc-viewer .markdown-body
 li,
-.inf-doc-viewer
-.markdown-body
+.inf-doc-viewer .markdown-body
 blockquote {
+    max-width: 100%;
     overflow-wrap: anywhere;
 }
 
-.inf-doc-viewer
-.markdown-body
-a {
-    overflow-wrap: anywhere;
-    word-break: break-word;
-}
-
-.inf-doc-viewer
-.markdown-body
-code {
+.inf-doc-viewer .markdown-body a {
     overflow-wrap: anywhere;
     word-break: break-word;
 }
 
 /*
- * Code blocks stay inside the documentation
- * card and gain their own horizontal scroll
- * instead of expanding the site.
+ * Inline code can wrap.
  */
 
-.inf-doc-viewer
-.markdown-body
-pre {
-    display: block;
+.inf-doc-viewer .markdown-body code {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
 
+/*
+ * Fenced code stays inside its own horizontal scrolling
+ * region instead of expanding the documentation page.
+ */
+
+.inf-doc-viewer .markdown-body pre {
+    display: block;
     width: 100%;
     max-width: 100%;
     min-width: 0;
-
     margin-inline: 0;
 
     overflow-x: auto;
@@ -231,9 +169,7 @@ pre {
     -webkit-overflow-scrolling: touch;
 }
 
-.inf-doc-viewer
-.markdown-body
-pre code {
+.inf-doc-viewer .markdown-body pre code {
     display: block;
 
     width: max-content;
@@ -242,19 +178,14 @@ pre code {
 
     overflow-wrap: normal;
     word-break: normal;
-
     white-space: pre;
 }
 
 /*
- * Tables are treated as an internal scrolling
- * region rather than allowing their intrinsic
- * width to resize the entire page.
+ * Wide Markdown tables get their own scroll area.
  */
 
-.inf-doc-viewer
-.markdown-body
-table {
+.inf-doc-viewer .markdown-body table {
     display: block;
 
     width: max-content;
@@ -267,94 +198,61 @@ table {
     -webkit-overflow-scrolling: touch;
 }
 
-.inf-doc-viewer
-.markdown-body
-table th,
-.inf-doc-viewer
-.markdown-body
-table td {
+.inf-doc-viewer .markdown-body table th,
+.inf-doc-viewer .markdown-body table td {
     overflow-wrap: anywhere;
 }
 
-.inf-doc-viewer
-.markdown-body
-img,
-.inf-doc-viewer
-.markdown-body
-video,
-.inf-doc-viewer
-.markdown-body
-svg,
-.inf-doc-viewer
-.markdown-body
-canvas {
+/*
+ * Media cannot exceed the document surface.
+ */
+
+.inf-doc-viewer .markdown-body img,
+.inf-doc-viewer .markdown-body video,
+.inf-doc-viewer .markdown-body svg,
+.inf-doc-viewer .markdown-body canvas {
     display: block;
 
     max-width: 100%;
     height: auto;
 }
 
-.inf-doc-viewer
-.markdown-body
-img {
+.inf-doc-viewer .markdown-body img {
     object-fit: contain;
 }
 
-.inf-doc-viewer
-.markdown-body
-hr {
+/*
+ * Lists and blockquotes.
+ */
+
+.inf-doc-viewer .markdown-body dl,
+.inf-doc-viewer .markdown-body ol,
+.inf-doc-viewer .markdown-body ul {
     max-width: 100%;
+    padding-inline-start: 2em;
 }
 
-.inf-doc-viewer
-.markdown-body
-dl,
-.inf-doc-viewer
-.markdown-body
-ol,
-.inf-doc-viewer
-.markdown-body
-ul {
+.inf-doc-viewer .markdown-body blockquote {
     max-width: 100%;
-
-    padding-inline-start:
-        2em;
-}
-
-.inf-doc-viewer
-.markdown-body
-blockquote {
-    max-width: 100%;
-
     overflow-wrap: anywhere;
 }
 
 /*
- * GitHub-style alerts / Obsidian callouts.
+ * GitHub-style alert blocks.
  */
 
-.inf-doc-viewer
-.markdown-body
-.markdown-alert {
+.inf-doc-viewer .markdown-body .markdown-alert {
     max-width: 100%;
-
-    padding:
-        0.5rem 1rem;
-
-    margin-block:
-        1rem;
+    padding: 0.5rem 1rem;
+    margin-block: 1rem;
 }
 
 .inf-doc-viewer
 .markdown-body
 .markdown-alert-title {
     display: flex;
-
     align-items: center;
-
-    margin:
-        0 0 0.35rem;
-
+    margin: 0 0 0.35rem;
     font-weight: 700;
 }
 
@@ -366,77 +264,54 @@ blockquote {
 }
 
 /*
- * Prevent HTML generated by Markdown from
- * introducing an independent viewport.
+ * HTML emitted by Markdown must not create a second
+ * unconstrained layout system.
  */
 
-.inf-doc-viewer
-.markdown-body
-section,
-.inf-doc-viewer
-.markdown-body
-div {
+.inf-doc-viewer .markdown-body section,
+.inf-doc-viewer .markdown-body div {
     max-width: 100%;
     min-width: 0;
 }
 
 /*
- * Infinity's page/grid containers can have
- * automatic minimum widths. The documentation
- * page must be allowed to shrink inside them.
+ * Infinity shell containment.
  */
 
 .inf-main,
 .inf-page,
 .inf-doc-viewer,
-.inf-doc-viewer
-.markdown-body {
+.inf-doc-viewer .markdown-body {
     min-width: 0;
     max-width: 100%;
 }
 
 @media (max-width: 767px) {
     .inf-doc-viewer {
-        padding:
-            0.5rem;
+        padding: 0.5rem;
     }
 
-    .inf-doc-viewer
-    .inf-doc-header {
+    .inf-doc-viewer .inf-doc-header {
         flex-wrap: wrap;
-
         align-items: flex-start;
-
-        margin-bottom:
-            0.75rem;
+        margin-bottom: 0.75rem;
     }
 
     .inf-doc-title {
         width: 100%;
-
         order: 2;
     }
 
-    .inf-doc-viewer
-    .markdown-body {
-        padding:
-            1rem;
-
-        border-radius:
-            18px;
+    .inf-doc-viewer .markdown-body {
+        padding: 1rem;
+        border-radius: 18px;
     }
 
-    .inf-doc-viewer
-    .markdown-body
-    pre {
-        margin-inline:
-            0;
+    .inf-doc-viewer .markdown-body pre {
+        margin-inline: 0;
     }
 
-    .inf-doc-viewer
-    .markdown-body
-    table {
-        font-size:
-            0.9em;
+    .inf-doc-viewer .markdown-body table {
+        font-size: 0.9em;
     }
 }
