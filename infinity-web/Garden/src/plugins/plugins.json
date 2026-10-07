@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "plugins": {
+    "analytics": {
+      "repo": "oleeskild/garden-plugin-analytics",
+      "installedVersion": "1.0.0",
+      "installedRef": "v1.0.0",
+      "installedAt": "2026-10-07T19:10:38.032Z",
+      "enabled": true,
+      "files": [
+        "infinity-web/Garden/src/plugins/analytics/README.md",
+        "infinity-web/Garden/src/plugins/analytics/garden-plugin.json",
+        "infinity-web/Garden/src/plugins/analytics/templates/snippet.njk"
+      ]
+    }
+  }
+}
