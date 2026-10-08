@@ -1,5 +1,5 @@
 /* Infinity integration layer for github-markdown-css. */
-
+@import url("./vendor/github-markdown.css");
 .inf-doc-viewer {
     width: min(100%, var(--max, 1180px));
     margin-inline: auto;
